@@ -2,9 +2,9 @@
 
 .contact-section {
   position: relative;
-  background: #0a165e;           /* Deep navy background */
+  background: #2b4dff;           /* Deep navy background */
   color: white;
-  padding: 6rem 0;
+  padding: 4rem 0;
   overflow: hidden;
 }
 
@@ -19,7 +19,7 @@
 .contact-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 22, 94, 0.92); /* Slightly transparent overlay */
+  //background: rgba(10, 22, 94, 0.92); /* Slightly transparent overlay */
 }
 
 .contact-container {
@@ -54,6 +54,7 @@
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: 1.5rem;
+  color: white;
 }
 
 @media (min-width: 640px) {
@@ -63,9 +64,9 @@
 }
 
 .contact-desc {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.85);
+  color: white;
   max-width: 600px;
 }
 
@@ -80,7 +81,7 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.9);
 }
 

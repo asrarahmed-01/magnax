@@ -2,31 +2,33 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollReveal } from '../../animations/scrollReveal';
-import { ArrowRight, Calendar, CheckCircle, Award } from 'lucide-react';
+import { ArrowRight, 
+  // Calendar, CheckCircle, Award
+ } from 'lucide-react';
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const infoCards = [
-  {
-    icon: Calendar,
-    number: '10+',
-    label: 'Years',
-    sublabel: 'Of Experience',
-  },
-  {
-    icon: CheckCircle,
-    number: '500+',
-    label: 'Projects',
-    sublabel: 'Delivered',
-  },
-  {
-    icon: Award,
-    number: '98%',
-    label: 'Satisfaction',
-    sublabel: 'Client Rate',
-  },
-];
+// const infoCards = [
+//   {
+//     icon: Calendar,
+//     number: '10+',
+//     label: 'Years',
+//     sublabel: 'Of Experience',
+//   },
+//   {
+//     icon: CheckCircle,
+//     number: '500+',
+//     label: 'Projects',
+//     sublabel: 'Delivered',
+//   },
+//   {
+//     icon: Award,
+//     number: '98%',
+//     label: 'Satisfaction',
+//     sublabel: 'Client Rate',
+//   },
+// ];
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);

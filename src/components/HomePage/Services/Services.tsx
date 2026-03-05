@@ -12,41 +12,48 @@ import {
 import './Services.scss';
 
 const services = [
-  {
-    icon: Cloud,
-    title: 'Cloud Solutions',
-    description: 'Scalable cloud infrastructure and migration services to modernize your business operations.',
-    color: 'from-blue-500 to-blue-600',
-  },
-  {
-    icon: Shield,
-    title: 'Cybersecurity',
-    description: 'Enterprise-grade security solutions and consulting to protect your digital assets.',
-    color: 'from-green-500 to-green-600',
-  },
-  {
-    icon: BarChart3,
-    title: 'Data Analytics',
-    description: 'Transform data into actionable business insights with our advanced analytics solutions.',
-    color: 'from-purple-500 to-purple-600',
-  },
+  
   {
     icon: Code2,
     title: 'Software Development',
     description: 'Custom applications built specifically for your business needs and requirements.',
     color: 'from-orange-500 to-orange-600',
+    path: '/services/software-development',
   },
   {
     icon: MessageSquare,
     title: 'IT Consulting',
     description: 'Strategic technology planning and guidance to help you make informed decisions.',
     color: 'from-pink-500 to-pink-600',
+    path: '/services/it-consulting-digital',
   },
   {
     icon: Headphones,
     title: 'Managed Services',
     description: '24/7 monitoring and support for your systems to ensure maximum uptime.',
     color: 'from-cyan-500 to-cyan-600',
+    path: '/services/managed-services',
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud Solutions',
+    description: 'Scalable cloud infrastructure and migration services to modernize your business operations.',
+    color: 'from-blue-500 to-blue-600',
+    path: '/services/cloud-solutions',
+  },
+  {
+    icon: BarChart3,
+    title: 'Data Analytics',
+    description: 'Transform data into actionable business insights with our advanced analytics solutions.',
+    color: 'from-purple-500 to-purple-600',
+    path: '/services/data-analytics',
+  },
+  {
+    icon: Shield,
+    title: 'Cybersecurity',
+    description: 'Enterprise-grade security solutions and consulting to protect your digital assets.',
+    color: 'from-green-500 to-green-600',
+    path: '/services/cybersecurity',
   },
 ];
 
@@ -57,10 +64,10 @@ export function Services() {
         {/* Header */}
         <div className="section-header">
           <ScrollReveal animation="fadeUp">
-            <span className="section-subtitle">// OUR SERVICES //</span>
+            <span className="section-subtitles"> OUR SERVICES </span>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={0.1}>
-            <h2 className="section-title mt-4">Solutions We Provide</h2>
+            <h2 className="section-titles mt-4">Solutions We Provide</h2>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={0.2}>
             <p className="section-desc">
@@ -93,7 +100,7 @@ export function Services() {
                   </p>
 
                   {/* Link */}
-                  <div className="service-link">
+                  <div className="service-link" onClick={() => window.location.href = service.path}>
                     <span>Learn More</span>
                     <ArrowRight className="link-icon" />
                   </div>

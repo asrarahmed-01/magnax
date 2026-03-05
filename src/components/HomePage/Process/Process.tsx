@@ -8,26 +8,26 @@ const steps = [
     icon: Search,
     number: '01',
     title: 'Discovery',
-    description: 'Understanding your business needs, goals, and challenges through in-depth consultation.',
+    description: 'Understanding business needs, goals and challenges through in depth consultation.',
   },
   {
     icon: Lightbulb,
     number: '02',
     title: 'Strategy',
-    description: 'Developing a tailored solution roadmap aligned with your objectives and budget.',
+    description: 'Identifying solution roadmap that meets your goals and budget.',
   },
   {
     icon: Rocket,
     number: '03',
     title: 'Implementation',
-    description: 'Executing with precision and expertise, ensuring smooth deployment and integration.',
+    description: 'Deploying and integrating with skill and confidence.',
   },
   {
     icon: HeartHandshake,
     number: '04',
     title: 'Support',
-    description: 'Ongoing maintenance, optimization, and support to ensure long-term success.',
-  },
+    description: 'Maintaining, optimizing and supporting business success.',
+  },  
 ];
 
 export function Process() {
@@ -37,10 +37,10 @@ export function Process() {
         {/* Header */}
         <div className="section-header">
           <ScrollReveal animation="fadeUp">
-            <span className="section-subtitle">// OUR PROCESS //</span>
+            <span className="sections-subtitle"> OUR PROCESS </span>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={0.1}>
-            <h2 className="section-title">How We Work</h2>
+            <h2 className="sections-title">How We Work</h2>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={0.2}>
             <p className="section-desc">

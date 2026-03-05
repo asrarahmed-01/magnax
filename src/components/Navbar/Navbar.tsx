@@ -1,81 +1,52 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, ChevronUp, Search, X, Menu } from 'lucide-react';
 import type { NavItem } from '../../types';
 import './Navbar.scss';
 
-// // --- Types ---
-
-// type SubItem = {
-//   label: string;
-//   path: string;
-// };
-
-// type Column = {
-//   title: string;
-//   items: SubItem[];
-// };
-
-// type NavItem = {
-//   label: string;
-//   path?: string;
-//   dropdownKey?: string;
-//   featured?: {
-//     title: string;
-//     description: string;
-//     image: string;
-//   };
-//   columns?: Column[];
-// };
-
-// --- Data Configuration (Based on Screenshots) ---
-
 const NAV_ITEMS: NavItem[] = [
+
+  {
+    label: 'Home',
+    path: '/',
+  },
   {
     label: 'About',
     dropdownKey: 'about',
-    featured: {
-      title: "ScienceSoft USA Corporation Is a 4-Year Champion",
-      description: "For the fourth year in a row, ScienceSoft earns a place among The Americas' Fastest-Growing Companies.",
-      image: "https://placehold.co/100x100/0a165e/ffffff?text=FT+2025"
-    },
     columns: [
       {
         title: "Company",
         items: [
-          { label: "About Company", path: "/about" },
-          { label: "Mission", path: "/mission" },
-          { label: "Leadership", path: "/leadership" },
-          { label: "Our Team", path: "/team" },
-          { label: "Portfolio", path: "/portfolio" },
-          { label: "Partners", path: "/partners" },
-          { label: "Locations", path: "/locations" },
+          { label: "About Company", path: "/company" },
+          { label: "Mission", path: "/company#mission" },
+          { label: "Leadership", path: "/company#leadership" },
+          { label: "Our Team", path: "/company#our-team" },
         ]
       },
       {
         title: "Approach",
         items: [
-          { label: "Where to Start", path: "/start" },
-          { label: "Pricing Models", path: "/pricing" },
-          { label: "Project Management Office", path: "/pmo" },
-          { label: "Architecture CoE", path: "/architecture" },
-          { label: "Technology Partnership", path: "/partnership" },
-          { label: "Sustainability Policy", path: "/sustainability" },
+          { label: "Where to Start", path: "/approach" },
+          { label: "Pricing Models", path: "/approach#pricing-models" },
+          { label: "Project Management Office", path: "/approach#project-management" },
+          { label: "Architecture CoE", path: "/approach#architecture" },
+          { label: "Technology Partnership", path: "/approach#partnership" },
+          { label: "Sustainability Policy", path: "/approach#sustainability" },
         ]
       },
       {
         title: "Recognition",
         items: [
-          { label: "Testimonials", path: "/testimonials" },
-          { label: "Awards", path: "/awards" },
+          { label: "Testimonials", path: "/recognition" },
+          { label: "Awards", path: "/recognition#awards" },
         ]
       },
       {
         title: "Join Us",
         items: [
-          { label: "Careers", path: "/careers" },
-          { label: "How We Hire", path: "/hiring" },
-          { label: "Referral Program", path: "/referral" },
+          { label: "Careers", path: "/join-us" },
+          { label: "How We Hire", path: "/join-us#how-we-hire" },
+          { label: "Referral Program", path: "/join-us#referral" },
         ]
       }
     ]
@@ -83,96 +54,81 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: 'Services',
     dropdownKey: 'services',
-    featured: {
-      title: "Services Recognized by IAOP",
-      description: "For the fourth year in a row, ScienceSoft is featured among the best outsourcing service providers.",
-      image: "https://placehold.co/100x100/0a165e/ffffff?text=IAOP"
-    },
+    
     columns: [
       {
         title: "Software Engineering",
         items: [
-          { label: "Software Development", path: "/services/dev" },
-          { label: "MVP Development", path: "/services/mvp" },
-          { label: "Web Development", path: "/services/web" },
-          { label: "Mobile Development", path: "/services/mobile" },
-          { label: "API Development", path: "/services/api" },
-          { label: "IT Staff Augmentation", path: "/services/staffing" },
+          { label: "Software Development", path: "/services/software-development" },
+          { label: "MVP Development", path: "/services/software-development#mvp-development" },
+          { label: "Web Development", path: "/services/web-mobile-development#web-development" },
+          { label: "Mobile Development", path: "/services/web-mobile-development#mobile-development" },
+          { label: "API Development", path: "/services/api-development" },
         ]
       },
       {
         title: "Strategy & Advisory",
         items: [
-          { label: "IT Consulting", path: "/services/consulting" },
-          { label: "Digital Transformation", path: "/services/digital" },
-          { label: "Agile Consulting", path: "/services/agile" },
-          { label: "DevOps Consulting", path: "/services/devops" },
+          { label: "IT Consulting", path: "/services/it-consulting-digital" },
+          { label: "Digital Transformation", path: "/services/it-consulting-digital#transformation" },
+          { label: "Agile Consulting", path: "/services/agile-devops-consulting#agile" },
+          { label: "DevOps Consulting", path: "/services/agile-devops-consulting#devops" },
         ]
       },
       {
         title: "Data & Intelligence",
         items: [
-          { label: "Data Analytics", path: "/services/analytics" },
-          { label: "Data Warehousing", path: "/services/warehouse" },
-          { label: "Big Data", path: "/services/bigdata" },
-          { label: "Machine Learning", path: "/services/ml" },
-          { label: "Artificial Intelligence", path: "/services/ai" },
+          { label: "Data Analytics", path: "/services/data-analytics-warehouse#analytics" },
+          { label: "Data Warehousing", path: "/services/data-analytics-warehouse#warehouse" },
+          { label: "Big Data", path: "/services/data-analytics-warehouse#bigdata" },
+          { label: "Machine Learning", path: "/services/machine-learning-ai#machine-learning" },
+          { label: "Artificial Intelligence", path: "/services/machine-learning-ai#ai" },
         ]
       },
-      {
-        title: "Security",
-        items: [
-          { label: "Cybersecurity", path: "/services/security" },
-          { label: "Compliance Services", path: "/services/compliance" },
-          { label: "Security Testing", path: "/services/testing" },
-        ]
-      }
     ]
   },
   {
     label: 'Industries',
     dropdownKey: 'industries',
-    featured: {
-      title: "ScienceSoft Named to CRN's 2025 Solution Provider 500",
-      description: "ScienceSoft's inclusion is a testament to our success in delivering technology solutions.",
-      image: "https://placehold.co/100x100/0a165e/ffffff?text=CRN"
-    },
     columns: [
       {
         title: "Healthcare",
         items: [
-          { label: "Healthcare IT Services", path: "/industries/healthcare" },
-          { label: "Hospitals & Health Systems", path: "/industries/hospitals" },
-          { label: "Medical Groups", path: "/industries/medical-groups" },
-          { label: "Medical Devices", path: "/industries/devices" },
+          { label: "Healthcare IT Services", path: "/industries" },
+          { label: "Hospitals & Health Systems", path: "/industries" },
+         
         ]
       },
       {
         title: "Finance",
         items: [
           { label: "Financial Services", path: "/industries/finance" },
-          { label: "Banking", path: "/industries/banking" },
-          { label: "Insurance", path: "/industries/insurance" },
-          { label: "Investment", path: "/industries/investment" },
-          { label: "Lending", path: "/industries/lending" },
-          { label: "FinTech", path: "/industries/fintech" },
+          { label: "Retail & E-commerce", path: "/industries/retail-ecommerce" },
         ]
       },
       {
         title: "Other Industries",
         items: [
+          { label: "Education", path: "/industries/education" },
+          { label: "Real Estate", path: "/industries/real-estate" },
+          { label: "Politics", path: "/industries/politics" },
           { label: "Manufacturing", path: "/industries/manufacturing" },
-          { label: "Retail", path: "/industries/retail" },
-          { label: "Telecommunications", path: "/industries/telecom" },
-          { label: "Real Estate", path: "/industries/realestate" },
-          { label: "Oil & Gas", path: "/industries/oilgas" },
+          
+        ]
+      },
+      {
+        title: "Other Industries",
+        items: [
+          { label: "Restaurants", path: "/industries/restaurants" },
+          { label: "Travel & Hospitality", path: "/industries/travel-hospitality" },
+          { label: "Media & Entertainment", path: "/industries/media-entertainment" },
         ]
       }
     ]
   },
   {
     label: 'Solutions',
-    path: '/solutions',
+    path: '/Key-Projects',
   },
   {
     label: 'Technologies',
@@ -181,66 +137,64 @@ const NAV_ITEMS: NavItem[] = [
       {
         title: "Frontend",
         items: [
-          { label: "React", path: "/tech/react" },
-          { label: "Vue.js", path: "/tech/vue" },
-          { label: "Angular", path: "/tech/angular" },
-          { label: "JavaScript", path: "/tech/javascript" },
-          { label: "TypeScript", path: "/tech/typescript" },
+          { label: "React", path: "/technologies/frontend" },
+          { label: "Vue.js", path: "/technologies/frontend" },
+          { label: "Angular", path: "/technologies/frontend" },
+          { label: "JavaScript", path: "/technologies/frontend" },
+          { label: "TypeScript", path: "/technologies/frontend" },
         ]
       },
       {
         title: "Backend",
         items: [
-          { label: ".NET", path: "/tech/dotnet" },
-          { label: "Java", path: "/tech/java" },
-          { label: "Python", path: "/tech/python" },
-          { label: "Node.js", path: "/tech/nodejs" },
-          { label: "React Native", path: "/tech/react-native" },
+          { label: ".NET", path: "/technologies/backend" },
+          { label: "Java", path: "/technologies/backend" },
+          { label: "Python", path: "/technologies/backend" },
+          { label: "Node.js", path: "/technologies/backend" },
+          { label: "React Native", path: "/technologies/backend" },
         ]
       },
       {
         title: "Mobile",
         items: [
-          { label: "Flutter", path: "/tech/flutter" },
-          { label: "iOS", path: "/tech/ios" },
-          { label: "Android", path: "/tech/android" },
-          { label: "React Native", path: "/tech/react-native" },
-          { label: "Xamarin", path: "/tech/xamarin" },
+          { label: "Flutter", path: "/technologies/mobile" },
+          { label: "iOS", path: "/technologies/mobile" },
+          { label: "Android", path: "/technologies/mobile" },
+          { label: "React Native", path: "/technologies/mobile" },
+          { label: "Xamarin", path: "/technologies/mobile" },
         ]
       },
       {
         title: "Cloud & DevOps",
         items: [
-          { label: "AWS", path: "/tech/aws" },
-          { label: "Azure", path: "/tech/azure" },
-          { label: "Google Cloud", path: "/tech/google-cloud" },
-          { label: "Docker", path: "/tech/docker" },
-          { label: "Kubernetes", path: "/tech/kubernetes" },
-          // { label: "Jenkins", path: "/tech/jenkins" },
+          { label: "AWS", path: "/technologies/cloud-devops" },
+          { label: "Azure", path: "/technologies/cloud-devops" },
+          { label: "Google Cloud", path: "/technologies/cloud-devops" },
+          { label: "Docker", path: "/technologies/cloud-devops" },
+          { label: "Kubernetes", path: "/technologies/cloud-devops" },
         ]
       },
       {
         title: "Databases",
         items: [
-          { label: "SQL Server", path: "/tech/sql-server" },
-          { label: "Oracle", path: "/tech/oracle" },
-          { label: "MySQL", path: "/tech/mysql" },
-          { label: "PostgreSQL", path: "/tech/postgresql" },
-          { label: "MongoDB", path: "/tech/mongodb" },
+          { label: "SQL Server", path: "/technologies/database" },
+          { label: "Oracle", path: "/technologies/database" },
+          { label: "MySQL", path: "/technologies/database" },
+          { label: "PostgreSQL", path: "/technologies/database" },
+          { label: "MongoDB", path: "/technologies/database" },
         ]
       }
     ]
   },
   {
     label: 'Our Product',
-    path: '/product',
+    path: '/our-product',
   },
 ];
 
-// --- Component ---
-
 const Navbar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -257,13 +211,14 @@ const Navbar: React.FC = () => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setOpenDropdown(null);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+      const navbar = document.querySelector('.navbar');
+    if (navbar && !navbar.contains(e.target as Node)) {
+      setOpenDropdown(null);
+    }
+  };
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => document.removeEventListener('mousedown', handleClickOutside);
+}, []);
 
   // Close dropdown on route change
   useEffect(() => {
@@ -271,34 +226,43 @@ const Navbar: React.FC = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Handle hash scroll on page load
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   const toggleDropdown = (key: string) => {
     setOpenDropdown(openDropdown === key ? null : key);
   };
+
+  const handleLinkClick = (path: string) => {
+  setOpenDropdown(null);
+  setIsMobileMenuOpen(false);
+
+  const [route, hash] = path.split('#');
+
+  if (location.pathname === route && hash) {
+    const element = document.getElementById(hash);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  } else {
+    navigate(path);
+  }
+};
 
   const activeItem = NAV_ITEMS.find(item => item.dropdownKey === openDropdown);
 
   return (
     <>
-      {/* Top Bar
-      <div className="navbar-top-bar">
-        <div className="navbar-top-container">
-          <div className="navbar-top-left">
-            <Link to="/healthcare" className="navbar-top-link">
-              ScienceSoft Healthcare
-            </Link>
-            <Link to="/finance" className="navbar-top-link">
-              ScienceSoft Finance
-            </Link>
-          </div>
-          <div className="navbar-top-right">
-            <Link to="/careers" className="navbar-top-link">Careers</Link>
-            <Link to="/contact" className="navbar-top-link">For journalists</Link>
-            <span className="navbar-top-text">contact@scnsoft.com</span>
-            <span className="navbar-top-text">+1 214 306 68 37</span>
-          </div>
-        </div>
-      </div> */}
-
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="navbar-container">
           
@@ -342,9 +306,6 @@ const Navbar: React.FC = () => {
 
           {/* Right Actions */}
           <div className="navbar-actions">
-            <button className="navbar-search-btn">
-              <Search size={22} strokeWidth={2.5} />
-            </button>
             <Link to="/contact" className="navbar-contact-btn">
               Get A Quote
             </Link>
@@ -365,6 +326,14 @@ const Navbar: React.FC = () => {
             {activeItem && (
               <div className="navbar-mega-content">
                 
+                {/* Close Button */}
+                <button 
+                  onClick={() => setOpenDropdown(null)}
+                  className="navbar-mega-close"
+                >
+                  <X size={24} />
+                </button>
+
                 {/* Featured Section */}
                 {activeItem.featured && (
                   <div className="navbar-mega-featured">
@@ -393,9 +362,11 @@ const Navbar: React.FC = () => {
                       <ul className="navbar-mega-column-list">
                         {col.items.map((subItem) => (
                           <li key={subItem.path}>
-                            <Link 
-                              to={subItem.path} 
+                            <Link
+                              to={subItem.path}
                               className="navbar-mega-link"
+                              onClick={() => setOpenDropdown(null)}
+                             
                             >
                               {subItem.label}
                             </Link>
@@ -405,14 +376,6 @@ const Navbar: React.FC = () => {
                     </div>
                   ))}
                 </div>
-
-                {/* Close Button */}
-                <button 
-                  onClick={() => setOpenDropdown(null)}
-                  className="navbar-mega-close"
-                >
-                  <X size={24} />
-                </button>
 
               </div>
             )}
@@ -455,13 +418,12 @@ const Navbar: React.FC = () => {
                           <ul className="navbar-mobile-submenu-list">
                             {col.items.map((sub) => (
                               <li key={sub.path}>
-                                <Link 
-                                  to={sub.path} 
+                                <button 
+                                  onClick={() => handleLinkClick(sub.path)}
                                   className="navbar-mobile-submenu-link"
-                                  onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                   {sub.label}
-                                </Link>
+                                </button>
                               </li>
                             ))}
                           </ul>
@@ -478,7 +440,7 @@ const Navbar: React.FC = () => {
             <button className="navbar-mobile-search">
               <Search size={20} /> Search
             </button>
-            <Link to="/contact" className="navbar-mobile-contact">
+            <Link to="/contact" className="navbar-mobile-contact" onClick={() => setIsMobileMenuOpen(false)}>
               Get A Quote
             </Link>
           </div>

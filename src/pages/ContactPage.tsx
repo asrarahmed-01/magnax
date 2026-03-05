@@ -1,8 +1,8 @@
 // src/components/Contact/Contact.tsx
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 import './ContactPage.scss';
 
@@ -59,7 +59,7 @@ export function Contact() {
                 <div className="info-icon">
                   <Phone />
                 </div>
-                <span>+91 98765 43210</span>
+                <span>+91 8123660270</span>
               </div>
 
               <div className="info-item">

@@ -1,29 +1,56 @@
 // src/components/Testimonials/Testimonials.tsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ScrollReveal } from '../../animations/scrollReveal';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import './Testimonials.scss';
 
 const testimonials = [
   {
-    name: 'John Smith',
-    role: 'CEO, TechCorp',
+    role: 'CTO, Bricks&Bolts',
     image: '/images/testimonials/avatar-1.jpg',
-    content: 'Magnax transformed our entire IT infrastructure. Their team\'s expertise and dedication exceeded our expectations. The results speak for themselves - improved efficiency and reduced costs.',
+    content: 'We are really impressed with the Da Riff team\'s dedication and responsiveness.Da Riff is a much valued vendor/partner, who go out of their way to meet deadlines and provide solutions.The culture of innovation, positivity, and commitment to the task at hand at Da Riff is well admired. Da Riff completed quality projects on time.We look forward to a long and fruitful relationship."',
     rating: 5,
   },
   {
-    name: 'Sarah Johnson',
-    role: 'CTO, InnovateLab',
+    role: 'Founder, Matkaplay',
     image: '/images/testimonials/avatar-2.jpg',
-    content: 'The team\'s expertise in cloud migration was exceptional. They guided us through every step of the process, ensuring a smooth transition with minimal downtime.',
+    content: '"We would like to express our satisfaction on the cooperation regarding the development of our web application. Da Riff and the development team did a very professional job. We are satisfied with the solution given to us and with the communication flow through the project. We would like to recommend Da Riff and the development team. We look forward to working with them in future projects."',
     rating: 5,
   },
   {
-    name: 'Michael Chen',
-    role: 'Director, DataFlow Inc',
+    role: 'CTO, Alfa Carz',
     image: '/images/testimonials/avatar-3.jpg',
-    content: 'Outstanding service and support throughout our digital transformation journey. Magnax truly understands the needs of modern businesses.',
+    content: '"Working with Da Riff was a pleasure. They were enthusiastic, fast to offer comments, and quick to make changes. As a client I felt very comfortable that the work would get done within the determined planning.I would highly suggest them and hope to work with them again in the future."',
+    rating: 5,
+  },
+  {
+    role: 'General Manager, Banfield',
+    image: '/images/testimonials/avatar-3.jpg',
+    content: '"Wonderful Experience, Highly Recommend Da Riff.The expertise and understanding Da Riff possess helped us pen down our requirements in a well-structured manner and the sense of urgency resulted in the product being delivered on time. This has been a fantastic experience, and I would strongly suggest Da Riff to anyone interested in developing next-generation mobile apps."',
+    rating: 5,
+  },
+  {
+    role: '- Product Owner, SplitSie',
+    image: '/images/testimonials/avatar-3.jpg',
+    content: '"I am really impressed by the quality of services I received from Da Riff. You were right on schedule, charged reasonable prices, were professional and courteous in dealings, and delivered items well before time. I have got a good e-commerce site for my products. My revenue has increased because of Da Riff and I will definitely use your services again."',
+    rating: 5,
+  },
+  {
+    role: 'Founder, KBombay',
+    image: '/images/testimonials/avatar-3.jpg',
+    content: '"We would like to express our satisfaction on the cooperation regarding the development of our web application. Da Riff and the development team did a very professional job. We are satisfied with the solution given to us and with the communication flow through the project. We would like to recommend Da Riff and the development team. We look forward to working with them in future projects."',
+    rating: 5,
+  },
+  { 
+    role: 'Founder, GlobalEdge Services',
+    image: '/images/testimonials/avatar-3.jpg',
+    content: '"We would like to express our satisfaction on the cooperation regarding the development of our web application. Da Riff and the development team did a very professional job. We are satisfied with the solution given to us and with the communication flow through the project. We would like to recommend Da Riff and the development team. We look forward to working with them in future projects."',
+    rating: 5,
+  },
+  {
+    role: 'CTO, Golden manpower International Consultants',
+    image: '/images/testimonials/avatar-3.jpg',
+    content: '"We would like to express our satisfaction on the cooperation regarding the development of our web application. Da Riff and the development team did a very professional job. We are satisfied with the solution given to us and with the communication flow through the project. We would like to recommend Da Riff and the development team. We look forward to working with them in future projects."',
     rating: 5,
   },
 ];
@@ -58,7 +85,7 @@ export function Testimonials() {
         {/* Header */}
         <div className="section-header">
           <ScrollReveal animation="fadeUp">
-            <span className="section-subtitle">// TESTIMONIALS //</span>
+            <span className="section-subtitle"> TESTIMONIALS </span>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={0.1}>
             <h2 className="section-title">What Our Clients Say</h2>
@@ -94,11 +121,9 @@ export function Testimonials() {
                 <div className="author-info">
                   <img
                     src={testimonials[currentIndex].image}
-                    alt={testimonials[currentIndex].name}
                     className="author-avatar"
                   />
                   <div>
-                    <h4 className="author-name">{testimonials[currentIndex].name}</h4>
                     <p className="author-role">{testimonials[currentIndex].role}</p>
                   </div>
                 </div>

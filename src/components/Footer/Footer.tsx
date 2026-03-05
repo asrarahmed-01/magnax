@@ -1,5 +1,5 @@
 // src/components/Footer/Footer.tsx
-import React from 'react';
+//import React from 'react';
 import { ScrollReveal } from '../animations/scrollReveal';
 import { 
   Facebook, 
@@ -10,6 +10,7 @@ import {
   Mail
 } from 'lucide-react';
 import './Footer.scss';
+import { WhatsAppButton }from '../Whatsapp/WhatsAppButton';
 
 const quickLinks = [
   { name: 'Home', href: '#hero' },
@@ -20,7 +21,7 @@ const quickLinks = [
 ];
 
 const services = [
-  { name: 'Cloud Solutions', href: '#services' },
+  { name: 'Cloud Solutions', href: '/' },
   { name: 'Cybersecurity', href: '#services' },
   { name: 'Data Analytics', href: '#services' },
   { name: 'Software Development', href: '#services' },
@@ -175,6 +176,7 @@ export function Footer() {
       >
         <ArrowUp className="arrow-up-icon" />
       </button>
+      <WhatsAppButton phoneNumber="+918123660270"  />
     </footer>
   );
 }

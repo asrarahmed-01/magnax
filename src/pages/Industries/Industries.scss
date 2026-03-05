@@ -1,0 +1,431 @@
+// Variables - STRICTLY TWO COLORS ONLY
+$primary: #2b4dff;
+$secondary: #0a165e;
+
+// Derived using only opacity and mixing of these two colors
+$primary-light: rgba($primary, 0.8);
+$primary-dark: mix($secondary, $primary, 40%);
+$secondary-light: rgba($secondary, 0.8);
+$white: #ffffff;
+$black: #000000;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin gradient-bg {
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+}
+
+@mixin gradient-text {
+  background: linear-gradient(135deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Base
+.industries-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: $white;
+  color: $secondary;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.industries-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Buttons
+.industries-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+
+  &-icon {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover &-icon {
+    transform: translateX(4px);
+  }
+
+  &-primary {
+    background: $white;
+    color: $primary;
+    box-shadow: 0 4px 20px rgba($black, 0.2);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba($black, 0.3);
+    }
+  }
+
+  &-lg {
+    padding: 18px 36px;
+    font-size: 16px;
+  }
+}
+
+// Hero Section
+.industries-hero {
+  position: relative;
+  min-height: 60vh;
+  @include flex-center;
+  padding: 100px 0 60px;
+  @include gradient-bg;
+  overflow: hidden;
+}
+
+.industries-hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+// Animated Grid Pattern
+.industries-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba($white, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($white, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+// Pulse Orbs - Simplified
+.industries-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.2;
+
+  &.industries-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba($white, 0.4);
+    top: -10%;
+    right: 10%;
+  }
+
+  &.industries-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba($white, 0.3);
+    bottom: -10%;
+    left: 10%;
+  }
+}
+
+.industries-hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.industries-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba($white, 0.15);
+  border: 1px solid rgba($white, 0.3);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.industries-hero-title {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  color: $white;
+}
+
+.industries-gradient-text {
+  @include gradient-text;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    border-radius: 2px;
+  }
+}
+
+.industries-hero-description {
+  font-size: clamp(16px, 2vw, 18px);
+  color: rgba($white, 0.9);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+// Main Content
+.industries-main {
+  background: $white;
+  padding: 80px 0;
+}
+
+// Industries Grid
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Industry Card
+.industries-card {
+  background: rgba($white, 0.9);
+  border: 1px solid rgba($secondary, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba($secondary, 0.12);
+    border-color: rgba($primary, 0.2);
+
+    .industries-card-image img {
+      transform: scale(1.05);
+    }
+
+    .industries-card-icon {
+      background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+      color: $white;
+    }
+  }
+}
+
+.industries-card-image {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+}
+
+.industries-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba($secondary, 0.6) 100%);
+}
+
+.industries-card-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  width: 56px;
+  height: 56px;
+  background: $white;
+  border-radius: 16px;
+  @include flex-center;
+  color: $primary;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 24px rgba($black, 0.15);
+}
+
+.industries-card-content {
+  padding: 28px;
+}
+
+.industries-card-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: $secondary;
+  margin-bottom: 12px;
+}
+
+.industries-card-description {
+  font-size: 15px;
+  color: rgba($secondary, 0.75);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.industries-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba($secondary, 0.8);
+    padding: 8px 12px;
+    background: rgba($secondary, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba($secondary, 0.05);
+
+    svg {
+      color: $primary;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// CTA Section
+.industries-cta {
+  padding: 100px 0;
+  background: linear-gradient(180deg, rgba($secondary, 0.02) 0%, $white 100%);
+  position: relative;
+}
+
+.industries-cta-box {
+  position: relative;
+  text-align: center;
+  padding: 64px 40px;
+  @include gradient-bg;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba($white, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+}
+
+.industries-cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba($white, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.industries-cta-icon {
+  position: relative;
+  color: $white;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.industries-cta-title {
+  position: relative;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: $white;
+  margin-bottom: 16px;
+  z-index: 1;
+}
+
+.industries-cta-description {
+  position: relative;
+  font-size: 16px;
+  color: rgba($white, 0.9);
+  margin-bottom: 32px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  line-height: 1.6;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .industries-hero {
+    min-height: 50vh;
+    padding: 80px 0 40px;
+  }
+
+  .industries-main {
+    padding: 60px 0;
+  }
+
+  .industries-grid {
+    gap: 24px;
+  }
+
+  .industries-card-image {
+    height: 200px;
+  }
+
+  .industries-card-content {
+    padding: 20px;
+  }
+
+  .industries-card-title {
+    font-size: 20px;
+  }
+
+  .industries-cta {
+    padding: 60px 0;
+  }
+
+  .industries-cta-box {
+    padding: 48px 24px;
+  }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba($secondary, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 5px;
+  
+  &:hover {
+    background: mix($white, $primary, 20%);
+  }
+}
