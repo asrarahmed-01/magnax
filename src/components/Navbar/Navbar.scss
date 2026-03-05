@@ -1,5 +1,5 @@
 // Variables
-$primary-color: #0a165e;
+$primary-color: #2b4dff;
 $accent-color: #fcd34d;
 $accent-hover: #fbbf24;
 $text-dark: #1f2937;
@@ -67,6 +67,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   background: $white;
   border-bottom: 1px solid #f3f4f6;
   transition: box-shadow 0.3s ease;
+  overflow: visible;
 
   &.scrolled {
     box-shadow: $shadow-md;
@@ -206,8 +207,8 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-contact-btn {
-  background: $accent-color;
-  color: $primary-color;
+  background: $primary-color;
+  color: $white;
   padding: 0.625rem 1.5rem;
   border-radius: 8px;
   font-weight: 700;
@@ -236,30 +237,36 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   }
 }
 
-// Mega Menu Dropdown
+// Mega Menu Dropdown - FIXED
 .navbar-mega-menu {
   display: none;
-  position: absolute;
+  position: fixed;        // ← change from absolute to fixed
   left: 0;
   right: 0;
+  top: 80px;             // ← match navbar height exactly
   background: $white;
   border-bottom: 1px solid $border-color;
   box-shadow: $shadow-xl;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  z-index: 40;
-  max-height: 0;
+  z-index: 49;           // ← just below navbar z-index of 50
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;  // ← ADD: disable when closed
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
 
   @media (min-width: 1024px) {
     display: block;
   }
 
   &.open {
-    max-height: 600px;
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto; // ← enable only when open
+
+    * {
+      pointer-events: auto;
+    }
   }
 }
 
@@ -267,6 +274,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
+  
 }
 
 .navbar-mega-content {
@@ -354,12 +362,18 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   gap: 0.625rem;
 }
 
+// FIXED: Ensure links are clickable
 .navbar-mega-link {
   font-size: 14px;
   color: $text-medium;
   text-decoration: none;
   transition: all 0.2s ease;
   display: inline-block;
+  cursor: pointer;
+  position: relative;
+  z-index: 50;
+  pointer-events: auto;
+  padding: 0.25rem 0;
 
   &:hover {
     color: $primary-color;
@@ -379,6 +393,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   padding: 0.5rem;
   transition: color 0.3s ease;
+  z-index: 60;
 
   &:hover {
     color: $text-dark;
@@ -514,7 +529,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-mobile-contact {
-  background: $primary-color;
+  background: #0a165e;
   color: $white;
   text-align: center;
   padding: 0.875rem;

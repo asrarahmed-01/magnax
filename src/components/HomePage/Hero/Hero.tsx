@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { ArrowRight, Play } from 'lucide-react';
 import './Hero.scss';
 
 export function Hero() {
@@ -8,15 +7,23 @@ export function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLSpanElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
   const patternRef = useRef<HTMLDivElement>(null);
+  
+  // Slideshow state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // Array of your 3 images
+  const slides = [
+    { src: '/images/hero1.jpeg', alt: 'Team collaboration' },
+    { src: '/images/hero2.jpeg', alt: 'Description 2' },
+    { src: '/images/hero3.jpeg', alt: 'Description 3' },
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
-      // Background pattern animation
+      // Background pattern animation - entrance only
       tl.fromTo(
         patternRef.current,
         { scale: 1.1, opacity: 0 },
@@ -55,43 +62,20 @@ export function Hero() {
         '-=0.2'
       );
 
-      // CTA buttons
-      tl.fromTo(
-        ctaRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5 },
-        '-=0.3'
-      );
-
-      // Hero image 3D entrance
-      tl.fromTo(
-        imageRef.current,
-        { rotateY: 25, x: 100, opacity: 0 },
-        { rotateY: 0, x: 0, opacity: 1, duration: 1, ease: 'expo.out' },
-        '-=1'
-      );
-
-      // Continuous floating animation for image
-      gsap.to(imageRef.current, {
-        y: -20,
-        duration: 3,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-      });
-
-      // Background pattern drift
-      gsap.to(patternRef.current, {
-        x: -30,
-        duration: 20,
-        ease: 'none',
-        repeat: -1,
-        yoyo: true,
-      });
+      // REMOVED: Continuous background drift animation that was causing fluctuation
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+  // Slideshow autoplay
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   const titleWords = 'Transforming Businesses Through Innovative Technology'.split(' ');
 
@@ -101,7 +85,7 @@ export function Hero() {
       ref={sectionRef}
       className="hero"
     >
-      {/* Background Pattern */}
+      {/* Background Pattern - Fixed with fallback color */}
       <div
         ref={patternRef}
         className="hero-pattern"
@@ -120,7 +104,7 @@ export function Hero() {
               ref={subtitleRef}
               className="hero-subtitle"
             >
-              // IT SOLUTIONS //
+              IT SOLUTIONS 
             </span>
 
             <h1
@@ -142,47 +126,30 @@ export function Hero() {
               and digital transformation for businesses worldwide. Partner with us 
               to unlock your full potential.
             </p>
-
-            <div ref={ctaRef} className="hero-cta">
-              <a href="#cta" className="btn-primary">
-                Get Started
-                <ArrowRight className="btn-icon" />
-              </a>
-              <a href="#about" className="btn-secondary">
-                <Play className="btn-icon" />
-                Learn More
-              </a>
-            </div>
-
-            {/* Stats */}
-            {/* <div className="hero-stats">
-              <div className="hero-stat">
-                <div className="hero-stat-number">10+</div>
-                <div className="hero-stat-label">Years Experience</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-number">500+</div>
-                <div className="hero-stat-label">Projects Delivered</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-number">98%</div>
-                <div className="hero-stat-label">Client Satisfaction</div>
-              </div>
-            </div> */}
           </div>
 
-          {/* Hero Image */}
+          {/* Hero Image Slideshow */}
           <div className="hero-image-wrapper">
-            <div
-              ref={imageRef}
-              className="hero-image-container"
-            >
+            <div className="hero-image-container">
               <div className="hero-image-box">
-                <img
-                  src="/images/hero-main.jpg"
-                  alt="Team collaboration"
-                  className="hero-image"
-                />
+                <div className="hero-slideshow">
+                  {slides.map((slide, index) => (
+                    <div
+                      key={index}
+                      className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
+                    >
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className="hero-image"
+                        onError={(e) => {
+                          console.error(`Failed to load image: ${slide.src}`);
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
                 <div className="hero-image-gradient" />
               </div>
 

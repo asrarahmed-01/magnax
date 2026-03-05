@@ -1,5 +1,5 @@
 // src/components/WhyChooseUs/WhyChooseUs.tsx
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ScrollReveal } from '../../animations/scrollReveal';
 import { Check, Users, Trophy, Clock } from 'lucide-react';
 import './WhyChooseUs.scss';
@@ -28,7 +28,7 @@ const features = [
 ];
 
 const stats = [
-  { number: 150, suffix: '+', label: 'Expert Team Members' },
+  { number: 50, suffix: '+', label: 'Expert Team Members' },
   { number: 50, suffix: '+', label: 'Industry Awards' },
   { number: 24, suffix: '/7', label: 'Support Available' },
 ];
@@ -93,7 +93,7 @@ export function WhyChooseUs() {
           {/* Left: Features */}
           <div className="features-column">
             <ScrollReveal animation="fadeUp">
-              <span className="section-subtitle">// WHY CHOOSE US //</span>
+              <span className="section-subtitle"> WHY CHOOSE US </span>
             </ScrollReveal>
 
             <ScrollReveal animation="fadeUp" delay={0.1}>

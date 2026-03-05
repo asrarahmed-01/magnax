@@ -1,0 +1,1212 @@
+// Variables - STRICTLY TWO COLORS ONLY
+$primary: #2b4dff;
+$secondary: #0a165e;
+
+// Derived using only opacity and mixing of these two colors
+$primary-light: rgba($primary, 0.8);
+$primary-dark: mix($secondary, $primary, 40%);
+$secondary-light: rgba($secondary, 0.8);
+$white: #ffffff;
+$black: #000000;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin gradient-bg {
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+}
+
+@mixin gradient-text {
+  background: linear-gradient(135deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Base
+.approach-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: $white;
+  color: $secondary;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.approach-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Buttons
+.approach-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+
+  &-icon {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover &-icon {
+    transform: translateX(4px);
+  }
+
+  &-primary {
+    background: $white;
+    color: $primary;
+    box-shadow: 0 4px 20px rgba($black, 0.2);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba($black, 0.3);
+    }
+  }
+
+  &-secondary {
+    background: rgba($white, 0.1);
+    color: $white;
+    border: 2px solid rgba($white, 0.3);
+    
+    &:hover {
+      background: rgba($white, 0.2);
+      border-color: rgba($white, 0.5);
+      transform: translateY(-2px);
+    }
+  }
+
+  &-outline {
+    background: transparent;
+    color: $white;
+    border: 2px solid rgba($white, 0.3);
+    
+    &:hover {
+      background: $white;
+      color: $primary;
+    }
+  }
+
+  &-lg {
+    padding: 18px 36px;
+    font-size: 16px;
+  }
+}
+
+// Hero Section - Unique Circular Navigation
+.approach-hero {
+  position: relative;
+  min-height: 100vh;
+  @include flex-center;
+  padding: 120px 0 80px;
+  @include gradient-bg;
+  overflow: hidden;
+}
+
+.approach-hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+// Animated Grid Pattern
+.approach-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba($white, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($white, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+// Pulse Orbs
+.approach-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: pulse-orb 8s infinite ease-in-out;
+
+  &.approach-orb-1 {
+    width: 500px;
+    height: 500px;
+    background: rgba($white, 0.4);
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+  }
+
+  &.approach-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: rgba($white, 0.2);
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -2s;
+  }
+
+  &.approach-orb-3 {
+    width: 300px;
+    height: 300px;
+    background: rgba($white, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -4s;
+    animation-duration: 12s;
+  }
+}
+
+@keyframes pulse-orb {
+  0%, 100% { 
+    transform: scale(1) translate(0, 0); 
+    opacity: 0.3;
+  }
+  33% { 
+    transform: scale(1.2) translate(30px, -30px); 
+    opacity: 0.5;
+  }
+  66% { 
+    transform: scale(0.9) translate(-20px, 20px); 
+    opacity: 0.2;
+  }
+}
+
+// Floating Data Particles
+.approach-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.approach-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba($white, 0.6);
+  border-radius: 50%;
+  animation: float-particle 15s infinite linear;
+  
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      left: random(100) * 1%;
+      top: random(100) * 1%;
+      animation-delay: random(15) * -1s;
+      animation-duration: 10s + random(10);
+      opacity: random(10) / 10;
+    }
+  }
+}
+
+@keyframes float-particle {
+  0% { 
+    transform: translateY(100vh) rotate(0deg); 
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translateY(-100vh) rotate(720deg); 
+    opacity: 0;
+  }
+}
+
+// Scanning Line Effect
+.approach-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba($white, 0.8), transparent);
+  animation: scan 4s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes scan {
+  0%, 100% { top: 0; opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  50% { top: 100%; }
+}
+
+.approach-hero-wrapper {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.approach-hero-content {
+  position: relative;
+}
+
+.approach-floating-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.approach-float-icon {
+  position: absolute;
+  color: rgba($white, 0.3);
+  animation: float-icon 6s ease-in-out infinite;
+  
+  svg {
+    filter: drop-shadow(0 0 10px rgba($white, 0.5));
+  }
+}
+
+@keyframes float-icon {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.approach-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba($white, 0.15);
+  border: 1px solid rgba($white, 0.3);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  animation: badge-glow 3s ease-in-out infinite;
+}
+
+@keyframes badge-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba($white, 0.1); }
+  50% { box-shadow: 0 0 30px rgba($white, 0.3); }
+}
+
+.approach-hero-dot {
+  width: 8px;
+  height: 8px;
+  background: $white;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.approach-hero-title {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  color: $white;
+}
+
+.approach-gradient-text {
+  @include gradient-text;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    border-radius: 2px;
+  }
+}
+
+.approach-hero-description {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba($white, 0.9);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 540px;
+
+  @media (max-width: 1024px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.approach-hero-info {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+}
+
+.approach-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba($white, 0.1);
+  border: 1px solid rgba($white, 0.2);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba($white, 0.9);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba($white, 0.2);
+    transform: translateY(-2px);
+  }
+
+  svg {
+    color: $white;
+  }
+}
+
+// Hero Stats
+.approach-hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+}
+
+.approach-hero-stat {
+  text-align: left;
+
+  @media (max-width: 1024px) {
+    text-align: center;
+  }
+}
+
+.approach-stat-value {
+  display: block;
+  font-size: 32px;
+  font-weight: 800;
+  color: $white;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.approach-stat-label {
+  font-size: 13px;
+  color: rgba($white, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+// Circular Navigation Orbit
+.approach-nav-orbit-container {
+  @include flex-center;
+  position: relative;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.approach-nav-orbit {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  @include flex-center;
+}
+
+.approach-orbit-center {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  @include gradient-bg;
+  border-radius: 50%;
+  @include flex-center;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 20px 60px rgba($primary, 0.4);
+  z-index: 10;
+  border: 3px solid rgba($white, 0.3);
+  
+  .approach-center-icon {
+    color: $white;
+  }
+  
+  .approach-center-text {
+    color: $white;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.approach-orbit-ring {
+  position: absolute;
+  border: 1px solid rgba($white, 0.1);
+  border-radius: 50%;
+  
+  &.ring-1 {
+    width: 200px;
+    height: 200px;
+    animation: orbit-rotate 20s linear infinite;
+  }
+  
+  &.ring-2 {
+    width: 280px;
+    height: 280px;
+    animation: orbit-rotate 30s linear infinite reverse;
+  }
+  
+  &.ring-3 {
+    width: 360px;
+    height: 360px;
+    animation: orbit-rotate 40s linear infinite;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-top-color: rgba($white, 0.3);
+    border-right-color: rgba($white, 0.1);
+  }
+}
+
+@keyframes orbit-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.approach-orbit-node {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: rgba($white, 0.95);
+  border: 2px solid rgba($primary, 0.2);
+  border-radius: 50%;
+  @include flex-center;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 20;
+  box-shadow: 0 10px 30px rgba($secondary, 0.2);
+  
+  &:hover {
+    transform: translate(var(--x, 0), var(--y, 0)) scale(1.15);
+    border-color: $primary;
+    box-shadow: 0 20px 40px rgba($primary, 0.3);
+    
+    .approach-node-icon {
+      color: $primary;
+      transform: scale(1.1);
+    }
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+    border-color: transparent;
+    
+    .approach-node-icon {
+      color: $white;
+    }
+    
+    .approach-node-label {
+      color: $white;
+    }
+    
+    .approach-node-pulse {
+      opacity: 1;
+    }
+  }
+}
+
+.approach-node-icon {
+  color: $secondary;
+  transition: all 0.3s ease;
+}
+
+.approach-node-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: $secondary;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 70px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.approach-node-pulse {
+  position: absolute;
+  inset: -4px;
+  border: 2px solid $primary;
+  border-radius: 50%;
+  opacity: 0;
+  animation: node-pulse 2s infinite;
+}
+
+@keyframes node-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+// Main Content
+.approach-main {
+  background: $white;
+}
+
+// Section Base
+.approach-section {
+  padding: 120px 0;
+  position: relative;
+
+  &-alt {
+    background: linear-gradient(180deg, rgba($secondary, 0.02) 0%, $white 100%);
+  }
+}
+
+.approach-section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.approach-section-label {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 50px;
+  margin-bottom: 16px;
+  border: 1px solid rgba($primary, 0.2);
+}
+
+.approach-section-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  
+  .approach-section-icon {
+    color: $primary;
+  }
+  
+  h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    color: $secondary;
+    margin: 0;
+  }
+}
+
+// Where to Start - Steps
+.approach-start-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.approach-start-step {
+  position: relative;
+  background: rgba($white, 0.9);
+  border: 1px solid rgba($secondary, 0.1);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  transition: all 0.4s ease;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba($primary, 0.15);
+    border-color: rgba($primary, 0.3);
+
+    .approach-step-glow {
+      opacity: 0.5;
+    }
+
+    .approach-step-number {
+      background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+      color: $white;
+    }
+  }
+}
+
+.approach-step-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba($primary, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.approach-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.approach-start-step h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: $secondary;
+  margin-bottom: 12px;
+}
+
+.approach-start-step p {
+  color: rgba($secondary, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.approach-step-line {
+  position: absolute;
+  top: 56px;
+  right: -24px;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, $primary, rgba($primary, 0.3));
+  
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+// Pricing Cards
+.approach-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.approach-pricing-card {
+  position: relative;
+  background: rgba($white, 0.9);
+  border: 1px solid rgba($secondary, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba($secondary, 0.15);
+    border-color: rgba($primary, 0.3);
+
+    .approach-pricing-glow {
+      opacity: 0.5;
+    }
+
+    .approach-pricing-header svg {
+      transform: translate(4px, -4px);
+      color: $primary;
+    }
+  }
+
+  &:nth-child(2) {
+    border-color: rgba($primary, 0.3);
+    box-shadow: 0 20px 40px rgba($primary, 0.1);
+    
+    .approach-pricing-header h3 {
+      background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+.approach-pricing-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba($primary, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.approach-pricing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: $secondary;
+    margin: 0;
+  }
+
+  svg {
+    color: rgba($secondary, 0.3);
+    transition: all 0.3s ease;
+  }
+}
+
+.approach-pricing-card > p {
+  color: rgba($secondary, 0.7);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.approach-pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba($secondary, 0.8);
+    font-weight: 600;
+
+    svg {
+      color: $primary;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// PMO Features
+.approach-pmo-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.approach-pmo-intro {
+  text-align: center;
+  margin-bottom: 48px;
+  
+  p {
+    font-size: 18px;
+    color: rgba($secondary, 0.8);
+    line-height: 1.7;
+  }
+}
+
+.approach-pmo-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.approach-pmo-feature {
+  text-align: center;
+  padding: 32px 24px;
+  background: rgba($white, 0.9);
+  border: 1px solid rgba($secondary, 0.1);
+  border-radius: 20px;
+  transition: all 0.4s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba($primary, 0.15);
+    border-color: rgba($primary, 0.2);
+
+    .approach-pmo-icon {
+      transform: scale(1.1) rotate(5deg);
+      background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+      color: $white;
+    }
+  }
+}
+
+.approach-pmo-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border-radius: 16px;
+  @include flex-center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.approach-pmo-feature h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: $secondary;
+  margin-bottom: 8px;
+}
+
+.approach-pmo-feature p {
+  font-size: 14px;
+  color: rgba($secondary, 0.7);
+  margin: 0;
+  line-height: 1.5;
+}
+
+// Architecture Areas
+.approach-arch-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.approach-arch-intro {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 18px;
+  color: rgba($secondary, 0.8);
+  line-height: 1.7;
+}
+
+.approach-arch-areas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.approach-arch-area {
+  background: rgba($white, 0.9);
+  border: 1px solid rgba($secondary, 0.1);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  transition: all 0.4s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba($primary, 0.15);
+    border-color: rgba($primary, 0.2);
+
+    .approach-arch-icon {
+      background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+      color: $white;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.approach-arch-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border-radius: 16px;
+  @include flex-center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.approach-arch-area h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: $secondary;
+  margin-bottom: 8px;
+}
+
+.approach-arch-area p {
+  font-size: 14px;
+  color: rgba($secondary, 0.7);
+  margin: 0;
+}
+
+// Partnership
+.approach-partnership-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  > p {
+    font-size: 18px;
+    color: rgba($secondary, 0.8);
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+}
+
+.approach-partnership-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.approach-benefit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: rgba($white, 0.9);
+  border: 1px solid rgba($secondary, 0.1);
+  border-radius: 12px;
+  font-weight: 600;
+  color: $secondary;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateX(8px);
+    border-color: rgba($primary, 0.3);
+    box-shadow: 0 10px 30px rgba($primary, 0.1);
+  }
+
+  svg {
+    color: $primary;
+    flex-shrink: 0;
+  }
+}
+
+// Sustainability
+.approach-sustain-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.approach-sustain-intro {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 18px;
+  color: rgba($secondary, 0.8);
+  line-height: 1.7;
+}
+
+.approach-sustain-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.approach-sustain-pillar {
+  background: rgba($white, 0.9);
+  border: 1px solid rgba($secondary, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.4s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba($primary, 0.15);
+    border-color: rgba($primary, 0.2);
+
+    .approach-pillar-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+}
+
+.approach-pillar-icon {
+  width: 72px;
+  height: 72px;
+  @include gradient-bg;
+  color: $white;
+  border-radius: 20px;
+  @include flex-center;
+  margin: 0 auto 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba($primary, 0.3);
+}
+
+.approach-sustain-pillar h4 {
+  font-size: 20px;
+  font-weight: 800;
+  color: $secondary;
+  margin-bottom: 12px;
+}
+
+.approach-sustain-pillar p {
+  color: rgba($secondary, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+// CTA Section
+.approach-cta {
+  padding: 120px 0;
+  background: $white;
+  position: relative;
+}
+
+.approach-cta-box {
+  position: relative;
+  text-align: center;
+  padding: 80px 40px;
+  @include gradient-bg;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba($white, 0.1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+}
+
+.approach-cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba($white, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(60px);
+  animation: cta-pulse 4s ease-in-out infinite;
+}
+
+@keyframes cta-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+.approach-cta-title {
+  position: relative;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  color: $white;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.approach-cta-description {
+  position: relative;
+  font-size: 18px;
+  color: rgba($white, 0.9);
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .approach-hero-stats {
+    gap: 24px;
+  }
+  
+  .approach-stat-value {
+    font-size: 24px;
+  }
+  
+  .approach-start-grid,
+  .approach-pricing-grid,
+  .approach-pmo-features,
+  .approach-arch-areas {
+    grid-template-columns: 1fr;
+  }
+  
+  .approach-cta-box {
+    padding: 48px 24px;
+  }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba($secondary, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 5px;
+  
+  &:hover {
+    background: mix($white, $primary, 20%);
+  }
+}

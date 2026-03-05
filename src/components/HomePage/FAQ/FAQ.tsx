@@ -1,5 +1,5 @@
 // src/components/FAQ/FAQ.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ScrollReveal } from '../../animations/scrollReveal';
 import { ChevronDown, Plus, Minus } from 'lucide-react';
 import './FAQ.scss';
@@ -41,7 +41,7 @@ export function FAQ() {
           {/* Left: Header */}
           <div className="faq-header">
             <ScrollReveal animation="fadeUp">
-              <span className="section-subtitle">// FAQ //</span>
+              <span className="section-subtitle"> FAQ </span>
             </ScrollReveal>
             <ScrollReveal animation="fadeUp" delay={0.1}>
               <h2 className="section-title">Frequently Asked Questions</h2>
