@@ -1,10 +1,18 @@
-import { useEffect, useRef } from 'react';
+// src/pages/Technologies/FrontendTechnologies.tsx
+
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  Code2,  
-  Zap, 
-  Palette, 
+
+import {
+  Code2,
+  Terminal,
+  Box,
+  GitBranch,
+  Figma,
+  Cpu,
+  Zap,
+  Palette,
   ArrowRight,
   CheckCircle2,
   Quote,
@@ -12,182 +20,66 @@ import {
   Smartphone,
   Globe,
   Layers,
-  Cpu,
   Sparkles,
   Play,
   Star,
-  Terminal,
-  Box,
-  GitBranch,
-  Figma
 } from 'lucide-react';
+
+import { getFrontendTechnologiesData } from '../../service/api/pages/technologies/technologies';
+import type { FrontendPageData, FloatingIcon } from '../../types/pages';
+
 import './FrontendTechnologies.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const frontendTech = [
-  {
-    name: 'React',
-    category: 'Library',
-    description: 'Build dynamic user interfaces with the most popular JavaScript library. Component-based architecture for scalable applications.',
-    features: ['Virtual DOM', 'Component-Based', 'Huge Ecosystem', 'React Native'],
-    icon: '/images/tech/react.svg',
-    gradient: 'from-[#2b4dff] to-[#0a165e]'
-  },
-  {
-    name: 'Vue.js',
-    category: 'Framework',
-    description: 'Progressive framework for building user interfaces. Approachable, versatile, and performant.',
-    features: ['Reactive Data', 'Component System', 'Single File', 'Gentle Learning'],
-    icon: '/images/tech/vue.svg',
-    gradient: 'from-[#2b4dff] to-[#0a165e]'
-  },
-  {
-    name: 'Angular',
-    category: 'Framework',
-    description: 'Platform for building mobile and desktop web applications. Complete solution with TypeScript.',
-    features: ['TypeScript', 'Dependency Injection', 'RxJS', 'Angular CLI'],
-    icon: '/images/tech/angular.svg',
-    gradient: 'from-[#2b4dff] to-[#0a165e]'
-  },
-  {
-    name: 'JavaScript',
-    category: 'Language',
-    description: 'The programming language of the web. Powers interactive experiences across all modern browsers.',
-    features: ['Universal Support', 'Async/Await', 'ES6+ Features', 'Vast Libraries'],
-    icon: '/images/tech/javascript.svg',
-    gradient: 'from-[#2b4dff] to-[#0a165e]'
-  },
-  {
-    name: 'TypeScript',
-    category: 'Language',
-    description: 'Typed superset of JavaScript that compiles to plain JavaScript. Catch errors early and improve maintainability.',
-    features: ['Static Typing', 'IntelliSense', 'Refactoring', 'Enterprise Scale'],
-    icon: '/images/tech/typescript.svg',
-    gradient: 'from-[#2b4dff] to-[#0a165e]'
-  }
-];
-
-const capabilities = [
-  {
-    icon: Monitor,
-    title: 'Responsive Web Apps',
-    description: 'Pixel-perfect applications that work flawlessly across all devices and screen sizes.'
-  },
-  {
-    icon: Smartphone,
-    title: 'Progressive Web Apps',
-    description: 'Installable apps with offline capabilities, push notifications, and native-like experience.'
-  },
-  {
-    icon: Zap,
-    title: 'Performance Optimization',
-    description: 'Lightning-fast load times with code splitting, lazy loading, and advanced caching strategies.'
-  },
-  {
-    icon: Palette,
-    title: 'Modern UI/UX',
-    description: 'Stunning interfaces with smooth animations, micro-interactions, and accessibility compliance.'
-  },
-  {
-    icon: Globe,
-    title: 'Internationalization',
-    description: 'Multi-language support with RTL, localization, and region-specific content delivery.'
-  },
-  {
-    icon: Layers,
-    title: 'State Management',
-    description: 'Complex application state handled with Redux, Vuex, NgRx, or Context API.'
-  }
-];
-
-const projects = [
-  {
-    name: 'E-Commerce Platform',
-    client: 'RetailMax',
-    tech: 'React',
-    description: 'High-performance shopping platform with 100k+ daily users.',
-    results: ['40% faster checkout', '25% conversion boost', '99.9% uptime'],
-    image: '/images/projects/ecommerce.jpg'
-  },
-  {
-    name: 'Dashboard Analytics',
-    client: 'DataCorp',
-    tech: 'Vue.js',
-    description: 'Real-time data visualization dashboard for enterprise clients.',
-    results: ['50+ data sources', 'Sub-second updates', '4.9/5 user rating'],
-    image: '/images/projects/dashboard.jpg'
-  },
-  {
-    name: 'Banking Portal',
-    client: 'SecureBank',
-    tech: 'Angular',
-    description: 'Enterprise banking application serving 2M+ customers.',
-    results: ['2M+ active users', 'Bank-grade security', '60% faster transactions'],
-    image: '/images/projects/banking.jpg'
-  },
-  {
-    name: 'SaaS Platform',
-    client: 'CloudTech',
-    tech: 'TypeScript',
-    description: 'Scalable SaaS solution with complex business logic.',
-    results: ['Zero type errors', '80% faster debugging', 'Enterprise adoption'],
-    image: '/images/projects/saas.jpg'
-  }
-];
-
-const testimonials = [
-  {
-    quote: "Their React expertise transformed our legacy application into a modern, blazing-fast platform.",
-    author: "Michael Chen",
-    role: "CTO, RetailMax",
-    image: "/images/testimonials/michael.jpg"
-  },
-  {
-    quote: "The Vue.js implementation was flawless. Our users love the smooth, responsive interface.",
-    author: "Sarah Williams",
-    role: "Product Lead, DataCorp",
-    image: "/images/testimonials/sarah.jpg"
-  },
-  {
-    quote: "TypeScript adoption reduced our bugs by 70%. The code quality is now enterprise-grade.",
-    author: "David Park",
-    role: "Engineering Manager, CloudTech",
-    image: "/images/testimonials/david.jpg"
-  }
-];
-
-const stats = [
-  { value: '150+', label: 'Projects Delivered' },
-  { value: '50+', label: 'Frontend Experts' },
-  { value: '99%', label: 'Client Satisfaction' },
-  { value: '5+', label: 'Years Experience' }
-];
-
-const floatingIcons = [
-  { Icon: Code2, delay: '0s', duration: '6s', pos: { top: '10%', left: '5%' } },
-  { Icon: Terminal, delay: '1s', duration: '8s', pos: { top: '20%', right: '10%' } },
-  { Icon: Box, delay: '2s', duration: '7s', pos: { bottom: '30%', left: '8%' } },
-  { Icon: GitBranch, delay: '0.5s', duration: '9s', pos: { bottom: '20%', right: '5%' } },
-  { Icon: Figma, delay: '1.5s', duration: '6s', pos: { top: '60%', left: '3%' } },
-  { Icon: Cpu, delay: '2.5s', duration: '8s', pos: { top: '40%', right: '8%' } }
-];
-
 export function FrontendTechnologies() {
+  const [data, setData] = useState<FrontendPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const heroRef = useRef<HTMLDivElement>(null);
   const techRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
+  // ─── Fetch data ────────────────────────────────────────────────────────
   useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      try {
+        const pageData = await getFrontendTechnologiesData();
+        if (mounted) {
+          setData(pageData);
+          setLoading(false);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load frontend technologies data');
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // ─── GSAP Animations ───────────────────────────────────────────────────
+  useEffect(() => {
+    if (loading || !data) return;
+
     const ctx = gsap.context(() => {
-      // Hero animation
+      // Hero content fade in
       gsap.fromTo(
         '.fe-hero-content',
         { y: 60, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
       );
 
-      // Floating icons parallax
+      // Floating icons floating animation
       gsap.to('.fe-float-icon', {
         y: -30,
         duration: 2,
@@ -196,20 +88,18 @@ export function FrontendTechnologies() {
         repeat: -1,
         stagger: {
           each: 0.2,
-          from: 'random'
-        }
+          from: 'random',
+        },
       });
 
       // Mouse glow effect
       const handleMouseMove = (e: MouseEvent) => {
-        if (glowRef.current) {
-          const rect = heroRef.current?.getBoundingClientRect();
-          if (rect) {
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            glowRef.current.style.setProperty('--mouse-x', `${x}px`);
-            glowRef.current.style.setProperty('--mouse-y', `${y}px`);
-          }
+        if (glowRef.current && heroRef.current) {
+          const rect = heroRef.current.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          glowRef.current.style.setProperty('--mouse-x', `${x}px`);
+          glowRef.current.style.setProperty('--mouse-y', `${y}px`);
         }
       };
 
@@ -231,7 +121,7 @@ export function FrontendTechnologies() {
         }
       );
 
-      // Tech cards animation with 3D tilt
+      // Tech cards 3D tilt entrance
       gsap.fromTo(
         '.fe-tech-card',
         { y: 40, opacity: 0, rotateX: 15 },
@@ -248,7 +138,7 @@ export function FrontendTechnologies() {
         }
       );
 
-      // Capabilities animation
+      // Capabilities cards
       gsap.fromTo(
         '.fe-capability-card',
         { scale: 0.9, opacity: 0 },
@@ -264,7 +154,7 @@ export function FrontendTechnologies() {
         }
       );
 
-      // Projects animation
+      // Projects cards
       gsap.fromTo(
         '.fe-project-card',
         { y: 40, opacity: 0 },
@@ -280,7 +170,7 @@ export function FrontendTechnologies() {
         }
       );
 
-      // Why section animation
+      // Why choose us items
       gsap.fromTo(
         '.fe-why-item',
         { x: -30, opacity: 0 },
@@ -318,7 +208,47 @@ export function FrontendTechnologies() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [data, loading]);
+
+  // ─── Loading / Error states ────────────────────────────────────────────
+  if (loading) {
+    return <div className="fe-page loading">Loading frontend technologies...</div>;
+  }
+
+  if (error) {
+    return <div className="fe-page error">Error: {error}</div>;
+  }
+
+  if (!data) {
+    return null;
+  }
+
+  // ─── Icon mapping for floating icons ───────────────────────────────────
+  const iconMap = {
+    Code2,
+    Terminal,
+    Box,
+    GitBranch,
+    Figma,
+    Cpu,
+  } as const;
+
+  const floatingIcons = data.floatingIcons.map((item: FloatingIcon) => ({
+    Icon: iconMap[item.iconName as keyof typeof iconMap] || Code2,
+    delay: item.delay,
+    duration: item.duration,
+    pos: item.pos,
+  }));
+
+  // ─── Icon mapping for capabilities ─────────────────────────────────────
+  const capabilityIconMap = {
+    Monitor,
+    Smartphone,
+    Zap,
+    Palette,
+    Globe,
+    Layers,
+  } as const;
 
   return (
     <div className="fe-page">
@@ -331,19 +261,19 @@ export function FrontendTechnologies() {
           <div className="fe-hero-orb fe-orb-2" />
           <div className="fe-hero-orb fe-orb-3" />
         </div>
-        
+
         <div className="fe-container">
           <div className="fe-hero-content">
             {/* Floating Elements */}
             <div className="fe-floating-elements">
               {floatingIcons.map(({ Icon, delay, duration, pos }, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="fe-float-icon"
-                  style={{ 
+                  style={{
                     ...pos,
                     animationDelay: delay,
-                    animationDuration: duration
+                    animationDuration: duration,
                   }}
                 >
                   <Icon size={24} />
@@ -356,17 +286,17 @@ export function FrontendTechnologies() {
               <Sparkles size={14} />
               Frontend Development
             </div>
-            
+
             <h1 className="fe-hero-title">
               Build Modern<br />
               <span className="fe-gradient-text">Web Experiences</span>
             </h1>
-            
+
             <p className="fe-hero-description">
-              We craft exceptional user interfaces with cutting-edge frontend technologies. 
+              We craft exceptional user interfaces with cutting-edge frontend technologies.
               From React to Angular, we deliver performant, scalable, and beautiful applications.
             </p>
-            
+
             <div className="fe-hero-cta">
               <a href="#contact" className="fe-btn fe-btn-primary">
                 Start Your Project
@@ -380,7 +310,7 @@ export function FrontendTechnologies() {
 
             {/* Stats Bar */}
             <div className="fe-stats">
-              {stats.map((stat, idx) => (
+              {data.stats.map((stat, idx) => (
                 <div key={idx} className="fe-stat-item">
                   <span className="fe-stat-value">{stat.value}</span>
                   <span className="fe-stat-label">{stat.label}</span>
@@ -403,9 +333,9 @@ export function FrontendTechnologies() {
           </div>
 
           <div className="fe-tech-grid">
-            {frontendTech.map((tech, index) => (
-              <div 
-                key={index} 
+            {data.frontendTech.map((tech, index) => (
+              <div
+                key={index}
                 className="fe-tech-card"
                 style={{ '--card-index': index } as React.CSSProperties}
               >
@@ -448,16 +378,19 @@ export function FrontendTechnologies() {
           </div>
 
           <div className="fe-capabilities-grid">
-            {capabilities.map((cap, index) => (
-              <div key={index} className="fe-capability-card">
-                <div className="fe-capability-icon">
-                  <cap.icon size={28} />
+            {data.capabilities.map((cap, index) => {
+              const CapIcon = capabilityIconMap[cap.icon as keyof typeof capabilityIconMap] || Monitor;
+              return (
+                <div key={index} className="fe-capability-card">
+                  <div className="fe-capability-icon">
+                    <CapIcon size={28} />
+                  </div>
+                  <h3 className="fe-capability-title">{cap.title}</h3>
+                  <p className="fe-capability-description">{cap.description}</p>
+                  <div className="fe-capability-line" />
                 </div>
-                <h3 className="fe-capability-title">{cap.title}</h3>
-                <p className="fe-capability-description">{cap.description}</p>
-                <div className="fe-capability-line" />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -474,7 +407,7 @@ export function FrontendTechnologies() {
           </div>
 
           <div className="fe-projects-grid">
-            {projects.map((project, index) => (
+            {data.projects.map((project, index) => (
               <div key={index} className="fe-project-card">
                 <div className="fe-project-image">
                   <img src={project.image} alt={project.name} />
@@ -507,13 +440,13 @@ export function FrontendTechnologies() {
             <div className="fe-why-content">
               <span className="fe-section-label">Why Choose Us</span>
               <h2 className="fe-section-title">The Magnax Advantage</h2>
-              
+
               <div className="fe-why-list">
                 {[
                   { title: 'Modern Stack', desc: 'We stay current with the latest frontend technologies and best practices' },
                   { title: 'Performance First', desc: 'Core Web Vitals optimization for speed, accessibility, and SEO' },
                   { title: 'Component Libraries', desc: 'Custom design systems and reusable component architectures' },
-                  { title: 'Testing Coverage', desc: 'Unit, integration, and E2E testing for reliable applications' }
+                  { title: 'Testing Coverage', desc: 'Unit, integration, and E2E testing for reliable applications' },
                 ].map((item, idx) => (
                   <div key={idx} className="fe-why-item">
                     <div className="fe-why-number">0{idx + 1}</div>
@@ -525,7 +458,7 @@ export function FrontendTechnologies() {
                 ))}
               </div>
             </div>
-            
+
             <div className="fe-why-visual">
               <div className="fe-code-window">
                 <div className="fe-code-header">
@@ -562,9 +495,9 @@ export const App = () => {
             <span className="fe-section-label">Testimonials</span>
             <h2 className="fe-section-title">Client Feedback</h2>
           </div>
-          
+
           <div className="fe-testimonials-grid">
-            {testimonials.map((testimonial, index) => (
+            {data.testimonials.map((testimonial, index) => (
               <div key={index} className="fe-testimonial-card">
                 <Quote className="fe-testimonial-quote" size={32} />
                 <p className="fe-testimonial-text">{testimonial.quote}</p>

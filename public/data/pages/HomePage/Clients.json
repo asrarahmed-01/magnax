@@ -1,0 +1,14 @@
+{
+  "subtitle": "CLIENTS WE SERVE",
+  "title": "Trusted by Industry Leaders",
+  "description": "We've been building for millions of people since 2022. We build trustworthy secure and adaptable digital solutions, designed to solve today's problems and empower whatever future we create tomorrow",
+  "clients": [
+    { "name": "Riyad Bank", "logo": "/images/riyad-bank.jpeg" },
+    { "name": "Western Union", "logo": "/images/western-union.png" },
+    { "name": "DataSync", "logo": "/images/data-sync.png" },
+    { "name": "CloudNine", "logo": "/images/cloud-nine.png" },
+    { "name": "NexGen", "logo": "/images/nex-gen.png" },
+    { "name": "PulseAI", "logo": "/images/pulse-ai.png" },
+    { "name": "Vertex Labs", "logo": "/images/vertex-labs.png" }
+  ]
+}

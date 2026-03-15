@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:color";
+
 // Variables - STRICTLY TWO COLORS ONLY
 $primary: #2b4dff;
 $secondary: #0a165e;
@@ -184,7 +187,7 @@ $black: #000000;
       top: random(100) * 1%;
       animation-delay: random(15) * -1s;
       animation-duration: 10s + random(10);
-      opacity: random(10) / 10;
+      opacity: random(10) * 0.1;
     }
   }
 }

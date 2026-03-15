@@ -61,7 +61,7 @@ const NAV_ITEMS: NavItem[] = [
         items: [
           { label: "Software Development", path: "/services/software-development" },
           { label: "MVP Development", path: "/services/software-development#mvp-development" },
-          { label: "Web Development", path: "/services/web-mobile-development#web-development" },
+          { label: "Web Development", path: "/services/web-mobile-development" },
           { label: "Mobile Development", path: "/services/web-mobile-development#mobile-development" },
           { label: "API Development", path: "/services/api-development" },
         ]
@@ -94,34 +94,34 @@ const NAV_ITEMS: NavItem[] = [
       {
         title: "Healthcare",
         items: [
-          { label: "Healthcare IT Services", path: "/industries" },
-          { label: "Hospitals & Health Systems", path: "/industries" },
+          { label: "Healthcare IT Services", path: "/industries/healthcare-fintech" },
+          { label: "Hospitals & Health Systems", path: "/industries/healthcare-fintech" },
          
         ]
       },
       {
         title: "Finance",
         items: [
-          { label: "Financial Services", path: "/industries/finance" },
-          { label: "Retail & E-commerce", path: "/industries/retail-ecommerce" },
+          { label: "Financial Services", path: "/industries/healthcare-fintech" },
+          { label: "Retail & E-commerce", path: "/industries/retail-media" },
         ]
       },
       {
         title: "Other Industries",
         items: [
-          { label: "Education", path: "/industries/education" },
-          { label: "Real Estate", path: "/industries/real-estate" },
+          { label: "Education", path: "/otherindustries#education" },
+          { label: "Real Estate", path: "/otherindustries#realestate" },
           { label: "Politics", path: "/industries/politics" },
-          { label: "Manufacturing", path: "/industries/manufacturing" },
+          { label: "Manufacturing", path: "/industries/politics" },
           
         ]
       },
       {
-        title: "Other Industries",
+        title: "Emerging Industries",
         items: [
-          { label: "Restaurants", path: "/industries/restaurants" },
-          { label: "Travel & Hospitality", path: "/industries/travel-hospitality" },
-          { label: "Media & Entertainment", path: "/industries/media-entertainment" },
+          { label: "Restaurants", path: "/industries/travel-restaurants" },
+          { label: "Travel & Hospitality", path: "/industries/travel-restaurants" },
+          { label: "Media & Entertainment", path: "/industries/retail-media" },
         ]
       }
     ]

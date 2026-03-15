@@ -255,65 +255,60 @@ export function Company() {
                 <h2>About Company</h2>
               </div>
             </div>
-            <div className="company-about-grid">
-              <div className="company-about-content">
-                <p className="company-lead-text">
-                  Founded in 2009, Magnax has grown from a small software development 
-                  startup to a global technology partner serving Fortune 500 companies 
-                  and innovative startups alike.
-                </p>
-                <p>
-                 Transforming concepts into technologies and solutions fit for the future is at the core of our modeling capabilities. We partner with companies wishing to grow rapidly along with enterprises seeking to enhance their large scale businesses. The quality of software design is not only dictated by good programming practices or current tools, but by understanding what the end-user requires. For this reason we are committed to listening first; collaboratively developing a plan; then concentrating on delivering on that plan.
-                </p>
-                <p>
-                  We believe that technology should be intuitive and have the capability of resolving even the most complex issues. Our strategies use creativity, previous experience, and clever problem-solving skills to build high-quality project-based software; software that meets all end-user requirements and fosters business growth.
+            <div className="company-about-wrapper">
 
-                </p>
+  {/* Row 1 */}
+  <div className="company-about-row">
+    
+    <div className="company-about-text">
+      <p className="company-lead-text">
+        Founded in 2009, Magnax has grown from a small software development 
+        startup to a global technology partner serving Fortune 500 companies 
+        and innovative startups alike.
+      </p>
 
-                <p>
-                  We bring to each solution our unique blend of experience, creativity, curiosity, and youthful exuberance. We love to discover alternative methods for accomplishing tasks, simplifying complexity while delivering results that meet and/or exceed the clients' expectations.
-                </p>
-                {/* <ul className="company-about-list">
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>ISO 27001 Certified</strong>
-                      <span>Information security management</span>
-                    </div>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>CMMI Level 3</strong>
-                      <span>Process maturity model</span>
-                    </div>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>AWS Advanced Partner</strong>
-                      <span>Cloud consulting expertise</span>
-                    </div>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>Microsoft Gold Partner</strong>
-                      <span>Enterprise solutions</span>
-                    </div>
-                  </li>
-                </ul> */}
-              </div>
-              {/* <div className="company-stats-grid">
-                {stats.map((stat, idx) => (
-                  <div key={idx} className="company-stat-card">
-                    <div className="company-stat-glow" />
-                    <span className="company-stat-value">{stat.value}</span>
-                    <span className="company-stat-label">{stat.label}</span>
-                  </div>
-                ))}
-              </div> */}
-            </div>
+      <p>
+        Transforming concepts into technologies and solutions fit for the future 
+        is at the core of our modeling capabilities. We partner with companies 
+        wishing to grow rapidly along with enterprises seeking to enhance their 
+        large-scale businesses. We listen carefully, collaborate closely, and 
+        deliver solutions designed to create measurable impact.
+      </p>
+    </div>
+
+    <div className="company-about-image">
+      <img src="/images/about-1.jpg" alt="Magnax team working" />
+    </div>
+
+  </div>
+
+
+  {/* Row 2 */}
+  <div className="company-about-row reverse">
+
+    <div className="company-about-image">
+      <img src="/images/about-2.jpg" alt="Magnax technology solutions" />
+    </div>
+
+    <div className="company-about-text">
+      <p>
+        We believe technology should be intuitive and capable of solving even 
+        the most complex challenges. Our strategies combine creativity, deep 
+        experience, and intelligent problem-solving to build reliable software 
+        systems that empower businesses to grow.
+      </p>
+
+      <p>
+        Every solution we build reflects our unique blend of expertise, curiosity, 
+        and innovation. By simplifying complexity and exploring new approaches, 
+        we deliver results that consistently meet — and often exceed — client 
+        expectations.
+      </p>
+    </div>
+
+  </div>
+
+</div>
           </div>
         </section>
 

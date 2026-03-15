@@ -1,50 +1,85 @@
 // src/components/Process/Process.tsx
+
 import { ScrollReveal } from '../../animations/scrollReveal';
 import { Search, Lightbulb, Rocket, HeartHandshake } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { getProcessData } from '../../../service/api';
+import type { ProcessData } from '../../../types';
+
 import './Process.scss';
 
-const steps = [
-  {
-    icon: Search,
-    number: '01',
-    title: 'Discovery',
-    description: 'Understanding business needs, goals and challenges through in depth consultation.',
-  },
-  {
-    icon: Lightbulb,
-    number: '02',
-    title: 'Strategy',
-    description: 'Identifying solution roadmap that meets your goals and budget.',
-  },
-  {
-    icon: Rocket,
-    number: '03',
-    title: 'Implementation',
-    description: 'Deploying and integrating with skill and confidence.',
-  },
-  {
-    icon: HeartHandshake,
-    number: '04',
-    title: 'Support',
-    description: 'Maintaining, optimizing and supporting business success.',
-  },  
-];
-
 export function Process() {
+  const [data, setData] = useState<ProcessData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch data
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const processData = await getProcessData();
+        if (mounted) {
+          setData(processData);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load process data');
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  if (loading) return <section className="process-section loading">Loading process...</section>;
+  if (error) return <section className="process-section error">Error: {error}</section>;
+  if (!data) return <section className="process-section">No process data available</section>;
+
+  // ─── Icon mapping for process steps ────────────────────────────────────
+  const stepIconMap = {
+    Search,
+    Lightbulb,
+    Rocket,
+    HeartHandshake,
+  } as const;
+
+  const getStepIcon = (iconName: string) => {
+    const IconComponent = stepIconMap[iconName as keyof typeof stepIconMap];
+    return IconComponent ? <IconComponent className="step-icon" /> : <Search className="step-icon" />;
+  };
+
   return (
     <section id="process" className="process-section">
       <div className="process-container">
         {/* Header */}
         <div className="section-header">
           <ScrollReveal animation="fadeUp">
-            <span className="sections-subtitle"> OUR PROCESS </span>
+            <span className="sections-subtitle">
+              {data.subtitle || 'OUR PROCESS'}
+            </span>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={0.1}>
-            <h2 className="sections-title">How We Work</h2>
+            <h2 className="sections-title">
+              {data.title || 'How We Work'}
+            </h2>
           </ScrollReveal>
           <ScrollReveal animation="fadeUp" delay={0.2}>
             <p className="section-desc">
-              Our proven methodology ensures successful project delivery every time.
+              {data.description ||
+                'Our proven methodology ensures successful project delivery every time.'}
             </p>
           </ScrollReveal>
         </div>
@@ -55,7 +90,7 @@ export function Process() {
           <div className="process-line" />
 
           <div className="steps-grid">
-            {steps.map((step, index) => (
+            {data.steps?.map?.((step, index) => (
               <ScrollReveal
                 key={index}
                 animation="scale"
@@ -64,7 +99,7 @@ export function Process() {
                 <div className="step-card">
                   {/* Icon */}
                   <div className="step-icon-wrapper">
-                    <step.icon className="step-icon" />
+                    {getStepIcon(step.icon)}
                   </div>
 
                   {/* Number */}
@@ -75,7 +110,9 @@ export function Process() {
                   <p className="step-desc">{step.description}</p>
                 </div>
               </ScrollReveal>
-            ))}
+            )) || (
+              <div className="process-empty">No process steps available</div>
+            )}
           </div>
         </div>
       </div>

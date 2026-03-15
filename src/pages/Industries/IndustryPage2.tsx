@@ -1,54 +1,66 @@
-import { useEffect, useRef } from 'react';
+// src/pages/IndustryPage2.tsx
+
+import { useEffect, useRef,useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  ArrowRight, 
+
+import {
+  ArrowRight,
   ShoppingCart,
-  Factory,
+  Film,
   CheckCircle2,
-  Sparkles
+  Sparkles,
 } from 'lucide-react';
+
+import { getIndustryPage2Data } from '../../service/api';
+import type { IndustryPageData } from '../../types';
+
 import './IndustryPage.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const industries = [
-  {
-    id: 'retail',
-    title: 'Retail & Ecommerce',
-    description: 'The most important aspect in retailing is customer experience, and we can help create digital platforms for brands that are fast, easy-to-use and designed to convert site visitors into long-term customers. We create solutions to simplify the buying/selling process for any type of online store.',
-    image: '/images/industries/retail-ecommerce.jpg',
-    icon: ShoppingCart,
-    features: [
-      'Online stores & marketplaces',
-      'Inventory management systems',
-      'POS systems',
-      'Secure payment processing',
-      'Customer experience platforms',
-      'Multi-vendor solutions'
-    ]
-  },
-  {
-    id: 'manufacturing',
-    title: 'Manufacturing',
-    description: 'Manufacturing companies face a variety of challenges; they must manage intricate production processes, meet strict timelines and operate at great scale. We create intelligent digital solutions that streamline business processes and reduce the burden on manufacturers.',
-    image: '/images/industries/manufacturing.jpg',
-    icon: Factory,
-    features: [
-      'ERP systems',
-      'Production tracking',
-      'Supply chain automation',
-      'Inventory management',
-      'Quality control systems',
-      'Automation dashboards'
-    ]
-  }
-];
-
 export function IndustryPage2() {
+  const [data, setData] = useState<IndustryPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const heroRef = useRef<HTMLDivElement>(null);
 
+  // Fetch data
   useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const pageData = await getIndustryPage2Data();
+        if (mounted) {
+          setData(pageData);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load industry data');
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // GSAP animations
+  useEffect(() => {
+    if (loading || !data) return;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.industry-hero-content',
@@ -74,7 +86,22 @@ export function IndustryPage2() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [data, loading]);
+
+  if (loading) return <div className="industry-page loading">Loading industries...</div>;
+  if (error) return <div className="industry-page error">Error: {error}</div>;
+  if (!data) return <div className="industry-page">No industry data available</div>;
+
+  // ─── Icon mapping ─────────────────────────────────────────────────────
+  const industryIconMap = {
+    ShoppingCart,
+    Film,
+  } as const;
+
+  const getIndustryIcon = (iconName: string) => {
+    const IconComponent = industryIconMap[iconName as keyof typeof industryIconMap];
+    return IconComponent ? <IconComponent size={32} /> : <ShoppingCart size={32} />;
+  };
 
   return (
     <div className="industry-page">
@@ -85,21 +112,21 @@ export function IndustryPage2() {
           <div className="industry-hero-orb industry-orb-1" />
           <div className="industry-hero-orb industry-orb-2" />
         </div>
-        
+
         <div className="industry-container">
           <div className="industry-hero-content">
             <div className="industry-hero-badge">
               <Sparkles size={14} />
               Industries We Serve
             </div>
-            
+
             <h1 className="industry-hero-title">
-              Retail &<br />
-              <span className="industry-gradient-text">Manufacturing</span>
+              {data.heroTitle || 'Retail & Manufacturing'}
             </h1>
-            
+
             <p className="industry-hero-description">
-              Empowering retail and manufacturing businesses with cutting-edge digital solutions for growth and efficiency.
+              {data.heroDescription ||
+                'Empowering retail and manufacturing businesses with cutting-edge digital solutions for growth and efficiency.'}
             </p>
           </div>
         </div>
@@ -108,38 +135,35 @@ export function IndustryPage2() {
       {/* Industries Content */}
       <main className="industry-main">
         <div className="industry-container">
-          {industries.map((industry) => {
-            const IconComponent = industry.icon;
-            return (
-              <section key={industry.id} className="industry-section">
-                <div className="industry-content-grid">
-                  <div className="industry-image-wrapper">
-                    <img src={industry.image} alt={industry.title} />
-                    <div className="industry-image-overlay" />
-                    <div className="industry-image-icon">
-                      <IconComponent size={32} />
-                    </div>
-                  </div>
-                  <div className="industry-content">
-                    <div className="industry-label">Industry</div>
-                    <h2 className="industry-title">{industry.title}</h2>
-                    <p className="industry-description">{industry.description}</p>
-                    <div className="industry-features">
-                      <h4>What We Support:</h4>
-                      <ul>
-                        {industry.features.map((feature, idx) => (
-                          <li key={idx}>
-                            <CheckCircle2 size={18} />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+          {data.industries?.map?.((industry) => (
+            <section key={industry.id} className="industry-section">
+              <div className="industry-content-grid">
+                <div className="industry-image-wrapper">
+                  <img src={industry.image} alt={industry.title} />
+                  <div className="industry-image-overlay" />
+                  <div className="industry-image-icon">
+                    {getIndustryIcon(industry.icon)}
                   </div>
                 </div>
-              </section>
-            );
-          })}
+                <div className="industry-content">
+                  <div className="industry-label">Industry</div>
+                  <h2 className="industry-title">{industry.title}</h2>
+                  <p className="industry-description">{industry.description}</p>
+                  <div className="industry-features">
+                    <h4>What We Support:</h4>
+                    <ul>
+                      {industry.features?.map?.((feature, idx) => (
+                        <li key={idx}>
+                          <CheckCircle2 size={18} />
+                          <span>{feature}</span>
+                        </li>
+                      )) || <li>No features listed</li>}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )) || <div>No industries available</div>}
         </div>
       </main>
 
@@ -150,7 +174,8 @@ export function IndustryPage2() {
             <div className="industry-cta-glow" />
             <h2 className="industry-cta-title">Ready to Transform Your Industry?</h2>
             <p className="industry-cta-description">
-              Let's discuss how our technology solutions can help your business grow and succeed.
+              {data.ctaDescription ||
+                "Let's discuss how our technology solutions can help your business grow and succeed."}
             </p>
             <a href="/contact" className="industry-btn industry-btn-primary industry-btn-lg">
               Contact Us

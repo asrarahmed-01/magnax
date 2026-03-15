@@ -1,10 +1,13 @@
+@use "sass:math";
+@use "sass:color";
+
 // Variables - STRICTLY TWO COLORS ONLY
 $primary: #2b4dff;
 $secondary: #0a165e;
 
 // Derived using only opacity and mixing of these two colors
 $primary-light: rgba($primary, 0.8);
-$primary-dark: mix($secondary, $primary, 40%);
+$primary-dark: color.mix($secondary, $primary, 40%);
 $secondary-light: rgba($secondary, 0.8);
 $white: #ffffff;
 $black: #000000;
@@ -21,7 +24,7 @@ $black: #000000;
 }
 
 @mixin gradient-text {
-  background: linear-gradient(135deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  background: linear-gradient(135deg, $primary 0%, color.mix($primary, $secondary, 50%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -45,10 +48,10 @@ $black: #000000;
 // Hero Section
 .be-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   @include flex-center;
-  padding: 100px 0 80px;
-  background: linear-gradient(180deg, mix($white, $primary, 95%) 0%, $white 100%);
+  padding: 40px;
+  background: linear-gradient(180deg, color.mix($white, $primary, 95%) 0%, $white 100%);
   overflow: hidden;
 }
 
@@ -101,7 +104,7 @@ $black: #000000;
   &.be-orb-2 {
     width: 300px;
     height: 300px;
-    background: mix($primary, $secondary, 50%);
+    background: color.mix($primary, $secondary, 50%);
     bottom: -5%;
     right: -5%;
     animation-delay: -5s;
@@ -201,7 +204,7 @@ $black: #000000;
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
     border-radius: 2px;
   }
 }
@@ -360,7 +363,7 @@ $black: #000000;
 
 // Tech Section
 .be-tech-section {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, $white 0%, rgba($primary, 0.02) 50%, $white 100%);
   position: relative;
   
@@ -512,7 +515,7 @@ $black: #000000;
 
 // Capabilities Section
 .be-capabilities {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $white;
   position: relative;
   
@@ -549,7 +552,7 @@ $black: #000000;
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -606,13 +609,13 @@ $black: #000000;
 .be-capability-line {
   height: 2px;
   width: 40px;
-  background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+  background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
   transition: width 0.4s ease;
 }
 
 // Projects Section
 .be-projects {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, rgba($primary, 0.02) 0%, $white 100%);
 }
 
@@ -730,7 +733,7 @@ $black: #000000;
 
 // Architecture Section
 .be-architecture {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $secondary;
   color: $white;
   position: relative;
@@ -866,8 +869,8 @@ $black: #000000;
   }
   
   &.be-arch-client { border-left-color: $primary; }
-  &.be-arch-gateway { border-left-color: mix($primary, $secondary, 70%); }
-  &.be-arch-services { border-left-color: mix($primary, $secondary, 40%); }
+  &.be-arch-gateway { border-left-color: color.mix($primary, $secondary, 70%); }
+  &.be-arch-services { border-left-color: color.mix($primary, $secondary, 40%); }
   &.be-arch-data { border-left-color: $secondary; }
 }
 
@@ -896,7 +899,7 @@ $black: #000000;
 
 // Testimonials
 .be-testimonials {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, rgba($primary, 0.03) 0%, $white 100%);
 }
 
@@ -968,7 +971,7 @@ $black: #000000;
 
 // CTA Section
 .be-cta {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $white;
   position: relative;
 }
@@ -1074,6 +1077,6 @@ $black: #000000;
   border-radius: 5px;
   
   &:hover {
-    background: mix($white, $primary, 20%);
+    background: color.mix($white, $primary, 20%);
   }
 }

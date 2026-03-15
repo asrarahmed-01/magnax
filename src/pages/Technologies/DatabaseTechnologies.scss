@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:color";
+
 // Variables - STRICTLY TWO COLORS ONLY
 $primary: #2b4dff;
 $secondary: #0a165e;
@@ -15,7 +18,7 @@ $black: #000000;
 }
 
 @mixin gradient-text {
-  background: linear-gradient(135deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  background: linear-gradient(135deg, $primary 0%, color.mix($primary, $secondary, 50%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -38,10 +41,10 @@ $black: #000000;
 // Hero
 .db-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   @include flex-center;
-  padding: 100px 0 80px;
-  background: linear-gradient(180deg, mix($white, $primary, 95%) 0%, $white 100%);
+  padding: 40px 0;
+  background: linear-gradient(180deg, color.mix($white, $primary, 95%) 0%, $white 100%);
   overflow: hidden;
 }
 
@@ -91,7 +94,7 @@ $black: #000000;
   &.db-orb-2 {
     width: 300px;
     height: 300px;
-    background: mix($primary, $secondary, 50%);
+    background: color.mix($primary, $secondary, 50%);
     bottom: -5%;
     right: -5%;
     animation-delay: -5s;
@@ -186,7 +189,7 @@ $black: #000000;
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
     border-radius: 2px;
   }
 }
@@ -333,7 +336,7 @@ $black: #000000;
 
 // Tech Section
 .db-tech-section {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, $white 0%, rgba($primary, 0.02) 50%, $white 100%);
   position: relative;
   &::before {
@@ -466,7 +469,7 @@ $black: #000000;
 
 // Capabilities
 .db-capabilities {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $white;
   position: relative;
   &::after {
@@ -502,7 +505,7 @@ $black: #000000;
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -549,13 +552,13 @@ $black: #000000;
 .db-capability-line {
   height: 2px;
   width: 40px;
-  background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+  background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
   transition: width 0.4s ease;
 }
 
 // Projects
 .db-projects {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, rgba($primary, 0.02) 0%, $white 100%);
 }
 .db-projects-grid {
@@ -650,7 +653,7 @@ $black: #000000;
 
 // Architecture
 .db-architecture {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $secondary;
   color: $white;
   position: relative;
@@ -773,8 +776,8 @@ $black: #000000;
     font-size: 14px;
   }
   &.db-arch-apps { border-left-color: $primary; }
-  &.db-arch-cache { border-left-color: mix($primary, $secondary, 70%); }
-  &.db-arch-primary { border-left-color: mix($primary, $secondary, 40%); }
+  &.db-arch-cache { border-left-color: color.mix($primary, $secondary, 70%); }
+  &.db-arch-primary { border-left-color: color.mix($primary, $secondary, 40%); }
   &.db-arch-replica { border-left-color: $secondary; }
 }
 
@@ -802,7 +805,7 @@ $black: #000000;
 
 // Testimonials
 .db-testimonials {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, rgba($primary, 0.03) 0%, $white 100%);
 }
 .db-testimonials-grid {
@@ -864,7 +867,7 @@ $black: #000000;
 
 // CTA
 .db-cta {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $white;
   position: relative;
 }
@@ -940,5 +943,5 @@ $black: #000000;
 ::-webkit-scrollbar-thumb {
   background: $primary;
   border-radius: 5px;
-  &:hover { background: mix($white, $primary, 20%); }
+  &:hover { background: color.mix($white, $primary, 20%); }
 }

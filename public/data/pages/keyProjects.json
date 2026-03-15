@@ -1,0 +1,124 @@
+{
+  "heroDescription": "Explore our portfolio of successful digital transformations across banking, healthcare, fintech, and entertainment industries. Each project showcases our commitment to delivering innovative, scalable, and user-centric solutions.",
+  "industries": [
+    "All",
+    "Banking & Fintech",
+    "Healthcare",
+    "Staffing & Recruitment",
+    "Gaming & Entertainment",
+    "Media & Social"
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Riyadh Bank - Digital Banking Solutions",
+      "industry": "Banking & Fintech",
+      "icon": "Building2",
+      "solution": "Frontend UI/UX development for digital banking platform",
+      "description": "We partnered with Riyadh Bank to design and develop a modern, high-performance frontend interface for their digital banking platform, focusing on intuitive user experience, responsive design, and seamless customer journeys across web and mobile devices.",
+      "highlights": [
+        "Responsive and user-friendly UI design",
+        "Real-time transaction display and notifications",
+        "Secure session handling and authentication flows",
+        "Optimized performance across devices and browsers"
+      ],
+      "color": "#2b4dff",
+      "stats": { "value": "40%", "label": "Faster Load Times" }
+    },
+    {
+      "id": 2,
+      "title": "Western Union – Money Transfer Platform Enhancement",
+      "industry": "Banking & Fintech",
+      "icon": "Wallet",
+      "solution": "Frontend & feature-level enhancements for money transfer systems",
+      "description": "As part of a larger development team, we worked on enhancing core user-facing modules of Western Union's payment platform, delivering optimized interfaces and seamless transaction experiences that supported high-volume global transfers.",
+      "highlights": [
+        "Development of high-traffic transaction UI modules",
+        "Performance optimization for key customer flows",
+        "Integration-ready frontend components",
+        "API-driven architecture",
+        "Improved usability and responsiveness"
+      ],
+      "color": "#2b4dff",
+      "stats": { "value": "99.9%", "label": "Uptime Achieved" }
+    },
+    {
+      "id": 3,
+      "title": "Banfield Pet Hospital – Healthcare Management System",
+      "industry": "Healthcare",
+      "icon": "HeartPulse",
+      "solution": "Clinic operations & patient care platform",
+      "description": "We developed a comprehensive healthcare management solution for Banfield Pet Hospital to streamline appointments, patient records, billing, and staff coordination. The platform improved operational efficiency and enhanced the overall pet care experience.",
+      "highlights": [
+        "Electronic medical records (EMR)",
+        "Appointment scheduling system",
+        "Billing & reporting dashboards"
+      ],
+      "color": "#0a165e",
+      "stats": { "value": "60%", "label": "Efficiency Gain" }
+    },
+    {
+      "id": 4,
+      "title": "Golden Manpower International Consultants – Recruitment Portal",
+      "industry": "Staffing & Recruitment",
+      "icon": "Users",
+      "solution": "Talent management & job placement platform",
+      "description": "We built a secure digital system to manage candidate documents, contracts, and compliance records, helping Golden Manpower reduce manual paperwork and ensure faster processing for international placements.",
+      "highlights": [
+        "Secure document storage",
+        "Automated verification workflows",
+        "Status tracking",
+        "Reduced processing time"
+      ],
+      "color": "#0a165e",
+      "stats": { "value": "75%", "label": "Faster Processing" }
+    },
+    {
+      "id": 5,
+      "title": "KBombay – Number Gaming Web App",
+      "industry": "Gaming & Entertainment",
+      "icon": "Gamepad2",
+      "solution": "Mobile gaming application",
+      "description": "KBombay is an engaging number-based gaming app designed to deliver fast-paced entertainment with secure gameplay and real-time scoring. The app offers smooth user experience, reward mechanisms, and scalable backend support.",
+      "highlights": [
+        "Real-time gameplay logic",
+        "Leaderboards & rewards system",
+        "High-performance backend",
+        "Mobile-first UI design"
+      ],
+      "color": "#2b4dff",
+      "stats": { "value": "50K+", "label": "Active Users" }
+    },
+    {
+      "id": 6,
+      "title": "BIX Mobile App - Earn While You Engage",
+      "industry": "Media & Social",
+      "icon": "Smartphone",
+      "solution": "Reward-based social engagement platform",
+      "description": "BiX is an innovative mobile application that allows users to earn rewards by watching trending videos, creating content, sharing posts, and growing their social presence. The platform combines entertainment with monetization.",
+      "highlights": [
+        "Video streaming & content creation tools",
+        "Reward & wallet system",
+        "Social networking features",
+        "Secure payout integrations"
+      ],
+      "color": "#0a165e",
+      "stats": { "value": "100K+", "label": "Downloads" }
+    }
+  ],
+  "stats": [
+    { "value": "50+", "label": "Projects Delivered" },
+    { "value": "15+", "label": "Industries Served" },
+    { "value": "98%", "label": "Client Satisfaction" },
+    { "value": "10+", "label": "Countries Reached" }
+  ],
+  "floatingIcons": [
+    { "iconName": "Briefcase", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "TrendingUp", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Globe", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Award", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Zap", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Sparkles", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "ctaDescription": "Let's discuss how we can help transform your ideas into powerful digital solutions."
+}

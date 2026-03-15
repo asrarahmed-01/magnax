@@ -1,0 +1,37 @@
+{
+  "heroTitle": "Politics & Manufacturing",
+  "heroDescription": "Creating powerful digital platforms for political campaigns and manufacturing companies.",
+  "ctaDescription": "Let's discuss how our technology solutions can help your business grow and succeed.",
+  "industries": [
+    {
+      "id": "politics",
+      "title": "Politics",
+      "description": "We develop campaign management tools, data analytics platforms, and voter engagement applications to help political organizations connect with constituents and manage campaigns effectively. Our solutions enable better decision-making through data-driven insights.",
+      "image": "/images/politics.jpg",
+      "icon": "Vote",
+      "features": [
+        "Campaign management tools",
+        "Data analytics platforms",
+        "Voter engagement apps",
+        "Fundraising systems",
+        "Volunteer coordination",
+        "Polling & survey tools"
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "title": "Manufacturing",
+      "description": "Manufacturing companies face a variety of challenges; they must manage intricate production processes, meet strict timelines and operate at great scale. We create intelligent digital solutions that streamline business processes and reduce the burden on manufacturers.",
+      "image": "/images/manufacturing.jpg",
+      "icon": "Factory",
+      "features": [
+        "ERP systems",
+        "Production tracking",
+        "Supply chain automation",
+        "Inventory management",
+        "Quality control systems",
+        "Automation dashboards"
+      ]
+    }
+  ]
+}

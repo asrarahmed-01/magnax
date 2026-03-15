@@ -1,10 +1,13 @@
+@use "sass:math";
+@use "sass:color";
+
 // Variables - STRICTLY TWO COLORS ONLY
 $primary: #2b4dff;
 $secondary: #0a165e;
 
 // Derived using only opacity and mixing of these two colors
 $primary-light: rgba($primary, 0.8);
-$primary-dark: mix($secondary, $primary, 40%);
+$primary-dark: color.mix($secondary, $primary, 40%);
 $secondary-light: rgba($secondary, 0.8);
 $white: #ffffff;
 $black: #000000;
@@ -21,7 +24,7 @@ $black: #000000;
 }
 
 @mixin gradient-text {
-  background: linear-gradient(135deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  background: linear-gradient(135deg, $primary 0%, color.mix($primary, $secondary, 50%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -207,11 +210,11 @@ $black: #000000;
   
   @for $i from 1 through 20 {
     &:nth-child(#{$i}) {
-      left: random(100) * 1%;
-      top: random(100) * 1%;
-      animation-delay: random(15) * -1s;
-      animation-duration: 10s + random(10);
-      opacity: random(10) / 10;
+      left: math.random(100) * 1%;
+      top: math.random(100) * 1%;
+      animation-delay: math.random(15) * -1s;
+      animation-duration: 10s + math.random(10);
+      opacity: math.div(math.random(10), 10);
     }
   }
 }
@@ -343,7 +346,7 @@ $black: #000000;
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
     border-radius: 2px;
   }
 }
@@ -1370,6 +1373,77 @@ $black: #000000;
   border-radius: 5px;
   
   &:hover {
-    background: mix($white, $primary, 20%);
+    background: color.mix($white, $primary, 20%);
+  }
+}
+
+/* About Layout */
+
+.company-about-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 3rem;
+}
+
+.company-about-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Reverse row for zig-zag layout */
+
+.company-about-row.reverse {
+  @media (max-width: 1024px) {
+    .company-about-image {
+      order: -1;
+    }
+  }
+}
+
+/* Text */
+
+.company-about-text {
+
+  .company-lead-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: $secondary;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: rgba($secondary, 0.8);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+}
+
+/* Image */
+
+.company-about-image {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba($primary, 0.15);
+
+  img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
   }
 }

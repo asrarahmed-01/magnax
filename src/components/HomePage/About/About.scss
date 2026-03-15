@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:color";
+
 // Variables
 $brand-primary: #0a165e;
 $brand-secondary: #fcd34d;
@@ -141,7 +144,7 @@ $white: #ffffff;
   transition: color 0.3s ease;
 
   &:hover {
-    color: darken($brand-primary, 10%);
+    color: darken($brand-primary, $lightness: -10%);
 
     .about-link-icon {
       transform: translateX(8px);

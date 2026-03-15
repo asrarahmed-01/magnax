@@ -1,0 +1,49 @@
+{
+  "subtitle": "OUR SERVICES",
+  "title": "Solutions We Provide",
+  "description": "Comprehensive IT services tailored to meet your business needs and drive growth.",
+  "services": [
+    {
+      "icon": "Code2",
+      "title": "Software Development",
+      "description": "Custom applications built specifically for your business needs and requirements.",
+      "color": "from-orange-500 to-orange-600",
+      "path": "/services/software-development"
+    },
+    {
+      "icon": "MessageSquare",
+      "title": "IT Consulting",
+      "description": "Strategic technology planning and guidance to help you make informed decisions.",
+      "color": "from-pink-500 to-pink-600",
+      "path": "/services/it-consulting-digital"
+    },
+    {
+      "icon": "Headphones",
+      "title": "Managed Services",
+      "description": "24/7 monitoring and support for your systems to ensure maximum uptime.",
+      "color": "from-cyan-500 to-cyan-600",
+      "path": "/services/managed-services"
+    },
+    {
+      "icon": "Cloud",
+      "title": "Cloud Solutions",
+      "description": "Scalable cloud infrastructure and migration services to modernize your business operations.",
+      "color": "from-blue-500 to-blue-600",
+      "path": "/services/cloud-solutions"
+    },
+    {
+      "icon": "BarChart3",
+      "title": "Data Analytics",
+      "description": "Transform data into actionable business insights with our advanced analytics solutions.",
+      "color": "from-purple-500 to-purple-600",
+      "path": "/services/data-analytics"
+    },
+    {
+      "icon": "Shield",
+      "title": "Cybersecurity",
+      "description": "Enterprise-grade security solutions and consulting to protect your digital assets.",
+      "color": "from-green-500 to-green-600",
+      "path": "/services/cybersecurity"
+    }
+  ]
+}

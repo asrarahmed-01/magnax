@@ -1,0 +1,109 @@
+{
+  "heroDescription": "Create stunning digital experiences that engage users across every device. From responsive websites to native mobile apps, we build solutions that drive results and delight your customers.",
+  "stats": [
+    { "value": "500+", "label": "Projects Delivered" },
+    { "value": "50M+", "label": "App Downloads" },
+    { "value": "4.8★", "label": "Avg Rating" },
+    { "value": "8+", "label": "Years Experience" }
+  ],
+  "webTechStack": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "Next.js", "category": "Framework" },
+    { "name": "Vue.js", "category": "Frontend" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "TypeScript", "category": "Language" },
+    { "name": "Tailwind", "category": "CSS" },
+    { "name": "GraphQL", "category": "API" },
+    { "name": "AWS", "category": "Cloud" }
+  ],
+  "mobileTechStack": [
+    { "name": "React Native", "category": "Cross-Platform" },
+    { "name": "Flutter", "category": "Cross-Platform" },
+    { "name": "Swift", "category": "iOS" },
+    { "name": "Kotlin", "category": "Android" },
+    { "name": "Firebase", "category": "Backend" },
+    { "name": "SQLite", "category": "Database" },
+    { "name": "Redux", "category": "State" },
+    { "name": "Expo", "category": "Tools" }
+  ],
+  "webFeatures": [
+    {
+      "icon": "Monitor",
+      "title": "Responsive Web Design",
+      "description": "Pixel-perfect websites that look stunning on every device, from mobile to desktop.",
+      "description2": "Built with modern frameworks like React and Next.js for dynamic, interactive experiences."
+    },
+    {
+      "icon": "Zap",
+      "title": "Performance Optimization",
+      "description": "Lightning-fast load times with optimized code, caching, and CDN delivery.",
+      "description2": "We leverage modern build tools and optimization techniques to ensure your web applications are as fast as possible."
+    },
+    {
+      "icon": "Shield",
+      "title": "Secure Architecture",
+      "description": "Enterprise-grade security with HTTPS, authentication, and data protection.",
+      "description2": "Our web applications are built with security best practices to protect your data and users."
+    },
+    {
+      "icon": "Palette",
+      "title": "UI/UX Excellence",
+      "description": "Intuitive interfaces designed for conversion and user satisfaction.",
+      "description2": "Our design team creates beautiful, functional interfaces that delight users and drive engagement."
+    }
+  ],
+  "mobileFeatures": [
+    {
+      "icon": "Smartphone",
+      "title": "Native iOS & Android",
+      "description": "Platform-specific apps built with Swift and Kotlin for optimal performance.",
+      "description2": "We build apps that feel native to each platform, ensuring the best user experience."
+    },
+    {
+      "icon": "Tablet",
+      "title": "Cross-Platform Solutions",
+      "description": "Single codebase for iOS and Android with React Native or Flutter.",
+      "description2": "We build apps that work seamlessly across multiple platforms, saving time and resources."
+    },
+    {
+      "icon": "Wifi",
+      "title": "Offline Functionality",
+      "description": "Apps that work without internet connection with smart sync capabilities.",
+      "description2": "Our apps are designed to function offline, with intelligent sync capabilities that ensure data integrity."
+    },
+    {
+      "icon": "Layers",
+      "title": "Seamless Integration",
+      "description": "Deep integration with device features: camera, GPS, push notifications, and more.",
+      "description2": "Our mobile apps integrate seamlessly with native device features to provide a richer user experience."
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Our web platform loads in under a second. The team's attention to performance and user experience is exceptional.",
+      "author": "Jennifer Walsh",
+      "role": "CTO, ShopMax",
+      "image": "/images/testimonials/jennifer.jpg"
+    },
+    {
+      "quote": "The mobile app they built has a 4.8-star rating with over 5 million downloads. Best investment we ever made.",
+      "author": "Marcus Chen",
+      "role": "Founder, FitTrack",
+      "image": "/images/testimonials/marcus.jpg"
+    },
+    {
+      "quote": "Seamless experience from web to mobile. Our users love the consistent, beautiful interface across all devices.",
+      "author": "Amara Okafor",
+      "role": "Product Lead, TravelEase",
+      "image": "/images/testimonials/amara.jpg"
+    }
+  ],
+  "floatingIcons": [
+    { "iconName": "Globe", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "Smartphone", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Code", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Zap", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Monitor", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Layers", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "heroTitle": "Education & Real Estate",
+  "heroDescription": "Building innovative digital platforms for educational institutions and real estate companies.",
+  "ctaDescription": "Let's discuss how our technology solutions can help your business grow and succeed.",
+  "industries": [
+    {
+      "id": "education",
+      "title": "Education",
+      "description": "Technology is a critical factor in today's world that has made it possible for everyone to access and learn more than ever before. We develop innovative solutions with schools, colleges, training institutes, and EdTech companies to improve the administrative side of education.",
+      "image": "/images/education.jpg",
+      "icon": "GraduationCap",
+      "features": [
+        "Learning Management Systems (LMS)",
+        "Student portals",
+        "Online learning platforms",
+        "Attendance & exam management",
+        "EdTech applications",
+        "Administrative systems"
+      ]
+    },
+    {
+      "id": "realestate",
+      "title": "Real Estate",
+      "description": "The real estate segment is an area of commerce where there is a significant amount of activity. We provide companies in the real estate segment with digital solutions that help them simplify their business processes from property management to transaction management.",
+      "image": "/images/real-estate.jpg",
+      "icon": "Home",
+      "features": [
+        "Property listing platforms",
+        "Customer relationship management",
+        "Booking management systems",
+        "Virtual tour technology",
+        "Lead tracking & inquiries",
+        "Document management"
+      ]
+    }
+  ]
+}

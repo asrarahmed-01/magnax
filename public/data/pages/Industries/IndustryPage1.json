@@ -1,0 +1,37 @@
+{
+  "heroTitle": "Fintech & Healthcare",
+  "heroDescription": "Delivering secure, innovative technology solutions for financial services and healthcare organizations worldwide.",
+  "ctaDescription": "Let's discuss how our technology solutions can help your business grow and succeed.",
+  "industries": [
+    {
+      "id": "fintech",
+      "title": "Fintech & Banking",
+      "description": "We collaborate with financial technology and banking organizations to develop secure, trustworthy, user-friendly digital solutions. From mobile banking to payment platforms to financial operating systems, we assist firms in resolving the challenges associated with financial transaction processing through innovative technologies.",
+      "image": "/images/fintech-banking.jpg",
+      "icon": "Landmark",
+      "features": [
+        "Digital banking platforms",
+        "Payment gateway / wallet technologies",
+        "Loan / credit management solutions",
+        "Financial dashboards / reporting tools",
+        "Secure API integrations",
+        "Compliant / scalable solutions"
+      ]
+    },
+    {
+      "id": "healthcare",
+      "title": "Healthcare",
+      "description": "We help hospitals, health clinics, and health technology start-ups by creating systems that can help them operate more efficiently on a daily basis. We have developed systems for tracking patients and managing patient appointment schedules to creating systems for providing telemedicine and developing mobile health applications.",
+      "image": "/images/healthcare.jpg",
+      "icon": "HeartPulse",
+      "features": [
+        "Hospital management systems",
+        "Telemedicine platforms",
+        "Patient tracking & scheduling",
+        "Mobile health applications",
+        "Secure medical data systems",
+        "Healthcare analytics"
+      ]
+    }
+  ]
+}

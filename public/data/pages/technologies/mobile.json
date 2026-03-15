@@ -1,0 +1,121 @@
+{
+  "mobileTech": [
+    {
+      "name": "Flutter",
+      "category": "Cross-Platform",
+      "description": "Google's UI toolkit for building beautiful, natively compiled applications from a single codebase.",
+      "features": ["Hot Reload", "Widget Library", "Dart Language", "Native Performance"],
+      "icon": "/images/tech/flutter.svg"
+    },
+    {
+      "name": "iOS",
+      "category": "Native",
+      "description": "Native iPhone and iPad applications built with Swift and SwiftUI for optimal Apple ecosystem integration.",
+      "features": ["Swift", "SwiftUI", "UIKit", "Core Data"],
+      "icon": "/images/tech/ios.svg"
+    },
+    {
+      "name": "Android",
+      "category": "Native",
+      "description": "Native Android apps with Kotlin and Jetpack Compose for modern, responsive mobile experiences.",
+      "features": ["Kotlin", "Jetpack Compose", "Android SDK", "Room Database"],
+      "icon": "/images/tech/android.svg"
+    },
+    {
+      "name": "React Native",
+      "category": "Cross-Platform",
+      "description": "Build native apps using React. Share code between iOS and Android while maintaining native performance.",
+      "features": ["Native Modules", "Expo", "Hermes Engine", "Code Push"],
+      "icon": "/images/tech/react-native.svg"
+    },
+    {
+      "name": "Xamarin",
+      "category": "Cross-Platform",
+      "description": "Microsoft's framework for building native apps with C# and .NET across iOS, Android, and Windows.",
+      "features": ["C# & .NET", "Native UI", "Shared Code", "Visual Studio"],
+      "icon": "/images/tech/xamarin.svg"
+    }
+  ],
+  "capabilities": [
+    { "icon": "Wifi", "title": "Offline Functionality", "description": "Apps that work without internet with smart data synchronization." },
+    { "icon": "Bell", "title": "Push Notifications", "description": "Engage users with targeted notifications and in-app messaging." },
+    { "icon": "MapPin", "title": "Location Services", "description": "GPS tracking, geofencing, and location-based features." },
+    { "icon": "Camera", "title": "Camera & Media", "description": "Photo/video capture, editing, and AR experiences." },
+    { "icon": "Zap", "title": "Bluetooth & NFC", "description": "Connect with wearables, IoT devices, and contactless payments." },
+    { "icon": "Palette", "title": "Biometric Auth", "description": "Face ID, fingerprint, and secure authentication methods." }
+  ],
+  "projects": [
+    {
+      "name": "Fitness Tracker",
+      "client": "FitLife",
+      "tech": "Flutter",
+      "description": "Cross-platform fitness app with 10M+ downloads and wearable integration.",
+      "results": ["10M+ downloads", "4.8★ rating", "5+ wearables supported"],
+      "image": "/images/projects/fitness-app.jpg"
+    },
+    {
+      "name": "Banking App",
+      "client": "SecureBank",
+      "tech": "iOS & Android",
+      "description": "Native banking apps with biometric security and real-time transactions.",
+      "results": ["2M+ users", "Face ID login", "99.99% secure"],
+      "image": "/images/projects/mobile-banking.jpg"
+    },
+    {
+      "name": "Delivery Platform",
+      "client": "QuickDelivery",
+      "tech": "React Native",
+      "description": "Real-time delivery tracking app for drivers and customers.",
+      "results": ["1M+ drivers", "Real-time tracking", "30% faster delivery"],
+      "image": "/images/projects/delivery-app.jpg"
+    },
+    {
+      "name": "Healthcare Monitor",
+      "client": "MediCare",
+      "tech": "Xamarin",
+      "description": "Patient monitoring app integrated with medical devices.",
+      "results": ["HIPAA compliant", "50k+ patients", "FDA approved"],
+      "image": "/images/projects/healthcare-app.jpg"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Our Flutter app looks and feels native on both platforms. Development was incredibly fast.",
+      "author": "Jessica Lee",
+      "role": "Product Manager, FitLife",
+      "image": "/images/testimonials/jessica.jpg"
+    },
+    {
+      "quote": "The native iOS app they built set a new standard for mobile banking in our industry.",
+      "author": "Mark Thompson",
+      "role": "Digital Director, SecureBank",
+      "image": "/images/testimonials/mark.jpg"
+    },
+    {
+      "quote": "React Native let us launch on both platforms simultaneously with a small team.",
+      "author": "Ana Rodriguez",
+      "role": "CTO, QuickDelivery",
+      "image": "/images/testimonials/ana.jpg"
+    }
+  ],
+  "stats": [
+    { "value": "50M+", "label": "App Downloads" },
+    { "value": "4.8★", "label": "Avg Rating" },
+    { "value": "100+", "label": "Apps Shipped" },
+    { "value": "5+", "label": "Years Experience" }
+  ],
+  "floatingIcons": [
+    { "iconName": "Smartphone", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "Tablet", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Box", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Zap", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Camera", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Cpu", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "processSteps": [
+    { "num": "01", "title": "Design & Prototype", "desc": "UI/UX design with interactive prototypes for user testing" },
+    { "num": "02", "title": "Development", "desc": "Agile sprints with continuous integration and testing" },
+    { "num": "03", "title": "QA & Optimization", "desc": "Rigorous testing, performance tuning, and device compatibility" },
+    { "num": "04", "title": "Launch & Support", "desc": "App Store submission, ASO, and ongoing maintenance" }
+  ]
+}

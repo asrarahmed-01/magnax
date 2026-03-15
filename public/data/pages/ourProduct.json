@@ -1,0 +1,100 @@
+{
+  "heroDescription": "The next-generation education management system that connects students, teachers, parents, and administrators in one seamless digital ecosystem. Experience real-time collaboration, intelligent analytics, and institutional excellence.",
+  "heroInfo": [
+    "AI-Powered Insights",
+    "Bank-Grade Security",
+    "24/7 Support"
+  ],
+  "platformInfo": [
+    { "title": "Platform", "desc": "Android & iOS Native Apps" },
+    { "title": "Deployment", "desc": "Cloud & On-Premise" },
+    { "title": "Compliance", "desc": "GDPR & FERPA Ready" }
+  ],
+  "studentFeatures": [
+    { "text": "Course access & learning materials" },
+    { "text": "Attendance tracking" },
+    { "text": "Exam results & progress reports" }
+  ],
+  "teacherFeatures": [
+    { "text": "Class management" },
+    { "text": "Attendance & grading" },
+    { "text": "Student performance tracking" }
+  ],
+  "parentFeatures": [
+    { "text": "Student progress monitoring" },
+    { "text": "Notifications & announcements" },
+    { "text": "Attendance & academic updates" }
+  ],
+  "adminFeatures": [
+    { "text": "User management" },
+    { "text": "Reports & analytics" },
+    { "text": "Scheduling & academic planning" }
+  ],
+  "benefits": [
+    { "title": "Mobile-first convenience", "desc": "Access everything on the go" },
+    { "title": "Real-time updates", "desc": "Instant alerts & notifications" },
+    { "title": "Improved engagement", "desc": "Better transparency for all" },
+    { "title": "Secure data handling", "desc": "Enterprise-grade security" },
+    { "title": "Scalable solution", "desc": "Fits any institution size" }
+  ],
+  "testimonials": [
+    {
+      "quote": "DREMS transformed how we manage our school. Parents are more engaged than ever.",
+      "author": "Dr. Sarah Johnson",
+      "role": "Principal, Lincoln High School",
+      "image": "/images/testimonials/sarah.jpg"
+    },
+    {
+      "quote": "The attendance tracking alone saved us 20 hours of manual work per week.",
+      "author": "Michael Chen",
+      "role": "Admin Director, Global Academy",
+      "image": "/images/testimonials/michael.jpg"
+    },
+    {
+      "quote": "Finally, a system that actually works for teachers, not against them.",
+      "author": "Emma Rodriguez",
+      "role": "Head Teacher, Westside Elementary",
+      "image": "/images/testimonials/emma.jpg"
+    }
+  ],
+  "heroStats": [
+    { "value": "500+", "label": "Institutions" },
+    { "value": "1M+", "label": "Active Users" },
+    { "value": "99.9%", "label": "Uptime" },
+    { "value": "4.9", "label": "App Rating" }
+  ],
+  "floatingIcons": [
+    { "iconName": "GraduationCap", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "BookOpen", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Users", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Award", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Bell", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Sparkles", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "WhyAdvantages": [
+  {
+    "title": "Easy Interface",
+    "desc": "Intuitive design requiring minimal training for all users"
+  },
+  {
+    "title": "Personalized Access",
+    "desc": "Role-based dashboards for students, parents, teachers, and admins"
+  },
+  {
+    "title": "Data Security",
+    "desc": "Enterprise-grade encryption and compliance with educational standards"
+  },
+  {
+    "title": "Cost Saving",
+    "desc": "Reduce administrative overhead and paper-based processes"
+  },
+  {
+    "title": "SMS & Email Integration",
+    "desc": "Automated notifications keep everyone informed instantly"
+  },
+  {
+    "title": "Multi-User Friendly",
+    "desc": "Handles thousands of concurrent users without performance issues"
+  }
+]
+}

@@ -1,0 +1,149 @@
+{
+  "frontendTech": [
+    {
+      "name": "React",
+      "category": "Library",
+      "description": "Build dynamic user interfaces with the most popular JavaScript library. Component-based architecture for scalable applications.",
+      "features": ["Virtual DOM", "Component-Based", "Huge Ecosystem", "React Native"],
+      "icon": "/images/tech/react.svg",
+      "gradient": "from-[#2b4dff] to-[#0a165e]"
+    },
+    {
+      "name": "Vue.js",
+      "category": "Framework",
+      "description": "Progressive framework for building user interfaces. Approachable, versatile, and performant.",
+      "features": ["Reactive Data", "Component System", "Single File", "Gentle Learning"],
+      "icon": "/images/tech/vue.svg",
+      "gradient": "from-[#2b4dff] to-[#0a165e]"
+    },
+    {
+      "name": "Angular",
+      "category": "Framework",
+      "description": "Platform for building mobile and desktop web applications. Complete solution with TypeScript.",
+      "features": ["TypeScript", "Dependency Injection", "RxJS", "Angular CLI"],
+      "icon": "/images/tech/angular.svg",
+      "gradient": "from-[#2b4dff] to-[#0a165e]"
+    },
+    {
+      "name": "JavaScript",
+      "category": "Language",
+      "description": "The programming language of the web. Powers interactive experiences across all modern browsers.",
+      "features": ["Universal Support", "Async/Await", "ES6+ Features", "Vast Libraries"],
+      "icon": "/images/tech/javascript.svg",
+      "gradient": "from-[#2b4dff] to-[#0a165e]"
+    },
+    {
+      "name": "TypeScript",
+      "category": "Language",
+      "description": "Typed superset of JavaScript that compiles to plain JavaScript. Catch errors early and improve maintainability.",
+      "features": ["Static Typing", "IntelliSense", "Refactoring", "Enterprise Scale"],
+      "icon": "/images/tech/typescript.svg",
+      "gradient": "from-[#2b4dff] to-[#0a165e]"
+    }
+  ],
+
+  "capabilities": [
+    {
+      "icon": "Monitor",
+      "title": "Responsive Web Apps",
+      "description": "Pixel-perfect applications that work flawlessly across all devices and screen sizes."
+    },
+    {
+      "icon": "Smartphone",
+      "title": "Progressive Web Apps",
+      "description": "Installable apps with offline capabilities, push notifications, and native-like experience."
+    },
+    {
+      "icon": "Zap",
+      "title": "Performance Optimization",
+      "description": "Lightning-fast load times with code splitting, lazy loading, and advanced caching strategies."
+    },
+    {
+      "icon": "Palette",
+      "title": "Modern UI/UX",
+      "description": "Stunning interfaces with smooth animations, micro-interactions, and accessibility compliance."
+    },
+    {
+      "icon": "Globe",
+      "title": "Internationalization",
+      "description": "Multi-language support with RTL, localization, and region-specific content delivery."
+    },
+    {
+      "icon": "Layers",
+      "title": "State Management",
+      "description": "Complex application state handled with Redux, Vuex, NgRx, or Context API."
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "E-Commerce Platform",
+      "client": "RetailMax",
+      "tech": "React",
+      "description": "High-performance shopping platform with 100k+ daily users.",
+      "results": ["40% faster checkout", "25% conversion boost", "99.9% uptime"],
+      "image": "/images/projects/ecommerce.jpg"
+    },
+    {
+      "name": "Dashboard Analytics",
+      "client": "DataCorp",
+      "tech": "Vue.js",
+      "description": "Real-time data visualization dashboard for enterprise clients.",
+      "results": ["50+ data sources", "Sub-second updates", "4.9/5 user rating"],
+      "image": "/images/projects/dashboard.jpg"
+    },
+    {
+      "name": "Banking Portal",
+      "client": "SecureBank",
+      "tech": "Angular",
+      "description": "Enterprise banking application serving 2M+ customers.",
+      "results": ["2M+ active users", "Bank-grade security", "60% faster transactions"],
+      "image": "/images/projects/banking.jpg"
+    },
+    {
+      "name": "SaaS Platform",
+      "client": "CloudTech",
+      "tech": "TypeScript",
+      "description": "Scalable SaaS solution with complex business logic.",
+      "results": ["Zero type errors", "80% faster debugging", "Enterprise adoption"],
+      "image": "/images/projects/saas.jpg"
+    }
+  ],
+
+  "testimonials": [
+    {
+      "quote": "Their React expertise transformed our legacy application into a modern, blazing-fast platform.",
+      "author": "Michael Chen",
+      "role": "CTO, RetailMax",
+      "image": "/images/testimonials/michael.jpg"
+    },
+    {
+      "quote": "The Vue.js implementation was flawless. Our users love the smooth, responsive interface.",
+      "author": "Sarah Williams",
+      "role": "Product Lead, DataCorp",
+      "image": "/images/testimonials/sarah.jpg"
+    },
+    {
+      "quote": "TypeScript adoption reduced our bugs by 70%. The code quality is now enterprise-grade.",
+      "author": "David Park",
+      "role": "Engineering Manager, CloudTech",
+      "image": "/images/testimonials/david.jpg"
+    }
+  ],
+
+  "stats": [
+    { "value": "150+", "label": "Projects Delivered" },
+    { "value": "50+", "label": "Frontend Experts" },
+    { "value": "99%", "label": "Client Satisfaction" },
+    { "value": "5+", "label": "Years Experience" }
+  ],
+
+  "floatingIcons": [
+    { "iconName": "Code2", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "Terminal", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Box", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "GitBranch", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Figma", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Cpu", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "heroTitle": "Retail & Manufacturing",
+  "heroDescription": "Empowering retail and manufacturing businesses with cutting-edge digital solutions for growth and efficiency.",
+  "ctaDescription": "Let's discuss how our technology solutions can help your business grow and succeed.",
+  "industries": [
+    {
+      "id": "retail",
+      "title": "Retail & Ecommerce",
+      "description": "The most important aspect in retailing is customer experience, and we can help create digital platforms for brands that are fast, easy-to-use and designed to convert site visitors into long-term customers. We create solutions to simplify the buying/selling process for any type of online store.",
+      "image": "/images/retail-ecommerce.jpg",
+      "icon": "ShoppingCart",
+      "features": [
+        "Online stores & marketplaces",
+        "Inventory management systems",
+        "POS systems",
+        "Secure payment processing",
+        "Customer experience platforms",
+        "Multi-vendor solutions"
+      ]
+    },
+    {
+      "id": "media",
+      "title": "Media & Entertainment",
+      "description": "We build streaming platforms, content management systems, and mobile apps that deliver engaging entertainment experiences to audiences across multiple devices and platforms. Our solutions help media companies reach wider audiences effectively.",
+      "image": "/images/media-entertainment.jpg",
+      "icon": "Film",
+      "features": [
+        "Streaming platforms",
+        "Content management systems",
+        "Mobile entertainment apps",
+        "Video production tools",
+        "Digital broadcasting",
+        "Audience analytics"
+      ]
+    }
+  ]
+}

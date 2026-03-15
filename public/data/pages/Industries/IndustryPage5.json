@@ -1,0 +1,37 @@
+{
+  "heroTitle": "Travel & Restaurants",
+  "heroDescription": "Delivering technology solutions for hospitality businesses to enhance customer experiences and streamline operations.",
+  "ctaDescription": "Let's discuss how our technology solutions can help your business grow and succeed.",
+  "industries": [
+    {
+      "id": "restaurants",
+      "title": "Restaurants",
+      "description": "We develop online ordering systems, POS software, and delivery apps that help restaurants streamline operations and provide better service to their customers. Our technology solutions enable restaurants to grow their business efficiently.",
+      "image": "/images/restaurants.jpg",
+      "icon": "UtensilsCrossed",
+      "features": [
+        "Online ordering systems",
+        "POS software",
+        "Delivery apps",
+        "Kitchen display systems",
+        "Table management",
+        "Customer loyalty programs"
+      ]
+    },
+    {
+      "id": "travel",
+      "title": "Travel & Hospitality",
+      "description": "We create booking engines, hotel management systems, and travel apps that provide seamless experiences for travelers and efficient operations for hospitality businesses. Our solutions help companies in the travel industry deliver exceptional customer service.",
+      "image": "/images/travel-hospitality.jpg",
+      "icon": "Plane",
+      "features": [
+        "Booking engines",
+        "Hotel management systems",
+        "Travel applications",
+        "Reservation platforms",
+        "Customer service tools",
+        "Loyalty programs"
+      ]
+    }
+  ]
+}

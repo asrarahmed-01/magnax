@@ -1,0 +1,123 @@
+{
+  "cloudTech": [
+    {
+      "name": "AWS",
+      "category": "Cloud Platform",
+      "description": "Comprehensive cloud services with 200+ offerings for compute, storage, ML, and IoT.",
+      "features": ["EC2 & Lambda", "S3 & RDS", "EKS & ECS", "CloudFormation"],
+      "icon": "/images/tech/aws.svg"
+    },
+    {
+      "name": "Azure",
+      "category": "Cloud Platform",
+      "description": "Microsoft's enterprise cloud with seamless Microsoft 365 and hybrid cloud integration.",
+      "features": ["Azure VMs", "AKS", "Azure DevOps", "Active Directory"],
+      "icon": "/images/tech/azure.svg"
+    },
+    {
+      "name": "Google Cloud",
+      "category": "Cloud Platform",
+      "description": "Data analytics and machine learning leader with Kubernetes-native infrastructure.",
+      "features": ["Compute Engine", "GKE", "BigQuery", "Cloud Functions"],
+      "icon": "/images/tech/gcp.svg"
+    },
+    {
+      "name": "Docker",
+      "category": "Containerization",
+      "description": "Standard container platform for packaging applications with dependencies.",
+      "features": ["Container Runtime", "Docker Compose", "Docker Hub", "Multi-stage Builds"],
+      "icon": "/images/tech/docker.svg"
+    },
+    {
+      "name": "Kubernetes",
+      "category": "Orchestration",
+      "description": "Production-grade container orchestration with auto-scaling and self-healing.",
+      "features": ["Auto-scaling", "Service Mesh", "Ingress Control", "StatefulSets"],
+      "icon": "/images/tech/kubernetes.svg"
+    }
+  ],
+  "capabilities": [
+    { "icon": "Cloud", "title": "Multi-Cloud Strategy", "description": "Avoid vendor lock-in with portable architectures across AWS, Azure, and GCP." },
+    { "icon": "Container", "title": "Container Orchestration", "description": "Kubernetes-native deployments with Helm, Istio, and GitOps workflows." },
+    { "icon": "RefreshCw", "title": "CI/CD Pipelines", "description": "Automated build, test, and deploy with Jenkins, GitHub Actions, and ArgoCD." },
+    { "icon": "Shield", "title": "Security & Compliance", "description": "DevSecOps with automated scanning, secrets management, and compliance." },
+    { "icon": "Scale", "title": "Auto-scaling", "description": "Dynamic resource allocation based on demand with cost optimization." },
+    { "icon": "Monitor", "title": "Observability", "description": "Full-stack monitoring with Prometheus, Grafana, and distributed tracing." }
+  ],
+  "projects": [
+    {
+      "name": "Cloud Migration",
+      "client": "EnterpriseCorp",
+      "tech": "AWS",
+      "description": "Lift-and-shift migration of 500+ workloads to AWS with zero downtime.",
+      "results": ["500+ workloads", "40% cost reduction", "99.99% uptime"],
+      "image": "/images/projects/cloud-migration.jpg"
+    },
+    {
+      "name": "Kubernetes Platform",
+      "client": "ScaleUp",
+      "tech": "Kubernetes",
+      "description": "Managed K8s platform serving 1000+ microservices across 3 regions.",
+      "results": ["1000+ services", "3 regions", "Auto-scaling enabled"],
+      "image": "/images/projects/k8s-platform.jpg"
+    },
+    {
+      "name": "DevOps Automation",
+      "client": "FinTech Pro",
+      "tech": "Azure DevOps",
+      "description": "End-to-end CI/CD with automated security scanning and compliance.",
+      "results": ["10min deploy time", "100% traceability", "SOC2 compliant"],
+      "image": "/images/projects/devops-automation.jpg"
+    },
+    {
+      "name": "Multi-Cloud Setup",
+      "client": "GlobalRetail",
+      "tech": "AWS + GCP",
+      "description": "Hybrid cloud architecture with workload portability and disaster recovery.",
+      "results": ["99.999% availability", "50% faster DR", "Vendor independence"],
+      "image": "/images/projects/multi-cloud.jpg"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Their AWS expertise saved us 40% on cloud costs while improving performance.",
+      "author": "David Kim",
+      "role": "Cloud Director, EnterpriseCorp",
+      "image": "/images/testimonials/david.jpg"
+    },
+    {
+      "quote": "The Kubernetes platform they built scales effortlessly during our peak traffic.",
+      "author": "Sarah Chen",
+      "role": "VP Engineering, ScaleUp",
+      "image": "/images/testimonials/sarah.jpg"
+    },
+    {
+      "quote": "DevOps automation reduced our deployment time from days to minutes.",
+      "author": "Michael Torres",
+      "role": "CTO, FinTech Pro",
+      "image": "/images/testimonials/michael.jpg"
+    }
+  ],
+  "stats": [
+    { "value": "500+", "label": "Cloud Migrations" },
+    { "value": "10K+", "label": "Containers Managed" },
+    { "value": "99.99%", "label": "Uptime SLA" },
+    { "value": "5+", "label": "Years Experience" }
+  ],
+  "floatingIcons": [
+    { "iconName": "Cloud", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "Terminal", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Container", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "GitBranch", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Server", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Cpu", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "lifecycleSteps": [
+    { "num": "01", "title": "Plan", "desc": "Agile planning with Jira and backlog management","icon": "ClipboardList" },
+    { "num": "02", "title": "Code", "desc": "Version control with Git and branch strategies", "icon": "Code" },
+    { "num": "03", "title": "Build", "desc": "Automated builds and containerization", "icon": "Cpu" },
+    { "num": "04", "title": "Test", "desc": "Automated testing and security scanning", "icon": "CheckCircle2" },
+    { "num": "05", "title": "Deploy", "desc": "Continuous deployment with blue-green releases", "icon": "RefreshCw" },
+    { "num": "06", "title": "Operate", "desc": "Monitoring, logging, and incident response", 	"icon": 	"Monitor" }
+  ]
+}

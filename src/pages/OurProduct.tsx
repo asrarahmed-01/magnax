@@ -1,11 +1,14 @@
-import { useEffect, useRef } from 'react';
+// src/pages/OurProduct.tsx
+
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  Smartphone, 
-  GraduationCap, 
-  Users, 
-  BookOpen, 
+
+import {
+  Smartphone,
+  GraduationCap,
+  Users,
+  BookOpen,
   LayoutDashboard,
   Bell,
   ShieldCheck,
@@ -17,7 +20,6 @@ import {
   ArrowRight,
   Quote,
   Sparkles,
-  //Zap,
   Globe,
   Award,
   Play,
@@ -25,201 +27,142 @@ import {
   Star,
   Cpu,
   Lock,
-  Clock
+  Clock,
 } from 'lucide-react';
+
+import { getOurProductData } from '../service/api';
+import type { OurProductPageData, FloatingIcon } from '../types';
+
 import './OurProduct.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const studentFeatures = [
-  { icon: BookOpen, text: "Course access & learning materials" },
-  { icon: CalendarCheck, text: "Attendance tracking" },
-  { icon: FileText, text: "Exam results & progress reports" },
-];
-
-const teacherFeatures = [
-  { icon: Users, text: "Class management" },
-  { icon: CalendarCheck, text: "Attendance & grading" },
-  { icon: TrendingUp, text: "Student performance tracking" },
-];
-
-const parentFeatures = [
-  { icon: TrendingUp, text: "Student progress monitoring" },
-  { icon: Bell, text: "Notifications & announcements" },
-  { icon: FileText, text: "Attendance & academic updates" },
-];
-
-const adminFeatures = [
-  { icon: Users, text: "User management" },
-  { icon: BarChart3, text: "Reports & analytics" },
-  { icon: CalendarCheck, text: "Scheduling & academic planning" },
-];
-
-const benefits = [
-  { icon: Smartphone, title: "Mobile-first convenience", desc: "Access everything on the go" },
-  { icon: Bell, title: "Real-time updates", desc: "Instant alerts & notifications" },
-  { icon: Users, title: "Improved engagement", desc: "Better transparency for all" },
-  { icon: ShieldCheck, title: "Secure data handling", desc: "Enterprise-grade security" },
-  { icon: LayoutDashboard, title: "Scalable solution", desc: "Fits any institution size" },
-];
-
-const testimonials = [
-  {
-    quote: "DREMS transformed how we manage our school. Parents are more engaged than ever.",
-    author: "Dr. Sarah Johnson",
-    role: "Principal, Lincoln High School",
-    image: "/images/testimonials/sarah.jpg"
-  },
-  {
-    quote: "The attendance tracking alone saved us 20 hours of manual work per week.",
-    author: "Michael Chen",
-    role: "Admin Director, Global Academy",
-    image: "/images/testimonials/michael.jpg"
-  },
-  {
-    quote: "Finally, a system that actually works for teachers, not against them.",
-    author: "Emma Rodriguez",
-    role: "Head Teacher, Westside Elementary",
-    image: "/images/testimonials/emma.jpg"
-  }
-];
-
-const heroStats = [
-  { value: '500+', label: 'Institutions' },
-  { value: '1M+', label: 'Active Users' },
-  { value: '99.9%', label: 'Uptime' },
-  { value: '4.9', label: 'App Rating' }
-];
-
-const floatingIcons = [
-  { Icon: GraduationCap, delay: '0s', duration: '6s', pos: { top: '10%', left: '5%' } },
-  { Icon: BookOpen, delay: '1s', duration: '8s', pos: { top: '20%', right: '10%' } },
-  { Icon: Users, delay: '2s', duration: '7s', pos: { bottom: '30%', left: '8%' } },
-  { Icon: Award, delay: '0.5s', duration: '9s', pos: { bottom: '20%', right: '5%' } },
-  { Icon: Bell, delay: '1.5s', duration: '6s', pos: { top: '60%', left: '3%' } },
-  { Icon: Sparkles, delay: '2.5s', duration: '8s', pos: { top: '40%', right: '8%' } }
-];
-
 export function OurProduct() {
+  const [data, setData] = useState<OurProductPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const heroRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
 
+  // Fetch data
   useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const pageData = await getOurProductData();
+        if (mounted) {
+          setData(pageData);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load product data');
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // GSAP animations (only run when data is ready)
+  useEffect(() => {
+    if (loading || !data) return;
+
     const ctx = gsap.context(() => {
-      // Hero content animation
       gsap.fromTo(
         '.drems-hero-content',
         { y: 60, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
       );
 
-      // Floating icons parallax
       gsap.to('.drems-float-icon', {
         y: -30,
         duration: 2,
         ease: 'sine.inOut',
         yoyo: true,
         repeat: -1,
-        stagger: {
-          each: 0.2,
-          from: 'random'
-        }
+        stagger: { each: 0.2, from: 'random' },
       });
 
-      // Phone mockup animation
       gsap.fromTo(
         '.drems-phone-container',
         { y: 100, opacity: 0, rotateY: -15 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          rotateY: 0,
-          duration: 1.2, 
-          ease: 'power3.out',
-          delay: 0.3 
-        }
+        { y: 0, opacity: 1, rotateY: 0, duration: 1.2, ease: 'power3.out', delay: 0.3 }
       );
 
-      // Stats animation
       gsap.fromTo(
         '.drems-hero-stat',
         { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          delay: 0.6,
-          ease: 'back.out(1.7)'
-        }
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.6, ease: 'back.out(1.7)' }
       );
 
-      // Feature cards animation
       gsap.fromTo(
         '.drems-feature-card',
         { y: 40, opacity: 0, rotateX: 15 },
-        {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: featuresRef.current,
-            start: 'top 75%',
-          },
-        }
+        { y: 0, opacity: 1, rotateX: 0, duration: 0.6, stagger: 0.1, scrollTrigger: { trigger: featuresRef.current, start: 'top 75%' } }
       );
 
-      // Benefits animation
       gsap.fromTo(
         '.drems-benefit-item',
         { scale: 0.9, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: '.drems-benefits',
-            start: 'top 80%',
-          },
-        }
+        { scale: 1, opacity: 1, duration: 0.5, stagger: 0.08, scrollTrigger: { trigger: '.drems-benefits', start: 'top 80%' } }
       );
 
-      // Testimonials animation
       gsap.fromTo(
         '.drems-testimonial-card',
         { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: '.drems-testimonials',
-            start: 'top 75%',
-          },
-        }
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, scrollTrigger: { trigger: '.drems-testimonials', start: 'top 75%' } }
       );
 
-      // Phone screen content animation
       gsap.to('.drems-phone-screen-content', {
         y: -20,
         duration: 3,
         ease: 'sine.inOut',
         yoyo: true,
-        repeat: -1
+        repeat: -1,
       });
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [data, loading]);
+
+  if (loading) return <div className="drems-page loading">Loading product details...</div>;
+  if (error) return <div className="drems-page error">Error: {error}</div>;
+  if (!data) return <div className="drems-page">No product data available</div>;
+
+  // ─── Floating icons mapping ────────────────────────────────────────────
+  const iconMap = {
+    GraduationCap,
+    BookOpen,
+    Users,
+    Award,
+    Bell,
+    Sparkles,
+  } as const;
+
+  const floatingIcons = data.floatingIcons?.map?.((item: FloatingIcon) => ({
+    Icon: iconMap[item.iconName as keyof typeof iconMap] || GraduationCap,
+    delay: item.delay,
+    duration: item.duration,
+    pos: item.pos,
+  })) ?? [];
 
   return (
     <div className="drems-page">
-      {/* Hero Section - Completely Redesigned */}
+      {/* Hero Section */}
       <section ref={heroRef} className="drems-hero">
         <div className="drems-hero-bg">
           <div className="drems-hero-grid" />
@@ -231,23 +174,18 @@ export function OurProduct() {
               <div key={i} className="drems-particle" />
             ))}
           </div>
-          {/* <div className="drems-scan-line" /> */}
         </div>
-        
+
         <div className="drems-container">
           <div className="drems-hero-wrapper">
             <div className="drems-hero-content">
               {/* Floating Elements */}
               <div className="drems-floating-elements">
                 {floatingIcons.map(({ Icon, delay, duration, pos }, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="drems-float-icon"
-                    style={{ 
-                      ...pos,
-                      animationDelay: delay,
-                      animationDuration: duration
-                    }}
+                    style={{ ...pos, animationDelay: delay, animationDuration: duration }}
                   >
                     <Icon size={24} />
                   </div>
@@ -259,34 +197,34 @@ export function OurProduct() {
                 <Sparkles size={14} />
                 Education Reimagined
               </div>
-              
+
               <h1 className="drems-hero-title">
                 DREMS<br />
-                <span className="drems-gradient-text">Digital Campus</span>
+                Digital Campus
               </h1>
-              
+
               <p className="drems-hero-description">
-                The next-generation education management system that connects students, 
-                teachers, parents, and administrators in one seamless digital ecosystem. 
-                Experience real-time collaboration, intelligent analytics, and 
-                institutional excellence.
+                {data.heroDescription ||
+                  'The next-generation education management system that connects students, ' +
+                  'teachers, parents, and administrators in one seamless digital ecosystem. ' +
+                  'Experience real-time collaboration, intelligent analytics, and institutional excellence.'}
               </p>
 
               <div className="drems-hero-info">
-                <div className="drems-info-item">
-                  <Cpu size={18} />
-                  <span>AI-Powered Insights</span>
-                </div>
-                <div className="drems-info-item">
-                  <Lock size={18} />
-                  <span>Bank-Grade Security</span>
-                </div>
-                <div className="drems-info-item">
-                  <Clock size={18} />
-                  <span>24/7 Support</span>
-                </div>
+                {data.heroInfo?.map?.((info, idx) => (
+                  <div key={idx} className="drems-info-item">
+                    <Cpu size={18} /> {/* fallback icon */}
+                    <span>{info}</span>
+                  </div>
+                )) || (
+                  <>
+                    <div className="drems-info-item"><Cpu size={18} /><span>AI-Powered Insights</span></div>
+                    <div className="drems-info-item"><Lock size={18} /><span>Bank-Grade Security</span></div>
+                    <div className="drems-info-item"><Clock size={18} /><span>24/7 Support</span></div>
+                  </>
+                )}
               </div>
-              
+
               <div className="drems-hero-cta">
                 <a href="#contact" className="drems-btn drems-btn-primary">
                   <Play size={18} />
@@ -298,20 +236,19 @@ export function OurProduct() {
                 </a>
               </div>
 
-              {/* Hero Stats */}
               <div className="drems-hero-stats">
-                {heroStats.map((stat, idx) => (
+                {data.heroStats?.map?.((stat, idx) => (
                   <div key={idx} className="drems-hero-stat">
                     <span className="drems-stat-value">{stat.value}</span>
                     <span className="drems-stat-label">{stat.label}</span>
                   </div>
-                ))}
+                )) || <div>No stats available</div>}
               </div>
             </div>
 
-            {/* Interactive Phone Mockup */}
+            {/* Interactive Phone Mockup – keep your existing JSX here */}
             <div className="drems-phone-container" ref={phoneRef}>
-              <div className="drems-phone-glow" />
+               <div className="drems-phone-glow" />
               <div className="drems-phone-mockup">
                 <div className="drems-phone-notch" />
                 <div className="drems-phone-screen">
@@ -396,27 +333,30 @@ export function OurProduct() {
       <section className="drems-platform">
         <div className="drems-container">
           <div className="drems-platform-grid">
-            <div className="drems-platform-card">
-              <Smartphone size={32} />
-              <div>
-                <h4>Platform</h4>
-                <p>Android & iOS Native Apps</p>
+            {data.platformInfo?.map?.((info, idx) => (
+              <div key={idx} className="drems-platform-card">
+                <Smartphone size={32} /> {/* fallback */}
+                <div>
+                  <h4>{info.title}</h4>
+                  <p>{info.desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="drems-platform-card">
-              <Globe size={32} />
-              <div>
-                <h4>Deployment</h4>
-                <p>Cloud & On-Premise</p>
-              </div>
-            </div>
-            <div className="drems-platform-card">
-              <ShieldCheck size={32} />
-              <div>
-                <h4>Compliance</h4>
-                <p>GDPR & FERPA Ready</p>
-              </div>
-            </div>
+            )) || (
+              <>
+                <div className="drems-platform-card">
+                  <Smartphone size={32} />
+                  <div><h4>Platform</h4><p>Android & iOS Native Apps</p></div>
+                </div>
+                <div className="drems-platform-card">
+                  <Globe size={32} />
+                  <div><h4>Deployment</h4><p>Cloud & On-Premise</p></div>
+                </div>
+                <div className="drems-platform-card">
+                  <ShieldCheck size={32} />
+                  <div><h4>Compliance</h4><p>GDPR & FERPA Ready</p></div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -443,12 +383,12 @@ export function OurProduct() {
                 <h4>For Students</h4>
               </div>
               <ul className="drems-feature-list">
-                {studentFeatures.map((feature, idx) => (
+                {data.studentFeatures?.map?.((feature, idx) => (
                   <li key={idx}>
-                    <feature.icon size={18} />
+                    <BookOpen size={18} /> {/* fallback */}
                     {feature.text}
                   </li>
-                ))}
+                )) || <li>No student features available</li>}
               </ul>
             </div>
 
@@ -462,12 +402,12 @@ export function OurProduct() {
                 <h4>For Teachers</h4>
               </div>
               <ul className="drems-feature-list">
-                {teacherFeatures.map((feature, idx) => (
+                {data.teacherFeatures?.map?.((feature, idx) => (
                   <li key={idx}>
-                    <feature.icon size={18} />
+                    <Users size={18} /> {/* fallback */}
                     {feature.text}
                   </li>
-                ))}
+                )) || <li>No teacher features available</li>}
               </ul>
             </div>
 
@@ -481,12 +421,12 @@ export function OurProduct() {
                 <h4>For Parents</h4>
               </div>
               <ul className="drems-feature-list">
-                {parentFeatures.map((feature, idx) => (
+                {data.parentFeatures?.map?.((feature, idx) => (
                   <li key={idx}>
-                    <feature.icon size={18} />
+                    <TrendingUp size={18} /> {/* fallback */}
                     {feature.text}
                   </li>
-                ))}
+                )) || <li>No parent features available</li>}
               </ul>
             </div>
 
@@ -500,12 +440,12 @@ export function OurProduct() {
                 <h4>For Administration</h4>
               </div>
               <ul className="drems-feature-list">
-                {adminFeatures.map((feature, idx) => (
+                {data.adminFeatures?.map?.((feature, idx) => (
                   <li key={idx}>
-                    <feature.icon size={18} />
+                    <BarChart3 size={18} /> {/* fallback */}
                     {feature.text}
                   </li>
-                ))}
+                )) || <li>No admin features available</li>}
               </ul>
             </div>
           </div>
@@ -524,15 +464,15 @@ export function OurProduct() {
           </div>
 
           <div className="drems-benefits-grid">
-            {benefits.map((benefit, idx) => (
-              <div className="drems-benefit-item" key={idx}>
+            {data.benefits?.map?.((benefit, idx) => (
+              <div key={idx} className="drems-benefit-item">
                 <div className="drems-benefit-icon">
-                  <benefit.icon size={28} />
+                  <Smartphone size={28} /> {/* fallback */}
                 </div>
                 <h4>{benefit.title}</h4>
                 <p>{benefit.desc}</p>
               </div>
-            ))}
+            )) || <div>No benefits listed</div>}
           </div>
         </div>
       </section>
@@ -545,48 +485,18 @@ export function OurProduct() {
               <span className="drems-section-label">Why Choose Us</span>
               <h2 className="drems-section-title">The DREMS Advantage</h2>
               <ul className="drems-why-list">
-                <li>
-                  <CheckCircle2 className="drems-why-check" size={20} />
-                  <div>
-                    <strong>Easy Interface</strong>
-                    <p>Intuitive design requiring minimal training for all users</p>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 className="drems-why-check" size={20} />
-                  <div>
-                    <strong>Personalized Access</strong>
-                    <p>Role-based dashboards for students, parents, teachers, and admins</p>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 className="drems-why-check" size={20} />
-                  <div>
-                    <strong>Data Security</strong>
-                    <p>Enterprise-grade encryption and compliance with educational standards</p>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 className="drems-why-check" size={20} />
-                  <div>
-                    <strong>Cost Saving</strong>
-                    <p>Reduce administrative overhead and paper-based processes</p>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 className="drems-why-check" size={20} />
-                  <div>
-                    <strong>SMS & Email Integration</strong>
-                    <p>Automated notifications keep everyone informed instantly</p>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 className="drems-why-check" size={20} />
-                  <div>
-                    <strong>Multi-User Friendly</strong>
-                    <p>Handles thousands of concurrent users without performance issues</p>
-                  </div>
-                </li>
+                {data.WhyAdvantages?.map?.((item, idx) => (
+                  <li key={idx}>
+                    <CheckCircle2 className="drems-why-check" size={20} />
+                    <div>
+                      <strong>{item.title}</strong>
+                      <p>{item.desc}</p>
+                    </div>
+                  </li>
+                )) || (
+                  // Fallback if not in JSON yet
+                  <div>No advantages available</div>
+                )}
               </ul>
             </div>
             <div className="drems-why-visual">
@@ -640,8 +550,9 @@ export function OurProduct() {
               What educational leaders say about DREMS
             </p>
           </div>
+
           <div className="drems-testimonials-grid">
-            {testimonials.map((testimonial, index) => (
+            {data.testimonials?.map?.((testimonial, index) => (
               <div key={index} className="drems-testimonial-card">
                 <Quote className="drems-testimonial-quote-icon" size={32} />
                 <p className="drems-testimonial-text">{testimonial.quote}</p>
@@ -653,7 +564,7 @@ export function OurProduct() {
                   </div>
                 </div>
               </div>
-            ))}
+            )) || <div>No testimonials available</div>}
           </div>
         </div>
       </section>

@@ -1,0 +1,116 @@
+{
+  "heroDescription": "Navigate the complexities of modern technology with expert guidance. We help organizations reimagine their future through strategic IT consulting and comprehensive digital transformation programs.",
+  "stats": [
+    { "value": "500+", "label": "Projects Delivered" },
+    { "value": "98%", "label": "Client Satisfaction" },
+    { "value": "40%", "label": "Avg Cost Reduction" },
+    { "value": "10+", "label": "Years Experience" }
+  ],
+  "consultingAreas": [
+    { "name": "IT Strategy", "category": "Planning" },
+    { "name": "Cloud Migration", "category": "Infrastructure" },
+    { "name": "Cybersecurity", "category": "Security" },
+    { "name": "Data Analytics", "category": "Insights" },
+    { "name": "Process Optimization", "category": "Operations" },
+    { "name": "Risk Management", "category": "Compliance" },
+    { "name": "Digital Roadmap", "category": "Strategy" },
+    { "name": "Tech Assessment", "category": "Audit" }
+  ],
+  "consultingFeatures": [
+    {
+      "icon": "Lightbulb",
+      "title": "Strategic IT Planning",
+      "description": "Align technology investments with business goals through comprehensive roadmaps and feasibility studies.",
+      "description2": "Identify opportunities for innovation and competitive advantage in your industry."
+    },
+    {
+      "icon": "Target",
+      "title": "Technology Assessment",
+      "description": "Evaluate your current tech stack, identify gaps, and recommend optimal solutions for growth.",
+      "description2": "Ensure your technology infrastructure is future-ready and scalable."
+    },
+    {
+      "icon": "Shield",
+      "title": "Risk & Compliance",
+      "description": "Navigate complex regulatory landscapes with robust cybersecurity and compliance frameworks.",
+      "description2": "Ensure your organization is protected against evolving threats and regulatory requirements."
+    },
+    {
+      "icon": "BarChart3",
+      "title": "Performance Optimization",
+      "description": "Streamline operations and reduce costs through data-driven process improvements.",
+      "description2": "Leverage analytics to identify inefficiencies and implement best practices for operational excellence."
+    }
+  ],
+  "transformationPillars": [
+    { "name": "Customer Experience", "category": "CX" },
+    { "name": "Operational Agility", "category": "Ops" },
+    { "name": "Culture & Change", "category": "People" },
+    { "name": "Digital Technology", "category": "Tech" },
+    { "name": "Data & Insights", "category": "Analytics" },
+    { "name": "Business Model", "category": "Strategy" },
+    { "name": "Ecosystem Integration", "category": "Partners" },
+    { "name": "Continuous Innovation", "category": "Growth" }
+  ],
+  "transformationFeatures": [
+    {
+      "icon": "RefreshCw",
+      "title": "End-to-End Transformation",
+      "description": "Reimagine your entire business model with digital-first strategies and modern architectures.",
+      "description2": "Transform your organization from the ground up with a comprehensive digital strategy."
+    },
+    {
+      "icon": "Users",
+      "title": "Change Management",
+      "description": "Guide your teams through digital adoption with training, support, and cultural transformation.",
+      "description2": "Foster a culture of innovation and agility to ensure successful transformation outcomes."
+    },
+    {
+      "icon": "Cpu",
+      "title": "Legacy Modernization",
+      "description": "Migrate from outdated systems to cloud-native platforms without disrupting operations.",
+      "description2": "Modernize your technology stack to improve performance, scalability, and security."
+    },
+    {
+      "icon": "Globe",
+      "title": "Ecosystem Integration",
+      "description": "Connect with partners, suppliers, and customers through seamless digital platforms.",
+      "description2": "Build a connected ecosystem that drives collaboration and growth across your value chain."
+    }
+  ],
+  "processSteps": [
+    { "num": "01", "title": "Discover", "desc": "Deep dive into your business, technology, and goals" },
+    { "num": "02", "title": "Strategize", "desc": "Develop tailored roadmap with clear milestones" },
+    { "num": "03", "title": "Transform", "desc": "Execute with agile methodology and change management" },
+    { "num": "04", "title": "Optimize", "desc": "Continuous improvement and performance monitoring" }
+  ],
+  "testimonials": [
+    {
+      "quote": "Their strategic guidance helped us navigate a complex digital transformation. We emerged stronger and more competitive.",
+      "author": "Patricia Williams",
+      "role": "CEO, GlobalBank",
+      "image": "/images/testimonials/patricia.jpg"
+    },
+    {
+      "quote": "The digital transformation roadmap they created was our blueprint for success. Every milestone was hit on time.",
+      "author": "Robert Zhang",
+      "role": "CTO, FinanceHub",
+      "image": "/images/testimonials/robert.jpg"
+    },
+    {
+      "quote": "From assessment to implementation, their consulting team was exceptional. Best ROI we've seen on any project.",
+      "author": "Elena Rodriguez",
+      "role": "COO, ManufacturePro",
+      "image": "/images/testimonials/elena.jpg"
+    }
+  ],
+  "floatingIcons": [
+    { "iconName": "Lightbulb", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "RefreshCw", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Cpu", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Globe", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "BarChart3", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Layers", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "ctaDescription": "Let's discuss how our consulting and transformation expertise can unlock new opportunities for your organization."
+}

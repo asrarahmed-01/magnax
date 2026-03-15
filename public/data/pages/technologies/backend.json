@@ -1,0 +1,162 @@
+{ "backendTech": [
+  {
+    "name": ".NET",
+    "category": "Framework",
+    "description": "Build robust, scalable enterprise applications with Microsoft's powerful cross-platform framework.",
+    "features": ["ASP.NET Core", "Entity Framework", "Web API", "Microservices"],
+    "icon": "/images/tech/dotnet.svg"
+  },
+  {
+    "name": "Java",
+    "category": "Language",
+    "description": "Enterprise-grade solutions with Spring Boot, Hibernate, and battle-tested Java ecosystem.",
+    "features": ["Spring Boot", "Hibernate", "Maven/Gradle", "Jakarta EE"],
+    "icon": "/images/tech/java.svg"
+  },
+  {
+    "name": "Python",
+    "category": "Language",
+    "description": "Rapid development with Django, Flask, and FastAPI for web services and data processing.",
+    "features": ["Django", "FastAPI", "Flask", "Celery"],
+    "icon": "/images/tech/python.svg"
+  },
+  {
+    "name": "Node.js",
+    "category": "Runtime",
+    "description": "High-performance, event-driven JavaScript runtime for scalable network applications.",
+    "features": ["Express.js", "NestJS", "Socket.io", "GraphQL"],
+    "icon": "/images/tech/nodejs.svg"
+  },
+  {
+    "name": "Go",
+    "category": "Language",
+    "description": "Lightning-fast, concurrent programming for high-performance backend systems.",
+    "features": ["Gin", "Goroutines", "Channels", "Standard Library"],
+    "icon": "/images/tech/go.svg"
+  }
+],
+
+"capabilities": [
+  {
+    "icon": "Server",
+    "title": "RESTful APIs",
+    "description": "Design and implement scalable, versioned APIs with comprehensive documentation."    
+  },
+  {
+    "icon": "Database",
+    "title": "Database Integration",
+    "description": "Seamless connectivity with SQL, NoSQL, and in-memory databases."
+  },
+  {
+    "icon": "Shield",
+    "title": "Security & Auth",
+    "description": "OAuth 2.0, JWT, SSO, and enterprise-grade security implementations."
+  },
+  {
+    "icon": "Zap",
+    "title": "High Performance",
+    "description": "Caching, load balancing, and optimization for millions of requests."
+  },
+  {
+    "icon": "Globe",
+    "title": "Microservices",
+    "description": "Distributed systems with service mesh, discovery, and containerization."
+  },
+  {
+    "icon": "Lock",
+    "title": "Data Protection",
+    "description": "Encryption at rest and in transit with compliance (GDPR, HIPAA, SOC2)." 
+  }
+],
+
+ "projects": [
+  {
+    "name": "Enterprise ERP System",
+    "client": "ManufacturePro",
+    "tech": ".NET",
+    "description": "Scalable ERP handling 10k+ concurrent users with real-time inventory.",
+    "results": "10k+ concurrent users', '99.99% uptime', '40% efficiency gain",
+    "image": "/images/projects/erp.jpg"
+  },
+  {
+    "name": "Banking Core System",
+    "client": "SecureBank",
+    "tech": "Java",
+    "description": "Microservices-based banking platform processing 1M+ daily transactions.",
+    "results": "1M+ daily transactions', '50ms response time', 'Zero downtime deploys",
+    "image": "/images/projects/banking-core.jpg"
+  },
+  {
+    "name": "AI Data Pipeline",
+    "client": "DataIntel",
+    "tech": "Python",
+    "description": "Real-time data processing pipeline for machine learning models.",
+    "results": "10TB daily processed', 'Real-time insights', '95% accuracy",
+    "image": "/images/projects/ai-pipeline.jpg"
+  },
+  {
+    "name": "Real-time Chat Platform",
+    "client": "ConnectApp",
+    "tech": "Node.js",
+    "description": "WebSocket-based messaging platform with 5M+ active users.",
+    "results": "5M+ active users', 'Sub-100ms latency', '99.9% delivery rate",
+    "image": "/images/projects/chat-platform.jpg"
+  }
+],
+
+ "testimonials": [
+  {
+    "quote": "Their .NET expertise delivered a rock-solid backend that handles our peak loads effortlessly.",
+    "author": "Robert Chen",
+    "role": "CTO, ManufacturePro",
+    "image": "/images/testimonials/robert.jpg"
+  },
+  {
+    "quote": "The Java microservices architecture they built scaled perfectly as we grew 10x.",
+    "author": "Lisa Park",
+    "role": "VP Engineering, SecureBank",
+    "image": "/images/testimonials/lisa.jpg"
+  },
+  {
+    "quote": "Python data pipelines process terabytes daily. Exceptional engineering quality.",
+    "author": "Ahmed Hassan",
+    "role": "Chief Data Officer, DataIntel",
+    "image": "/images/testimonials/ahmed.jpg"
+  }
+],
+
+ "stats": [
+  { "value": "10M+", "label": "API Requests/Day" },
+  { "value": "99.99%", "label": "Uptime SLA" },
+  { "value": "50ms", "label": "Avg Response" },
+  { "value": "5+", "label": "Years Experience"  }
+],
+
+ "faqs": [
+  {
+    "question": "What backend technologies do you specialize in?",
+    "answer": "We specialize in .NET, Java, Python, Node.js, and Go for building scalable backend systems."
+  },
+  {
+    "question": "Can you integrate with existing databases?",
+    "answer": "Yes, we have experience integrating with SQL, NoSQL, and in-memory databases."
+  },
+  {
+    "question": "How do you ensure security in your backend solutions?",
+    "answer": "We implement OAuth 2.0, JWT, SSO, and follow best practices for enterprise-grade security."
+  },
+  {
+    "question": "Do you support microservices architecture?",
+    "answer": "Yes, we design distributed systems with service mesh, discovery, and containerization."
+  }
+],
+
+ "floatingIcons": [
+  { "Icon": "Cloud", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+  { "Icon": "Terminal", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+  { "Icon": "Database", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+  { "Icon": "GitBranch", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+  { "Icon": "Activity", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+  { "Icon": "Cpu", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%"  } }
+]
+}   

@@ -1,0 +1,24 @@
+{
+  "subtitle": "IT SOLUTIONS",
+  "title": "Transforming Businesses Through Innovative Technology",
+  "description": "We deliver cutting-edge IT solutions that drive growth, efficiency, and digital transformation for businesses worldwide. Partner with us to unlock your full potential.",
+  "patternImage": "/images/hero-pattern.jpg",
+  "slides": [
+    {
+      "src": "/images/hero1.jpeg",
+      "alt": "Team collaboration"
+    },
+    {
+      "src": "/images/hero2.jpeg",
+      "alt": "Description 2"
+    },
+    {
+      "src": "/images/hero3.jpeg",
+      "alt": "Description 3"
+    }
+  ],
+  "badge": {
+    "rating": "4.9/5",
+    "label": "Client Rating"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "subtitle": " ABOUT US ",
+  "title": "Innovative IT Solutions for Your Business",
+  "descriptionLg": "With over a decade of experience, we deliver tailored technology solutions that empower businesses to thrive in the digital age. Our expert team combines innovation with reliability to help you achieve your goals.",
+  "descriptionSm": "We specialize in cloud solutions, cybersecurity, data analytics, and custom software development. Our approach is collaborative, transparent, and focused on delivering measurable results for your business.",
+  "linkText": "Explore Our Services",
+  "image": "/images/about-image.jpg",
+  "stats": [
+    {
+      "icon": "Calendar",
+      "number": "10+",
+      "label": "Years",
+      "sublabel": "Of Experience"
+    },
+    {
+      "icon": "CheckCircle2",
+      "number": "500+",
+      "label": "Projects",
+      "sublabel": "Delivered"
+    },
+    {
+      "icon": "Award",
+      "number": "98%",
+      "label": "Satisfaction",
+      "sublabel": "Client Rate"
+    }
+  ]
+}

@@ -1,56 +1,34 @@
 // src/components/WhyChooseUs/WhyChooseUs.tsx
+
 import { useEffect, useRef, useState } from 'react';
 import { ScrollReveal } from '../../animations/scrollReveal';
 import { Check, Users, Trophy, Clock } from 'lucide-react';
+import { getWhyChooseUsData } from '../../../service/api';
+import type { WhyChooseUsData } from '../../../types';
+
 import './WhyChooseUs.scss';
-
-const features = [
-  {
-    icon: Users,
-    title: 'Expert Team',
-    description: 'Certified professionals with extensive industry experience.',
-  },
-  {
-    icon: Clock,
-    title: '24/7 Support',
-    description: 'Round-the-clock assistance for your business needs.',
-  },
-  {
-    icon: Trophy,
-    title: 'Proven Results',
-    description: 'Track record of successful implementations.',
-  },
-  {
-    icon: Check,
-    title: 'Custom Solutions',
-    description: 'Tailored to your specific business requirements.',
-  },
-];
-
-const stats = [
-  { number: 50, suffix: '+', label: 'Expert Team Members' },
-  { number: 50, suffix: '+', label: 'Industry Awards' },
-  { number: 24, suffix: '/7', label: 'Support Available' },
-];
 
 function Counter({ end, suffix, isInView }: { end: number; suffix: string; isInView: boolean }) {
   const [count, setCount] = useState(0);
+  const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isInView) return;
 
-    let startTime: number;
-    const duration = 2000;
+    const duration = 3000;
 
     const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
+      if (!startTimeRef.current) startTimeRef.current = timestamp;
+
+      const progress = Math.min(
+        (timestamp - startTimeRef.current) / duration,
+        1
+      );
+
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(end * eased));
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      if (progress < 1) requestAnimationFrame(animate);
     };
 
     requestAnimationFrame(animate);
@@ -65,9 +43,46 @@ function Counter({ end, suffix, isInView }: { end: number; suffix: string; isInV
 }
 
 export function WhyChooseUs() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
+  const [data, setData] = useState<WhyChooseUsData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [isInView, setIsInView] = useState(true);
 
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Fetch data
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const whyData = await getWhyChooseUsData();
+        if (mounted) {
+          console.log("WHY DATA:", whyData);
+          setData(whyData);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load why choose us data');
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // Intersection observer for stats animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -86,6 +101,25 @@ export function WhyChooseUs() {
     return () => observer.disconnect();
   }, []);
 
+  if (loading) return <section className="why-choose-us loading">Loading why choose us...</section>;
+  if (error) return <section className="why-choose-us error">Error: {error}</section>;
+  if (!data) return <section className="why-choose-us">No data available</section>;
+
+  // ─── Icon mapping for features ─────────────────────────────────────────
+  const featureIconMap = {
+  Check,
+  Users,
+  Trophy,
+  Clock,
+} as const;
+
+const getFeatureIcon = (iconName?: string) => {
+  if (!iconName) return <Check />;
+
+  const IconComponent = featureIconMap[iconName as keyof typeof featureIconMap];
+  return IconComponent ? <IconComponent /> : <Check />;
+};
+
   return (
     <section className="why-choose-us">
       <div className="why-container">
@@ -93,22 +127,27 @@ export function WhyChooseUs() {
           {/* Left: Features */}
           <div className="features-column">
             <ScrollReveal animation="fadeUp">
-              <span className="section-subtitle"> WHY CHOOSE US </span>
+              <span className="section-subtitle">
+                {data.subtitle || 'WHY CHOOSE US'}
+              </span>
             </ScrollReveal>
 
             <ScrollReveal animation="fadeUp" delay={0.1}>
-              <h2 className="section-title">What Makes Us Different</h2>
+              <h2 className="section-title">
+                {data.title || 'What Makes Us Different'}
+              </h2>
             </ScrollReveal>
 
             <ScrollReveal animation="fadeUp" delay={0.2}>
               <p className="why-desc">
-                We combine technical expertise with a customer-first approach to 
-                deliver solutions that truly make a difference for your business.
+                {data.description ||
+                  'We combine technical expertise with a customer-first approach to ' +
+                  'deliver solutions that truly make a difference for your business.'}
               </p>
             </ScrollReveal>
 
             <div className="features-grid">
-              {features.map((feature, index) => (
+              {data.features?.map?.((feature, index) => (
                 <ScrollReveal
                   key={index}
                   animation="slideLeft"
@@ -116,7 +155,7 @@ export function WhyChooseUs() {
                 >
                   <div className="feature-item">
                     <div className="feature-icon">
-                      <feature.icon />
+                      {getFeatureIcon(feature.icon)}
                     </div>
                     <div className="feature-text">
                       <h4>{feature.title}</h4>
@@ -124,14 +163,16 @@ export function WhyChooseUs() {
                     </div>
                   </div>
                 </ScrollReveal>
-              ))}
+              )) || (
+                <div className="features-empty">No features listed</div>
+              )}
             </div>
           </div>
 
           {/* Right: Stats */}
           <div ref={sectionRef} className="stats-column">
             <div className="stats-grid">
-              {stats.map((stat, index) => (
+              {data.stats?.map?.((stat, index) => (
                 <ScrollReveal
                   key={index}
                   animation="scale"
@@ -144,7 +185,7 @@ export function WhyChooseUs() {
                     <div className="stat-label">{stat.label}</div>
                   </div>
                 </ScrollReveal>
-              ))}
+              )) || <div className="stats-empty">No stats available</div>}
             </div>
 
             {/* Decorative elements */}

@@ -1,10 +1,13 @@
+@use "sass:math";
+@use "sass:color";
+
 // Variables - STRICTLY TWO COLORS ONLY
 $primary: #2b4dff;
 $secondary: #0a165e;
 
 // Derived using only opacity and mixing of these two colors
 $primary-light: rgba($primary, 0.8);
-$primary-dark: mix($secondary, $primary, 40%);
+$primary-dark: color.mix($secondary, $primary, 40%);
 $secondary-light: rgba($secondary, 0.8);
 $white: #ffffff;
 $black: #000000;
@@ -21,7 +24,7 @@ $black: #000000;
 }
 
 @mixin gradient-text {
-  background: linear-gradient(135deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  background: linear-gradient(135deg, $primary 0%, color.mix($primary, $secondary, 50%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -145,11 +148,11 @@ $black: #000000;
   
   @for $i from 1 through 20 {
     &:nth-child(#{$i}) {
-      left: random(100) * 1%;
-      top: random(100) * 1%;
-      animation-delay: random(15) * -1s;
-      animation-duration: 10s + random(10);
-      opacity: random(10) / 10;
+      left: math.random(100) * 1%;
+      top: math.random(100) * 1%;
+      animation-delay: math.random(15) * -1s;
+      animation-duration: 10s + math.random(10);
+      opacity: math.div(math.random(10), 10);
     }
   }
 }
@@ -269,7 +272,7 @@ $black: #000000;
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
     border-radius: 2px;
   }
 }
@@ -428,7 +431,7 @@ $black: #000000;
 // Tech Stack
 .sd-tech-stack {
   padding: 60px 0;
-  background: linear-gradient(180deg, mix($white, $primary, 95%) 0%, $white 100%);
+  background: linear-gradient(180deg, color.mix($white, $primary, 95%) 0%, $white 100%);
   position: relative;
   
   &::before {
@@ -527,7 +530,7 @@ $black: #000000;
   }
 
   &-mvp {
-    background: linear-gradient(180deg, mix($white, $secondary, 98%) 0%, $white 100%);
+    background: linear-gradient(180deg, color.mix($white, $secondary, 98%) 0%, $white 100%);
   }
 }
 
@@ -547,9 +550,9 @@ $black: #000000;
   }
 
   &-mvp {
-    background: rgba($secondary, 0.1);
-    color: $secondary;
-    border: 1px solid rgba($secondary, 0.2);
+    background: rgba($primary, 0.1);
+    color: $primary;
+    border: 1px solid rgba($primary, 0.2);
   }
 }
 
@@ -593,10 +596,10 @@ $black: #000000;
   }
 
   &-mvp:hover {
-    border-color: rgba($secondary, 0.3);
+    border-color: rgba($primary, 0.3);
     
     .sd-feature-icon {
-      background: $secondary;
+      background: $primary;
       color: $white;
       transform: scale(1.1) rotate(5deg);
     }
@@ -612,18 +615,10 @@ $black: #000000;
   justify-content: center;
   margin-bottom: 20px;
   transition: all 0.3s ease;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border: 1px solid rgba($primary, 0.2);
 
-  &-software {
-    background: rgba($primary, 0.1);
-    color: $primary;
-    border: 1px solid rgba($primary, 0.2);
-  }
-
-  &-mvp {
-    background: rgba($secondary, 0.1);
-    color: $secondary;
-    border: 1px solid rgba($secondary, 0.2);
-  }
 }
 
 .sd-feature-title {
@@ -651,11 +646,11 @@ $black: #000000;
   transition: width 0.4s ease;
 
   .sd-feature-card-software & {
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
   }
 
   .sd-feature-card-mvp & {
-    background: linear-gradient(90deg, $secondary, mix($secondary, $primary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $primary, 50%));
   }
 }
 
@@ -847,6 +842,6 @@ $black: #000000;
   border-radius: 5px;
   
   &:hover {
-    background: mix($white, $primary, 20%);
+    background: color.mix($white, $primary, 20%);
   }
 }
