@@ -14,6 +14,7 @@ import {
   Shield,
   Zap,
   Star,
+  Trophy,
 } from 'lucide-react';
 import './Company.scss';
 
@@ -174,7 +175,7 @@ export function Company() {
               <p className="company-hero-description">
                 Magnax is a leading technology solutions provider dedicated to delivering 
                 innovative software development, IT consulting, and digital transformation 
-                services to businesses worldwide for over 15 years.
+                services to businesses worldwide for over 3 years.
               </p>
 
               {/* <div className="company-hero-info">
@@ -255,65 +256,58 @@ export function Company() {
                 <h2>About Company</h2>
               </div>
             </div>
-            <div className="company-about-grid">
-              <div className="company-about-content">
-                <p className="company-lead-text">
-                  Founded in 2009, Magnax has grown from a small software development 
-                  startup to a global technology partner serving Fortune 500 companies 
-                  and innovative startups alike.
-                </p>
-                <p>
-                 Transforming concepts into technologies and solutions fit for the future is at the core of our modeling capabilities. We partner with companies wishing to grow rapidly along with enterprises seeking to enhance their large scale businesses. The quality of software design is not only dictated by good programming practices or current tools, but by understanding what the end-user requires. For this reason we are committed to listening first; collaboratively developing a plan; then concentrating on delivering on that plan.
-                </p>
-                <p>
-                  We believe that technology should be intuitive and have the capability of resolving even the most complex issues. Our strategies use creativity, previous experience, and clever problem-solving skills to build high-quality project-based software; software that meets all end-user requirements and fosters business growth.
+           <div className="company-about-wrapper">
 
-                </p>
+  {/* Row 1 */}
+  <div className="company-about-row">
+    
+    <div className="company-about-text">
+      <p className="company-lead-text">
+        Magnax was established in 2022 and has become a trusted developer of modern software solutions 
+        by creating and partnering with business processes to innovate, grow, and succeed in the digital era.
+      </p>
 
-                <p>
-                  We bring to each solution our unique blend of experience, creativity, curiosity, and youthful exuberance. We love to discover alternative methods for accomplishing tasks, simplifying complexity while delivering results that meet and/or exceed the clients' expectations.
-                </p>
-                {/* <ul className="company-about-list">
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>ISO 27001 Certified</strong>
-                      <span>Information security management</span>
-                    </div>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>CMMI Level 3</strong>
-                      <span>Process maturity model</span>
-                    </div>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>AWS Advanced Partner</strong>
-                      <span>Cloud consulting expertise</span>
-                    </div>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} />
-                    <div>
-                      <strong>Microsoft Gold Partner</strong>
-                      <span>Enterprise solutions</span>
-                    </div>
-                  </li>
-                </ul> */}
-              </div>
-              {/* <div className="company-stats-grid">
-                {stats.map((stat, idx) => (
-                  <div key={idx} className="company-stat-card">
-                    <div className="company-stat-glow" />
-                    <span className="company-stat-value">{stat.value}</span>
-                    <span className="company-stat-label">{stat.label}</span>
-                  </div>
-                ))}
-              </div> */}
-            </div>
+      <p>
+        At the center of our modeling capabilities is the ability to convert ideas into future-proofing technologies and
+         solutions. Working in concert with those companies who want to expand rapidly or assist organisations grow 
+         their existing medium and large scale businesses. We engage in a mutually beneficial relationship by 
+        listening and collaborating with clients closely to provide solutions that will have a measurable impact.
+      </p>
+    </div>
+
+    <div className="company-about-image">
+      <img src="/images/About1.png" alt="Magnax team working" />
+    </div>
+
+  </div>
+
+
+  {/* Row 2 */}
+  <div className="company-about-row reverse">
+
+    <div className="company-about-image">
+      <img src="/images/About2.png" alt="Magnax technology solutions" />
+    </div>
+
+    <div className="company-about-text">
+      <p>
+        We think that technology ought to be instinctive to use, as well as able to solve a 
+        lot of very difficult problems. We use creativity and experience, along with an intelligent 
+        approach to problem-solving, in our strategies,
+         so that we can create reliable software systems that allow you to expand your business.
+      </p>
+
+      <p>
+        Each solution we develop exhibits a fusion of experience, inventiveness, and curiosity.
+         By taking away the complexity and experimenting with different methods of addressing issues, 
+         we can provide results to our clients 
+        that regularly satisfy and, many times, exceed their expectations.
+      </p>
+    </div>
+
+  </div>
+
+</div>
           </div>
         </section>
 
@@ -333,8 +327,8 @@ export function Company() {
                   <Sparkles size={32} />
                 </div>
                 <blockquote>
-                  "To empower businesses with innovative technology solutions that 
-                  drive growth, efficiency, and competitive advantage in the digital age."
+                  "To offer innovative tech solutions to help companies be more productive, 
+                  simplified processes, and make digital transformation go faster."
                 </blockquote>
                 <div className="company-mission-author">— Magnax Leadership</div>
               </div>
@@ -344,24 +338,26 @@ export function Company() {
                     <Globe size={28} />
                   </div>
                   <h3>Vision</h3>
-                  <p>To be the most trusted technology partner for businesses 
-                  undergoing digital transformation worldwide.</p>
+                  <p>To establish ourself as a leading global technology brand that develops innovative and reliable products,
+                     so digital solutions can provide maximum value.</p>
                 </div>
                 <div className="company-mission-item">
                   <div className="company-mission-icon">
                     <Star size={28} />
                   </div>
                   <h3>Values</h3>
-                  <p>Integrity, Excellence, Innovation, Collaboration, and 
-                  Client Success guide every decision we make.</p>
+                  <p>Every decision at Magnax is determined by our core values of Integrity, Excellence, Innovation,
+                     Collaboration, and Client Success. These values
+                     define our company culture and the way we relate to our clients and partners.</p>
                 </div>
                 <div className="company-mission-item">
                   <div className="company-mission-icon">
                     <Shield size={28} />
                   </div>
                   <h3>Commitment</h3>
-                  <p>We commit to delivering solutions that exceed expectations 
-                  and create lasting value for our clients.</p>
+                  <p>Delivering solutions that exceed expectations and create sustainable 
+                    value for clients is at the heart of what we do. 
+                    We believe that our people are our most valuable asset. </p>
                 </div>
               </div>
             </div>
@@ -409,16 +405,16 @@ export function Company() {
             </div>
             <div className="company-team-content">
               <p className="company-team-intro">
-                Our greatest asset is our people. With over 200 professionals across 
-                development, design, project management, and consulting, we bring 
-                diverse perspectives and expertise to every project.
+               Our value comes not only from our skills in development, design, project management, and consulting 
+               (we have over 50 professionals with diverse backgrounds) 
+               but also from our ability to collaborate and share knowledge with others.
               </p>
               <div className="company-team-stats">
                 <div className="company-team-stat">
                   <div className="company-team-icon">
                     <TrendingUp size={32} />
                   </div>
-                  <span>85%</span>
+                  <span>50%</span>
                   <p>Senior Engineers</p>
                 </div>
                 <div className="company-team-stat">
@@ -430,10 +426,10 @@ export function Company() {
                 </div>
                 <div className="company-team-stat">
                   <div className="company-team-icon">
-                    <Globe size={32} />
+                    <Trophy/>
                   </div>
-                  <span>15</span>
-                  <p>Nationalities</p>
+                  <span>100+</span>
+                  <p>Successful Projects</p>
                 </div>
               </div>
             </div>
