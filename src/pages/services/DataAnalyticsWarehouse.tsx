@@ -127,9 +127,10 @@ const techStack = [
   { name: 'Snowflake', category: 'Warehouse' },
   { name: 'Spark', category: 'Big Data' },
   { name: 'Kafka', category: 'Streaming' },
-  { name: 'dbt', category: 'Transform' },
+  { name: 'Databricks', category: 'Data Analytics' },
   { name: 'Tableau', category: 'Viz' },
   { name: 'AWS/Azure', category: 'Cloud' },
+  { name: 'Payspark', category: 'Payment Gateway' },
 ];
 
 const testimonials = [
@@ -287,7 +288,7 @@ export function DataSolutions() {
             
             <div className="ds-hero-cta">
               <a href="/contact" className="ds-btn ds-btn-primary">
-                Analyze Your Data
+                Start Your Project
                 <ArrowRight className="ds-btn-icon" />
               </a>
             </div>

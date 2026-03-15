@@ -7,7 +7,7 @@ import {
   Network, 
   Sparkles,
   ArrowRight,
-  Quote,
+  // Quote,
   Cpu,
   Eye,
   MessageSquare,
@@ -133,26 +133,26 @@ const techStack = [
   { name: 'MLflow', category: 'MLOps' },
 ];
 
-const testimonials = [
-  {
-    quote: "Their predictive models increased our demand forecasting accuracy by 40%. Game-changing for our supply chain.",
-    author: "Dr. James Mitchell",
-    role: "Chief Data Scientist, LogiCorp",
-    image: "https://i.pravatar.cc/150?u=james",
-  },
-  {
-    quote: "The computer vision system they built automated our quality inspection, saving 2000+ man-hours monthly.",
-    author: "Sarah Chen",
-    role: "VP Operations, ManufactureX",
-    image: "https://i.pravatar.cc/150?u=sarah",
-  },
-  {
-    quote: "Finally, an AI integration that actually works in production. Their MLOps expertise is unmatched.",
-    author: "Rahul Sharma",
-    role: "CTO, FinTech Solutions",
-    image: "https://i.pravatar.cc/150?u=rahul",
-  },
-];
+// const testimonials = [
+//   {
+//     quote: "Their predictive models increased our demand forecasting accuracy by 40%. Game-changing for our supply chain.",
+//     author: "Dr. James Mitchell",
+//     role: "Chief Data Scientist, LogiCorp",
+//     image: "https://i.pravatar.cc/150?u=james",
+//   },
+//   {
+//     quote: "The computer vision system they built automated our quality inspection, saving 2000+ man-hours monthly.",
+//     author: "Sarah Chen",
+//     role: "VP Operations, ManufactureX",
+//     image: "https://i.pravatar.cc/150?u=sarah",
+//   },
+//   {
+//     quote: "Finally, an AI integration that actually works in production. Their MLOps expertise is unmatched.",
+//     author: "Rahul Sharma",
+//     role: "CTO, FinTech Solutions",
+//     image: "https://i.pravatar.cc/150?u=rahul",
+//   },
+// ];
 
 
 // --- Component ---
@@ -219,18 +219,18 @@ export function MachineLearningAI() {
         }
       );
       
-      // Testimonials
-      gsap.fromTo(
-        '.ml-testimonial-card',
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          scrollTrigger: { trigger: '.ml-testimonials', start: 'top 80%' },
-        }
-      );
+      // // Testimonials
+      // gsap.fromTo(
+      //   '.ml-testimonial-card',
+      //   { y: 40, opacity: 0 },
+      //   {
+      //     y: 0,
+      //     opacity: 1,
+      //     duration: 0.6,
+      //     stagger: 0.15,
+      //     scrollTrigger: { trigger: '.ml-testimonials', start: 'top 80%' },
+      //   }
+      // );
     });
 
     return () => ctx.revert();
@@ -421,7 +421,7 @@ export function MachineLearningAI() {
         </div>
       </section>
 
-      {/* --- Testimonials --- */}
+      {/* --- Testimonials ---
       <section className="ml-testimonials">
         <div className="ml-container">
           <div className="ml-section-header">
@@ -444,7 +444,7 @@ export function MachineLearningAI() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* --- CTA Section --- */}
       <section className="ml-cta">
