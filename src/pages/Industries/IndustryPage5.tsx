@@ -1,54 +1,66 @@
-import { useEffect, useRef } from 'react';
+// src/pages/IndustryPage5.tsx
+
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  ArrowRight, 
-  Plane,
+
+import {
+  ArrowRight,
   UtensilsCrossed,
+  Plane,
   CheckCircle2,
-  Sparkles
+  Sparkles,
 } from 'lucide-react';
+
+import { getIndustryPage5Data } from '../../service/api';
+import type { IndustryPageData } from '../../types';
+
 import './IndustryPage.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const industries = [
-  {
-    id: 'travel',
-    title: 'Travel & Hospitality',
-    description: 'We create booking engines, hotel management systems, and travel apps that provide seamless experiences for travelers and efficient operations for hospitality businesses. Our solutions help companies in the travel industry deliver exceptional customer service.',
-    image: '/images/industries/travel-hospitality.jpg',
-    icon: Plane,
-    features: [
-      'Booking engines',
-      'Hotel management systems',
-      'Travel applications',
-      'Reservation platforms',
-      'Customer service tools',
-      'Loyalty programs'
-    ]
-  },
-  {
-    id: 'restaurants',
-    title: 'Restaurants',
-    description: 'We develop online ordering systems, POS software, and delivery apps that help restaurants streamline operations and provide better service to their customers. Our technology solutions enable restaurants to grow their business efficiently.',
-    image: '/images/industries/restaurants.jpg',
-    icon: UtensilsCrossed,
-    features: [
-      'Online ordering systems',
-      'POS software',
-      'Delivery apps',
-      'Kitchen display systems',
-      'Table management',
-      'Customer loyalty programs'
-    ]
-  }
-];
-
 export function IndustryPage5() {
+  const [data, setData] = useState<IndustryPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const heroRef = useRef<HTMLDivElement>(null);
 
+  // Fetch data
   useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const pageData = await getIndustryPage5Data();
+        if (mounted) {
+          setData(pageData);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load industry data');
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // GSAP animations
+  useEffect(() => {
+    if (loading || !data) return;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.industry-hero-content',
@@ -74,7 +86,22 @@ export function IndustryPage5() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [data, loading]);
+
+  if (loading) return <div className="industry-page loading">Loading industries...</div>;
+  if (error) return <div className="industry-page error">Error: {error}</div>;
+  if (!data) return <div className="industry-page">No industry data available</div>;
+
+  // ─── Icon mapping ─────────────────────────────────────────────────────
+  const industryIconMap = {
+    UtensilsCrossed,
+    Plane,
+  } as const;
+
+  const getIndustryIcon = (iconName: string) => {
+    const IconComponent = industryIconMap[iconName as keyof typeof industryIconMap];
+    return IconComponent ? <IconComponent size={32} /> : <UtensilsCrossed size={32} />;
+  };
 
   return (
     <div className="industry-page">
@@ -85,21 +112,21 @@ export function IndustryPage5() {
           <div className="industry-hero-orb industry-orb-1" />
           <div className="industry-hero-orb industry-orb-2" />
         </div>
-        
+
         <div className="industry-container">
           <div className="industry-hero-content">
             <div className="industry-hero-badge">
               <Sparkles size={14} />
               Industries We Serve
             </div>
-            
+
             <h1 className="industry-hero-title">
-              Travel &<br />
-              <span className="industry-gradient-text">Restaurants</span>
+              {data.heroTitle || 'Travel & Restaurants'}
             </h1>
-            
+
             <p className="industry-hero-description">
-              Delivering technology solutions for hospitality businesses to enhance customer experiences and streamline operations.
+              {data.heroDescription ||
+                'Delivering technology solutions for hospitality businesses to enhance customer experiences and streamline operations.'}
             </p>
           </div>
         </div>
@@ -108,38 +135,35 @@ export function IndustryPage5() {
       {/* Industries Content */}
       <main className="industry-main">
         <div className="industry-container">
-          {industries.map((industry) => {
-            const IconComponent = industry.icon;
-            return (
-              <section key={industry.id} className="industry-section">
-                <div className="industry-content-grid">
-                  <div className="industry-image-wrapper">
-                    <img src={industry.image} alt={industry.title} />
-                    <div className="industry-image-overlay" />
-                    <div className="industry-image-icon">
-                      <IconComponent size={32} />
-                    </div>
-                  </div>
-                  <div className="industry-content">
-                    <div className="industry-label">Industry</div>
-                    <h2 className="industry-title">{industry.title}</h2>
-                    <p className="industry-description">{industry.description}</p>
-                    <div className="industry-features">
-                      <h4>What We Support:</h4>
-                      <ul>
-                        {industry.features.map((feature, idx) => (
-                          <li key={idx}>
-                            <CheckCircle2 size={18} />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+          {data.industries?.map?.((industry) => (
+            <section key={industry.id} className="industry-section">
+              <div className="industry-content-grid">
+                <div className="industry-image-wrapper">
+                  <img src={industry.image} alt={industry.title} />
+                  <div className="industry-image-overlay" />
+                  <div className="industry-image-icon">
+                    {getIndustryIcon(industry.icon)}
                   </div>
                 </div>
-              </section>
-            );
-          })}
+                <div className="industry-content">
+                  <div className="industry-label">Industry</div>
+                  <h2 className="industry-title">{industry.title}</h2>
+                  <p className="industry-description">{industry.description}</p>
+                  <div className="industry-features">
+                    <h4>What We Support:</h4>
+                    <ul>
+                      {industry.features?.map?.((feature, idx) => (
+                        <li key={idx}>
+                          <CheckCircle2 size={18} />
+                          <span>{feature}</span>
+                        </li>
+                      )) || <li>No features listed</li>}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )) || <div>No industries available</div>}
         </div>
       </main>
 
@@ -150,7 +174,8 @@ export function IndustryPage5() {
             <div className="industry-cta-glow" />
             <h2 className="industry-cta-title">Ready to Transform Your Industry?</h2>
             <p className="industry-cta-description">
-              Let's discuss how our technology solutions can help your business grow and succeed.
+              {data.ctaDescription ||
+                "Let's discuss how our technology solutions can help your business grow and succeed."}
             </p>
             <a href="/contact" className="industry-btn industry-btn-primary industry-btn-lg">
               Contact Us

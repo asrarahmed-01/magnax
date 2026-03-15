@@ -1,5 +1,5 @@
 // src/components/Footer/Footer.tsx
-//import React from 'react';
+import { useState, useEffect } from 'react';
 import { ScrollReveal } from '../animations/scrollReveal';
 import { 
   Facebook, 
@@ -10,11 +10,11 @@ import {
   Mail
 } from 'lucide-react';
 import './Footer.scss';
-import { WhatsAppButton }from '../Whatsapp/WhatsAppButton';
+import { WhatsAppButton } from '../Whatsapp/WhatsAppButton';
 
 const quickLinks = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About Us', href: '#about' },
+  { name: 'Home', href: '/home/hero' },
+  { name: 'About Us', href: '/home/about' },
   { name: 'Services', href: '#services' },
   { name: 'Process', href: '#process' },
   { name: 'Contact', href: '#cta' },
@@ -36,6 +36,18 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Show scroll-to-top button only after scrolling down
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -168,15 +180,16 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top Button – appears only after scrolling */}
       <button
         onClick={scrollToTop}
-        className="scroll-to-top"
+        className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
         aria-label="Scroll to top"
       >
         <ArrowUp className="arrow-up-icon" />
       </button>
-      <WhatsAppButton phoneNumber="+918123660270"  />
+
+      <WhatsAppButton phoneNumber="+918123660270" />
     </footer>
   );
 }

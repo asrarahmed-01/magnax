@@ -1,4 +1,6 @@
 /* Services.scss – exact styles from your original code */
+@use "sass:math";
+@use "sass:color";
 
 .services-section {
   padding: 1rem 0;
@@ -114,7 +116,7 @@
   width: 4rem;
   height: 4rem;
   border-radius: 0.75rem;
-  background: var(--brand-secondary, #0066ff) / 0.1;
+  background: math.div(var(--brand-secondary, #0066ff), 0.1);
   display: flex;
   align-items: center;
   justify-content: center;

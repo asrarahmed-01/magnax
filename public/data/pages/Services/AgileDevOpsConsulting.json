@@ -1,0 +1,110 @@
+{
+  "heroDescription": "Accelerate your software delivery with modern practices. We help organizations adopt agile methodologies and implement DevOps automation to ship faster, safer, and with higher quality.",
+  "stats": [
+    { "value": "10x", "label": "Faster Deployments" },
+    { "value": "60%", "label": "Reduced Cycle Time" },
+    { "value": "99.99%", "label": "Deployment Success" },
+    { "value": "50+", "label": "Transformations" }
+  ],
+  "agilePractices": [
+    { "name": "Scrum", "category": "Framework" },
+    { "name": "Kanban", "category": "Flow" },
+    { "name": "SAFe", "category": "Scale" },
+    { "name": "Extreme Programming", "category": "Engineering" },
+    { "name": "User Stories", "category": "Planning" },
+    { "name": "Sprint Planning", "category": "Ceremony" },
+    { "name": "Retrospectives", "category": "Improvement" },
+    { "name": "Continuous Feedback", "category": "Culture" }
+  ],
+  "agileFeatures": [
+    {
+      "icon": "Kanban",
+      "title": "Agile Transformation",
+      "description": "Transform your organization with proven agile methodologies tailored to your culture and goals.",
+      "description2": "Our experienced coaches work closely with your teams to implement frameworks like Scrum, Kanban, and SAFe, fostering a culture of continuous improvement and high performance."
+    },
+    {
+      "icon": "Users",
+      "title": "Team Coaching",
+      "description": "Hands-on coaching to build high-performing, self-organizing teams that deliver consistently.",
+      "description2": "We provide personalized coaching to help teams develop the skills and mindset needed for sustained agile success."
+    },
+    {
+      "icon": "Target",
+      "title": "Product Ownership",
+      "description": "Develop effective product owners who maximize value and align stakeholders with delivery teams.",
+      "description2": "Our product ownership coaching helps teams understand customer needs, prioritize work effectively, and deliver value consistently."
+    },
+    {
+      "icon": "Clock",
+      "title": "Flow Optimization",
+      "description": "Eliminate bottlenecks and reduce cycle time with value stream mapping and lean practices.",
+      "description2": "We analyze your delivery process to identify inefficiencies and implement lean practices that optimize flow and increase throughput."
+    }
+  ],
+  "devopsTools": [
+    { "name": "Docker", "category": "Container" },
+    { "name": "Kubernetes", "category": "Orchestration" },
+    { "name": "Jenkins", "category": "CI/CD" },
+    { "name": "GitHub Actions", "category": "Automation" },
+    { "name": "Terraform", "category": "IaC" },
+    { "name": "Ansible", "category": "Config" },
+    { "name": "Prometheus", "category": "Monitoring" },
+    { "name": "AWS/Azure/GCP", "category": "Cloud" }
+  ],
+  "devopsFeatures": [
+    {
+      "icon": "Container",
+      "title": "CI/CD Pipelines",
+      "description": "Automated build, test, and deployment pipelines that enable multiple releases per day.",
+      "description2": "We design and implement CI/CD pipelines that integrate with your existing tools, enabling faster and more reliable software delivery."
+    },
+    {
+      "icon": "Server",
+      "title": "Infrastructure as Code",
+      "description": "Provision and manage infrastructure through code for consistency and scalability.",
+      "description2": "Our infrastructure as code solutions ensure consistent environments across development, testing, and production, reducing deployment errors and improving scalability."
+    },
+    {
+      "icon": "Monitor",
+      "title": "Observability",
+      "description": "Comprehensive monitoring, logging, and alerting for proactive issue detection.",
+      "description2": "We implement observability solutions that provide deep insights into your applications and infrastructure, enabling proactive issue detection and faster resolution."
+    },
+    {
+      "icon": "Shield",
+      "title": "DevSecOps",
+      "description": "Integrate security into every stage of the pipeline with automated compliance checks.",
+      "description2": "Our DevSecOps approach ensures that security is integrated into your development process, with automated checks and compliance monitoring to protect your applications and data."
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Their agile coaches transformed how we work. Our teams are more productive and happier than ever before.",
+      "author": "Sarah Mitchell",
+      "role": "VP Engineering, TechStartup Inc.",
+      "image": "/images/testimonials/sarah.jpg"
+    },
+    {
+      "quote": "The DevOps automation they built cut our deployment time from days to minutes. Game-changing for our business.",
+      "author": "James Chen",
+      "role": "CTO, CloudScale",
+      "image": "/images/testimonials/james.jpg"
+    },
+    {
+      "quote": "Finally, a consulting team that understands both the technical and cultural sides of transformation.",
+      "author": "Maria Rodriguez",
+      "role": "Head of Platform, SecureBank",
+      "image": "/images/testimonials/maria.jpg"
+    }
+  ],
+  "floatingIcons": [
+    { "iconName": "Users", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "GitBranch", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Container", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Zap", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Server", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Workflow", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "ctaDescription": "Let's discuss how agile and DevOps practices can transform your software delivery capabilities."
+}

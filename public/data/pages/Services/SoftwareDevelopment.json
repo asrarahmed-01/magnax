@@ -1,0 +1,99 @@
+{
+  "heroDescription": "From concept to market-ready product, we build custom software solutions that drive growth. Whether you need a full-scale enterprise platform or a rapid MVP to validate your idea, our expert team delivers excellence.",
+  "techStack": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "Python", "category": "AI/ML" },
+    { "name": "AWS", "category": "Cloud" },
+    { "name": "TypeScript", "category": "Language" },
+    { "name": "SQL", "category": "Database" },
+    { "name": "Java", "category": "Language" },
+    { "name": "React Native", "category": "Mobile" }
+  ],
+  "softwareFeatures": [
+    {
+      "title": "Custom Software Development",
+      "description": "Custom-built solutions that fit your business operations and business processes",
+      "description2": "We build software that accelerates your business, from idea to launch.",
+      "icon": "Code2"
+    },
+    {
+      "title": "Enterprise Solutions",
+      "description": "Scalable, secure, and powerful applications for large enterprises.",
+      "description2": "Enterprise-ready applications that run on enterprise-grade security.",
+        "icon": "Shield"
+    },
+    {
+      "title": "System Integration",
+      "description": "Integrate legacy systems with new APIs and microservices architecture.",
+      "description2": "We make all systems talk to each other.",
+        "icon": "Zap"
+    },
+    {
+      "title": "Legacy Modernization",
+      "description": "Modernize legacy systems with cloud-native, microservices applications seamlessly.",
+      "description2": "Upgrade your legacy systems without losing the business value.",
+      "icon": "LineChart"
+    }
+  ],
+  "mvpFeatures": [
+    {
+      "title": "Rapid Prototyping",
+      "description": "Click through prototype in weeks, not months. Validate your ideas.",
+      "description2": "We rapidly develop working prototypes that validate and test your ideas.",
+         "icon": "Rocket"
+    },
+    {
+      "title": "User-Centric Design",
+      "description": "Development from day 1 meant for user testing and iterations",
+      "description2": "We strive for an experience that your product MVP is centered around users.",
+      "icon": "Users"
+    },
+    {
+      "title": "Speed to Market",
+      "description": "MVP in 4-8 weeks, lose no time to market, we help you win the market share.",
+      "description2": "Fast and agile development techniques help us deliver quicker than the competition.",
+      "icon": "Zap"
+    },
+    {
+      "title": "Scalable Architecture",
+      "description": "Your MVP should start small and grow from there. We help you build an MVP that can handle millions of users.",
+      "description2": "We understand the needs of building MVPs that can grow with no limits.",
+      "icon": "LineChart"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "They transformed our vision into a working product in record time. The MVP helped us secure our Series A funding.",
+      "author": "Sarah Chen",
+      "role": "CEO, EduSpark",
+      "image": "/images/testimonials/sarah.jpg"
+    },
+    {
+      "quote": "The team's technical expertise and commitment to quality is unmatched. Our platform handles millions of transactions flawlessly.",
+      "author": "Michael Torres",
+      "role": "CTO, TechVenture Inc.",
+      "image": "/images/testimonials/michael.jpg"
+    },
+    {
+      "quote": "From idea to launch in 8 weeks. They understood our market and delivered beyond expectations.",
+      "author": "David Kim",
+      "role": "Founder, GreenEnergy Co.",
+      "image": "/images/testimonials/david.jpg"
+    }
+  ],
+  "stats": [
+    { "value": "200+", "label": "Projects Delivered" },
+    { "value": "50+", "label": "MVPs Launched" },
+    { "value": "98%", "label": "Client Satisfaction" },
+    { "value": "6+", "label": "Years Experience" }
+  ],
+  "floatingIcons": [
+    { "iconName": "Code2", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "Terminal", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Box", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Zap", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Cpu", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Globe", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ]
+}

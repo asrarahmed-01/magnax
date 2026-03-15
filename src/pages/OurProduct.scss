@@ -1,10 +1,13 @@
+@use "sass:math";
+@use "sass:color";
+
 // Variables - STRICTLY TWO COLORS ONLY
 $primary: #2b4dff;
 $secondary: #0a165e;
 
 // Derived using only opacity and mixing of these two colors
 $primary-light: rgba($primary, 0.8);
-$primary-dark: mix($secondary, $primary, 40%);
+$primary-dark: color.mix($secondary, $primary, 40%);
 $secondary-light: rgba($secondary, 0.8);
 $white: #ffffff;
 $black: #000000;
@@ -21,7 +24,7 @@ $black: #000000;
 }
 
 @mixin gradient-text {
-  background: linear-gradient(135deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  background: linear-gradient(135deg, $primary 0%, color.mix($primary, $secondary, 50%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -109,7 +112,7 @@ $black: #000000;
   position: relative;
   min-height: 100vh;
   @include flex-center;
-  padding: 120px 0 80px;
+  padding: 20px 0 20px;
   @include gradient-bg;
   overflow: hidden;
 }
@@ -207,11 +210,11 @@ $black: #000000;
   
   @for $i from 1 through 20 {
     &:nth-child(#{$i}) {
-      left: random(100) * 1%;
-      top: random(100) * 1%;
-      animation-delay: random(15) * -1s;
-      animation-duration: 10s + random(10);
-      opacity: random(10) / 10;
+      left: math.random(100) * 1%;
+      top: math.random(100) * 1%;
+      animation-delay: math.random(15) * -1s;
+      animation-duration: 10s + math.random(10);
+      opacity: math.div(math.random(10), 10);
     }
   }
 }
@@ -343,7 +346,7 @@ $black: #000000;
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%));
+    background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%));
     border-radius: 2px;
   }
 }
@@ -502,7 +505,7 @@ $black: #000000;
 .drems-phone-screen {
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, mix($white, $primary, 90%) 0%, $white 100%);
+  background: linear-gradient(180deg, color.mix($white, $primary, 90%) 0%, $white 100%);
   border-radius: 32px;
   overflow: hidden;
   display: flex;
@@ -854,7 +857,7 @@ $black: #000000;
 
 // Features Section
 .drems-features-section {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $white;
 }
 
@@ -908,7 +911,7 @@ $black: #000000;
   }
 
   &.drems-student {
-    &::before { background: linear-gradient(90deg, $primary, mix($primary, $secondary, 50%)); }
+    &::before { background: linear-gradient(90deg, $primary, color.mix($primary, $secondary, 50%)); }
     .drems-feature-icon-wrapper { 
       background: rgba($primary, 0.1);
       color: $primary;
@@ -916,10 +919,10 @@ $black: #000000;
   }
 
   &.drems-teacher {
-    &::before { background: linear-gradient(90deg, mix($primary, $secondary, 30%), $secondary); }
+    &::before { background: linear-gradient(90deg, color.mix($primary, $secondary, 30%), $secondary); }
     .drems-feature-icon-wrapper { 
-      background: rgba($secondary, 0.1);
-      color: $secondary;
+      background: rgba($primary, 0.1);
+      color: $primary;
     }
   }
 
@@ -932,10 +935,10 @@ $black: #000000;
   }
 
   &.drems-admin {
-    &::before { background: linear-gradient(90deg, $secondary, mix($secondary, $primary, 50%)); }
+    &::before { background: linear-gradient(90deg, $secondary, color.mix($secondary, $primary, 50%)); }
     .drems-feature-icon-wrapper { 
-      background: rgba($secondary, 0.1);
-      color: $secondary;
+      background: rgba($primary, 0.1);
+      color: $primary;
     }
   }
 }
@@ -1009,7 +1012,7 @@ $black: #000000;
 
 // Benefits Section
 .drems-benefits {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, rgba($secondary, 0.02) 0%, $white 100%);
 }
 
@@ -1074,7 +1077,7 @@ $black: #000000;
 
 // Why DREMS Section
 .drems-why {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $white;
 }
 
@@ -1280,7 +1283,7 @@ $black: #000000;
 
 .drems-bar {
   flex: 1;
-  background: linear-gradient(180deg, $primary 0%, mix($primary, $secondary, 50%) 100%);
+  background: linear-gradient(180deg, $primary 0%, color.mix($primary, $secondary, 50%) 100%);
   border-radius: 6px 6px 0 0;
   transition: all 0.3s ease;
   animation: bar-grow 2s ease-out forwards;
@@ -1304,7 +1307,7 @@ $black: #000000;
 
 // Testimonials
 .drems-testimonials {
-  padding: 120px 0;
+  padding: 60px 0;
   background: linear-gradient(180deg, rgba($primary, 0.03) 0%, $white 100%);
 }
 
@@ -1383,7 +1386,7 @@ $black: #000000;
 
 // CTA Section
 .drems-cta {
-  padding: 120px 0;
+  padding: 60px 0;
   background: $white;
   position: relative;
 }
@@ -1492,6 +1495,6 @@ $black: #000000;
   border-radius: 5px;
   
   &:hover {
-    background: mix($white, $primary, 20%);
+    background: color.mix($white, $primary, 20%);
   }
 }

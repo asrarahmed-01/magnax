@@ -1,54 +1,66 @@
-import { useEffect, useRef } from 'react';
+// src/pages/IndustryPage4.tsx
+
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  ArrowRight, 
+
+import {
+  ArrowRight,
   Vote,
-  Film,
+  Factory,
   CheckCircle2,
-  Sparkles
+  Sparkles,
 } from 'lucide-react';
+
+import { getIndustryPage4Data } from '../../service/api';
+import type { IndustryPageData } from '../../types';
+
 import './IndustryPage.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const industries = [
-  {
-    id: 'politics',
-    title: 'Politics',
-    description: 'We develop campaign management tools, data analytics platforms, and voter engagement applications to help political organizations connect with constituents and manage campaigns effectively. Our solutions enable better decision-making through data-driven insights.',
-    image: '/images/industries/politics.jpg',
-    icon: Vote,
-    features: [
-      'Campaign management tools',
-      'Data analytics platforms',
-      'Voter engagement apps',
-      'Fundraising systems',
-      'Volunteer coordination',
-      'Polling & survey tools'
-    ]
-  },
-  {
-    id: 'media',
-    title: 'Media & Entertainment',
-    description: 'We build streaming platforms, content management systems, and mobile apps that deliver engaging entertainment experiences to audiences across multiple devices and platforms. Our solutions help media companies reach wider audiences effectively.',
-    image: '/images/industries/media-entertainment.jpg',
-    icon: Film,
-    features: [
-      'Streaming platforms',
-      'Content management systems',
-      'Mobile entertainment apps',
-      'Video production tools',
-      'Digital broadcasting',
-      'Audience analytics'
-    ]
-  }
-];
-
 export function IndustryPage4() {
+  const [data, setData] = useState<IndustryPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const heroRef = useRef<HTMLDivElement>(null);
 
+  // Fetch data
   useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const pageData = await getIndustryPage4Data();
+        if (mounted) {
+          setData(pageData);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load industry data');
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // GSAP animations
+  useEffect(() => {
+    if (loading || !data) return;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.industry-hero-content',
@@ -74,7 +86,22 @@ export function IndustryPage4() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [data, loading]);
+
+  if (loading) return <div className="industry-page loading">Loading industries...</div>;
+  if (error) return <div className="industry-page error">Error: {error}</div>;
+  if (!data) return <div className="industry-page">No industry data available</div>;
+
+  // ─── Icon mapping ─────────────────────────────────────────────────────
+  const industryIconMap = {
+    Vote,
+    Factory,
+  } as const;
+
+  const getIndustryIcon = (iconName: string) => {
+    const IconComponent = industryIconMap[iconName as keyof typeof industryIconMap];
+    return IconComponent ? <IconComponent size={32} /> : <Vote size={32} />;
+  };
 
   return (
     <div className="industry-page">
@@ -85,21 +112,21 @@ export function IndustryPage4() {
           <div className="industry-hero-orb industry-orb-1" />
           <div className="industry-hero-orb industry-orb-2" />
         </div>
-        
+
         <div className="industry-container">
           <div className="industry-hero-content">
             <div className="industry-hero-badge">
               <Sparkles size={14} />
               Industries We Serve
             </div>
-            
+
             <h1 className="industry-hero-title">
-              Politics &<br />
-              <span className="industry-gradient-text">Media</span>
+              {data.heroTitle || 'Politics & Manufacturing'}
             </h1>
-            
+
             <p className="industry-hero-description">
-              Creating powerful digital platforms for political campaigns and media entertainment companies.
+              {data.heroDescription ||
+                'Creating powerful digital platforms for political campaigns and manufacturing companies.'}
             </p>
           </div>
         </div>
@@ -108,38 +135,35 @@ export function IndustryPage4() {
       {/* Industries Content */}
       <main className="industry-main">
         <div className="industry-container">
-          {industries.map((industry) => {
-            const IconComponent = industry.icon;
-            return (
-              <section key={industry.id} className="industry-section">
-                <div className="industry-content-grid">
-                  <div className="industry-image-wrapper">
-                    <img src={industry.image} alt={industry.title} />
-                    <div className="industry-image-overlay" />
-                    <div className="industry-image-icon">
-                      <IconComponent size={32} />
-                    </div>
-                  </div>
-                  <div className="industry-content">
-                    <div className="industry-label">Industry</div>
-                    <h2 className="industry-title">{industry.title}</h2>
-                    <p className="industry-description">{industry.description}</p>
-                    <div className="industry-features">
-                      <h4>What We Support:</h4>
-                      <ul>
-                        {industry.features.map((feature, idx) => (
-                          <li key={idx}>
-                            <CheckCircle2 size={18} />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+          {data.industries?.map?.((industry) => (
+            <section key={industry.id} className="industry-section">
+              <div className="industry-content-grid">
+                <div className="industry-image-wrapper">
+                  <img src={industry.image} alt={industry.title} />
+                  <div className="industry-image-overlay" />
+                  <div className="industry-image-icon">
+                    {getIndustryIcon(industry.icon)}
                   </div>
                 </div>
-              </section>
-            );
-          })}
+                <div className="industry-content">
+                  <div className="industry-label">Industry</div>
+                  <h2 className="industry-title">{industry.title}</h2>
+                  <p className="industry-description">{industry.description}</p>
+                  <div className="industry-features">
+                    <h4>What We Support:</h4>
+                    <ul>
+                      {industry.features?.map?.((feature, idx) => (
+                        <li key={idx}>
+                          <CheckCircle2 size={18} />
+                          <span>{feature}</span>
+                        </li>
+                      )) || <li>No features listed</li>}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )) || <div>No industries available</div>}
         </div>
       </main>
 
@@ -150,7 +174,8 @@ export function IndustryPage4() {
             <div className="industry-cta-glow" />
             <h2 className="industry-cta-title">Ready to Transform Your Industry?</h2>
             <p className="industry-cta-description">
-              Let's discuss how our technology solutions can help your business grow and succeed.
+              {data.ctaDescription ||
+                "Let's discuss how our technology solutions can help your business grow and succeed."}
             </p>
             <a href="/contact" className="industry-btn industry-btn-primary industry-btn-lg">
               Contact Us

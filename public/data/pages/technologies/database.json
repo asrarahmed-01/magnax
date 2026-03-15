@@ -1,0 +1,121 @@
+{
+  "databaseTech": [
+    {
+      "name": "SQL Server",
+      "category": "Relational",
+      "description": "Microsoft's enterprise RDBMS with advanced analytics, reporting, and Azure integration.",
+      "features": ["T-SQL", "SSAS/SSIS/SSRS", "Always On", "Columnstore"],
+      "icon": "/images/tech/sqlserver.svg"
+    },
+    {
+      "name": "Oracle",
+      "category": "Relational",
+      "description": "World's leading enterprise database with unmatched scalability and security features.",
+      "features": ["PL/SQL", "RAC", "Data Guard", "Partitioning"],
+      "icon": "/images/tech/oracle.svg"
+    },
+    {
+      "name": "MySQL",
+      "category": "Relational",
+      "description": "World's most popular open-source database powering web applications at scale.",
+      "features": ["InnoDB", "Replication", "Partitioning", "JSON Support"],
+      "icon": "/images/tech/mysql.svg"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Relational",
+      "description": "Advanced open-source database with extensibility and standards compliance.",
+      "features": ["ACID Compliant", "JSONB", "Full-text Search", "PostGIS"],
+      "icon": "/images/tech/postgresql.svg"
+    },
+    {
+      "name": "MongoDB",
+      "category": "NoSQL",
+      "description": "Document-oriented database for flexible, scalable, and high-performance applications.",
+      "features": ["Document Model", "Atlas Cloud", "Aggregation", "Sharding"],
+      "icon": "/images/tech/mongodb.svg"
+    }
+  ],
+  "capabilities": [
+    { "icon": "Server", "title": "Database Design", "description": "Normalized schemas, indexing strategies, and query optimization." },
+    { "icon": "RefreshCw", "title": "Migration & Upgrade", "description": "Seamless migration between platforms with zero downtime." },
+    { "icon": "Shield", "title": "Security & Compliance", "description": "Encryption, auditing, and compliance with GDPR, HIPAA, SOC2." },
+    { "icon": "BarChart3", "title": "Performance Tuning", "description": "Query optimization, partitioning, and caching strategies." },
+    { "icon": "Zap", "title": "High Availability", "description": "Clustering, replication, and disaster recovery solutions." },
+    { "icon": "Lock", "title": "Backup & Recovery", "description": "Automated backups, point-in-time recovery, and testing." }
+  ],
+  "projects": [
+    {
+      "name": "Data Warehouse",
+      "client": "RetailGiant",
+      "tech": "SQL Server",
+      "description": "Enterprise data warehouse processing 10TB+ daily with real-time analytics.",
+      "results": ["10TB+ daily", "Sub-second queries", "99.99% uptime"],
+      "image": "/images/projects/data-warehouse.jpg"
+    },
+    {
+      "name": "Core Banking DB",
+      "client": "GlobalBank",
+      "tech": "Oracle",
+      "description": "Mission-critical banking database handling 1M+ transactions per hour.",
+      "results": ["1M+ TPS", "Zero data loss", "Active-active DR"],
+      "image": "/images/projects/banking-db.jpg"
+    },
+    {
+      "name": "E-commerce Platform",
+      "client": "ShopMax",
+      "tech": "MySQL",
+      "description": "High-traffic e-commerce database with read replicas and caching.",
+      "results": ["100k QPS", "5x read scaling", "50ms latency"],
+      "image": "/images/projects/ecommerce-db.jpg"
+    },
+    {
+      "name": "IoT Data Store",
+      "client": "SensorNet",
+      "tech": "MongoDB",
+      "description": "Time-series data storage for 1M+ IoT devices with aggregation pipelines.",
+      "results": ["1M+ devices", "10B documents", "Real-time analytics"],
+      "image": "/images/projects/iot-database.jpg"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Their SQL Server optimization reduced our query time from minutes to seconds.",
+      "author": "Jennifer Walsh",
+      "role": "Data Director, RetailGiant",
+      "image": "/images/testimonials/jennifer.jpg"
+    },
+    {
+      "quote": "The Oracle RAC setup they implemented has been bulletproof for 3 years.",
+      "author": "Robert Kim",
+      "role": "CTO, GlobalBank",
+      "image": "/images/testimonials/robert.jpg"
+    },
+    {
+      "quote": "MongoDB migration was seamless. Our development velocity increased 3x.",
+      "author": "Lisa Chen",
+      "role": "VP Engineering, SensorNet",
+      "image": "/images/testimonials/lisa.jpg"
+    }
+  ],
+  "stats": [
+    { "value": "100TB+", "label": "Data Managed" },
+    { "value": "1M+", "label": "Queries/Sec" },
+    { "value": "99.999%", "label": "Availability" },
+    { "value": "5+", "label": "Years Experience" }
+  ],
+  "floatingIcons": [
+    { "iconName": "Database", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "Terminal", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "HardDrive", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Table", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Server", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Cpu", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "architectureItems": [
+    { "num": "01", "title": "Polyglot Persistence", "desc": "Right database for each workload: relational, document, graph, or cache" },
+    { "num": "02", "title": "Data Lakes & Warehouses", "desc": "Centralized analytics with ETL/ELT pipelines and BI integration" },
+    { "num": "03", "title": "Real-time Streaming", "desc": "Kafka, Kinesis, and Change Data Capture for event-driven architectures" },
+    { "num": "04", "title": "Cloud-Native Databases", "desc": "Managed services with auto-scaling, backups, and global distribution" }
+  ]
+}

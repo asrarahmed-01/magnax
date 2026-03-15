@@ -21,3 +21,6 @@ export interface NavItem {
   }
   columns?: Column[];
 };
+
+// src/types/index.ts
+export * from './pages';

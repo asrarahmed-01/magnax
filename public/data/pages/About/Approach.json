@@ -1,0 +1,81 @@
+{
+  "heroDescription": "We combine industry best practices with innovative methodologies to deliver exceptional results. Discover how we partner with clients to turn vision into reality through structured excellence.",
+  "heroInfo": [
+    "Enterprise Security",
+    "Scalable Growth",
+    "Rapid Delivery"
+  ],
+  "heroStats": [
+    { "value": "15+", "label": "Years Experience" },
+    { "value": "98%", "label": "Client Retention" },
+    { "value": "200+", "label": "Projects Delivered" },
+    { "value": "50+", "label": "Expert Team" }
+  ],
+  "sections": [
+    { "id": "where-to-start", "label": "Where to Start", "icon": "Compass" },
+    { "id": "pricing-models", "label": "Pricing Models", "icon": "DollarSign" },
+    { "id": "project-management", "label": "Project Management", "icon": "Users" },
+    { "id": "architecture", "label": "Architecture CoE", "icon": "Building2" },
+    { "id": "partnership", "label": "Partnership", "icon": "Handshake" },
+    { "id": "sustainability", "label": "Sustainability", "icon": "Leaf" }
+  ],
+  "startSteps": [
+    { "num": "01", "title": "Discovery", "desc": "We begin with understanding your business, goals, and challenges through in-depth consultations." },
+    { "num": "02", "title": "Assessment", "desc": "Our experts analyze your current state and identify opportunities for improvement and innovation." },
+    { "num": "03", "title": "Strategy", "desc": "We develop a tailored roadmap with clear milestones, deliverables, and success metrics." },
+    { "num": "04", "title": "Execution", "desc": "Agile development with regular check-ins ensures we stay aligned with your evolving needs." }
+  ],
+  "pricingModels": [
+    {
+      "title": "Fixed Price",
+      "description": "Best for well-defined projects with clear scope and requirements.",
+      "features": ["Predictable budget", "Defined timeline", "Clear deliverables", "Milestone payments"]
+    },
+    {
+      "title": "Time & Material",
+      "description": "Flexible engagement model for evolving project requirements.",
+      "features": ["Scalable team", "Pay as you go", "Agile approach", "Regular reporting"]
+    },
+    {
+      "title": "Dedicated Team",
+      "description": "Long-term partnership with a team fully dedicated to your success.",
+      "features": ["Full control", "Direct communication", "Cultural alignment", "Long-term savings"]
+    }
+  ],
+  "pmoIntro": "Our PMO ensures every project is delivered on time, within budget, and to the highest quality standards. We combine agile methodologies with robust governance frameworks.",
+  "pmoFeatures": [
+    { "title": "Agile Methodology", "desc": "Scrum and Kanban frameworks for iterative development" },
+    { "title": "Transparent Reporting", "desc": "Real-time dashboards and regular status updates" },
+    { "title": "Risk Management", "desc": "Proactive identification and mitigation of project risks" },
+    { "title": "Quality Assurance", "desc": "Continuous testing and quality gates at every stage" }
+  ],
+  "archIntro": "Our Architecture CoE defines standards, best practices, and reference architectures that ensure scalable, secure, and maintainable solutions.",
+  "archAreas": [
+    { "title": "Cloud Architecture", "desc": "Multi-cloud and hybrid cloud solutions" },
+    { "title": "Microservices", "desc": "Scalable, decoupled system design" },
+    { "title": "Data Architecture", "desc": "Modern data platforms and pipelines" },
+    { "title": "Security Architecture", "desc": "Security-first design principles" }
+  ],
+  "partnershipIntro": "We don't just deliver projects; we build lasting partnerships. Our collaborative approach ensures we understand your business deeply and evolve with your needs.",
+  "partnershipBenefits": [
+    "Dedicated account management",
+    "Strategic technology consulting",
+    "Continuous improvement programs",
+    "Knowledge transfer and training"
+  ],
+  "sustainabilityIntro": "We are committed to sustainable business practices that minimize environmental impact while maximizing social value.",
+  "sustainabilityPillars": [
+    { "icon": "Leaf", "title": "Environmental", "desc": "Carbon-neutral operations, green cloud practices, and sustainable office spaces." },
+    { "icon": "Users", "title": "Social", "desc": "Diverse and inclusive workplace, community engagement, and ethical sourcing." },
+    { "icon": "Shield", "title": "Governance", "desc": "Transparent business practices, data privacy, and compliance with regulations." }
+  ],
+  "floatingIcons": [
+    { "iconName": "Target", "delay": "0s", "duration": "6s", "pos": { "top": "10%", "left": "5%" } },
+    { "iconName": "Compass", "delay": "1s", "duration": "8s", "pos": { "top": "20%", "right": "10%" } },
+    { "iconName": "Zap", "delay": "2s", "duration": "7s", "pos": { "bottom": "30%", "left": "8%" } },
+    { "iconName": "Award", "delay": "0.5s", "duration": "9s", "pos": { "bottom": "20%", "right": "5%" } },
+    { "iconName": "Globe", "delay": "1.5s", "duration": "6s", "pos": { "top": "60%", "left": "3%" } },
+    { "iconName": "Sparkles", "delay": "2.5s", "duration": "8s", "pos": { "top": "40%", "right": "8%" } }
+  ],
+  "ctaDescription": "Let's discuss the best approach for your business needs."
+}

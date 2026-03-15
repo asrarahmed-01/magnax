@@ -1,4 +1,6 @@
 /* Footer.scss – Clean, modern, Techor-inspired footer */
+@use "sass:math";
+@use "sass:color";
 
 .footer {
   background: #0a165e;           /* Deep navy blue – matches Techor/ScienceSoft dark theme */
@@ -276,8 +278,18 @@
   justify-content: center;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .scroll-to-top:hover {
@@ -290,7 +302,6 @@
   width: 1.25rem;
   height: 1.25rem;
 }
-
 /* Responsive Adjustments */
 @media (max-width: 640px) {
   .footer-container {

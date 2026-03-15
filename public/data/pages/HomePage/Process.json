@@ -1,0 +1,31 @@
+{
+  "subtitle": "OUR PROCESS",
+  "title": "How We Work",
+  "description": "Our proven methodology ensures successful project delivery every time.",
+  "steps": [
+    {
+      "icon": "Search",
+      "number": "01",
+      "title": "Discovery",
+      "description": "Understanding business needs, goals and challenges through in depth consultation."
+    },
+    {
+      "icon": "Lightbulb",
+      "number": "02",
+      "title": "Strategy",
+      "description": "Identifying solution roadmap that meets your goals and budget."
+    },
+    {
+      "icon": "Rocket",
+      "number": "03",
+      "title": "Implementation",
+      "description": "Deploying and integrating with skill and confidence."
+    },
+    {
+      "icon": "HeartHandshake",
+      "number": "04",
+      "title": "Support",
+      "description": "Maintaining, optimizing and supporting business success."
+    }
+  ]
+}

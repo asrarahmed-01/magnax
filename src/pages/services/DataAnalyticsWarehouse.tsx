@@ -153,11 +153,7 @@ const testimonials = [
     image: "https://i.pravatar.cc/150?u=elena",
   },
 ];
-const sections = [
-  { id: 'analytics', label: 'Data Analytics' },
-  { id: 'warehouse', label: 'Data Warehousing' },
-  { id: 'bigdata', label: 'Big Data Solutions' },
-];
+
 
 // --- Component ---
 

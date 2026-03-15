@@ -56,10 +56,10 @@ function App() {
               <Route path="/approach" element={<Approach />} />
               <Route path="/join-us" element={<JoinUs />} />
               <Route path="/industries" element={<Industries />} />
-              <Route path="/industries/education" element={<IndustryPage1 />} />
-              <Route path="/industries/healthcare" element={<IndustryPage2 />} />
-              <Route path="/industries/finance" element={<IndustryPage3 />} />
-              <Route path="/industries/politics-media" element={<IndustryPage4 />} />
+              <Route path="/industries/healthcare-fintech" element={<IndustryPage1 />} />
+              <Route path="/industries/retail-media" element={<IndustryPage2 />} />
+              <Route path="/otherindustries" element={<IndustryPage3 />} />
+              <Route path="/industries/politics" element={<IndustryPage4 />} />
               <Route path="/industries/travel-restaurants" element={<IndustryPage5 />} />
               <Route path="/services/data-analytics-warehouse" element={<DataSolutions />} />
               <Route path="/services/machine-learning-ai" element={<MachineLearningAI />} />

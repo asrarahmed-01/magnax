@@ -1,4 +1,6 @@
 /* Contact.scss – Exact replica of first screenshot (dark navy + blue button) */
+@use "sass:math";
+@use "sass:color";
 
 .contact-section {
   position: relative;

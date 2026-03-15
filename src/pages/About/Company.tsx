@@ -256,7 +256,7 @@ export function Company() {
                 <h2>About Company</h2>
               </div>
             </div>
-           <div className="company-about-wrapper">
+         
 
   {/* Row 1 */}
   <div className="company-about-row">
@@ -276,7 +276,7 @@ export function Company() {
     </div>
 
     <div className="company-about-image">
-      <img src="/images/About1.png" alt="Magnax team working" />
+      <img src="/images/about1.png" alt="Magnax team working" />
     </div>
 
   </div>
@@ -286,7 +286,7 @@ export function Company() {
   <div className="company-about-row reverse">
 
     <div className="company-about-image">
-      <img src="/images/About2.png" alt="Magnax technology solutions" />
+      <img src="/images/about2.png" alt="Magnax technology solutions" />
     </div>
 
     <div className="company-about-text">

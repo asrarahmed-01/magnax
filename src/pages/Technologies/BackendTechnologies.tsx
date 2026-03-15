@@ -1,10 +1,13 @@
-import { useEffect, useRef } from 'react';
+// src/pages/Technologies/BackendTechnologies.tsx
+
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  Server, 
-  Database, 
-  Shield, 
+
+import {
+  Server,
+  Database,
+  Shield,
   Zap,
   ArrowRight,
   CheckCircle2,
@@ -16,312 +19,130 @@ import {
   Terminal,
   Activity,
   GitBranch,
-  
   Sparkles,
   Play,
-  
-  Star
+  Star,
 } from 'lucide-react';
+
+import { getBackendTechnologiesData } from '../../service/api/pages/technologies/technologies'; // ← use alias @/ if configured
+import type { BackendPageData, FloatingIcon } from '../../types'; // ← use alias @/ if configured
+
 import './BackendTechnologies.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const backendTech = [
-  {
-    name: '.NET',
-    category: 'Framework',
-    description: 'Build robust, scalable enterprise applications with Microsoft\'s powerful cross-platform framework.',
-    features: ['ASP.NET Core', 'Entity Framework', 'Web API', 'Microservices'],
-    icon: '/images/tech/dotnet.svg'
-  },
-  {
-    name: 'Java',
-    category: 'Language',
-    description: 'Enterprise-grade solutions with Spring Boot, Hibernate, and battle-tested Java ecosystem.',
-    features: ['Spring Boot', 'Hibernate', 'Maven/Gradle', 'Jakarta EE'],
-    icon: '/images/tech/java.svg'
-  },
-  {
-    name: 'Python',
-    category: 'Language',
-    description: 'Rapid development with Django, Flask, and FastAPI for web services and data processing.',
-    features: ['Django', 'FastAPI', 'Flask', 'Celery'],
-    icon: '/images/tech/python.svg'
-  },
-  {
-    name: 'Node.js',
-    category: 'Runtime',
-    description: 'High-performance, event-driven JavaScript runtime for scalable network applications.',
-    features: ['Express.js', 'NestJS', 'Socket.io', 'GraphQL'],
-    icon: '/images/tech/nodejs.svg'
-  },
-  {
-    name: 'Go',
-    category: 'Language',
-    description: 'Lightning-fast, concurrent programming for high-performance backend systems.',
-    features: ['Gin', 'Goroutines', 'Channels', 'Standard Library'],
-    icon: '/images/tech/go.svg'
-  }
-];
-
-const capabilities = [
-  {
-    icon: Server,
-    title: 'RESTful APIs',
-    description: 'Design and implement scalable, versioned APIs with comprehensive documentation.'
-  },
-  {
-    icon: Database,
-    title: 'Database Integration',
-    description: 'Seamless connectivity with SQL, NoSQL, and in-memory databases.'
-  },
-  {
-    icon: Shield,
-    title: 'Security & Auth',
-    description: 'OAuth 2.0, JWT, SSO, and enterprise-grade security implementations.'
-  },
-  {
-    icon: Zap,
-    title: 'High Performance',
-    description: 'Caching, load balancing, and optimization for millions of requests.'
-  },
-  {
-    icon: Globe,
-    title: 'Microservices',
-    description: 'Distributed systems with service mesh, discovery, and containerization.'
-  },
-  {
-    icon: Lock,
-    title: 'Data Protection',
-    description: 'Encryption at rest and in transit with compliance (GDPR, HIPAA, SOC2).'
-  }
-];
-
-const projects = [
-  {
-    name: 'Enterprise ERP System',
-    client: 'ManufacturePro',
-    tech: '.NET',
-    description: 'Scalable ERP handling 10k+ concurrent users with real-time inventory.',
-    results: ['10k+ concurrent users', '99.99% uptime', '40% efficiency gain'],
-    image: '/images/projects/erp.jpg'
-  },
-  {
-    name: 'Banking Core System',
-    client: 'SecureBank',
-    tech: 'Java',
-    description: 'Microservices-based banking platform processing 1M+ daily transactions.',
-    results: ['1M+ daily transactions', '50ms response time', 'Zero downtime deploys'],
-    image: '/images/projects/banking-core.jpg'
-  },
-  {
-    name: 'AI Data Pipeline',
-    client: 'DataIntel',
-    tech: 'Python',
-    description: 'Real-time data processing pipeline for machine learning models.',
-    results: ['10TB daily processed', 'Real-time insights', '95% accuracy'],
-    image: '/images/projects/ai-pipeline.jpg'
-  },
-  {
-    name: 'Real-time Chat Platform',
-    client: 'ConnectApp',
-    tech: 'Node.js',
-    description: 'WebSocket-based messaging platform with 5M+ active users.',
-    results: ['5M+ active users', 'Sub-100ms latency', '99.9% delivery rate'],
-    image: '/images/projects/chat-platform.jpg'
-  }
-];
-
-const testimonials = [
-  {
-    quote: "Their .NET expertise delivered a rock-solid backend that handles our peak loads effortlessly.",
-    author: "Robert Chen",
-    role: "CTO, ManufacturePro",
-    image: "/images/testimonials/robert.jpg"
-  },
-  {
-    quote: "The Java microservices architecture they built scaled perfectly as we grew 10x.",
-    author: "Lisa Park",
-    role: "VP Engineering, SecureBank",
-    image: "/images/testimonials/lisa.jpg"
-  },
-  {
-    quote: "Python data pipelines process terabytes daily. Exceptional engineering quality.",
-    author: "Ahmed Hassan",
-    role: "Chief Data Officer, DataIntel",
-    image: "/images/testimonials/ahmed.jpg"
-  }
-];
-
-const stats = [
-  { value: '10M+', label: 'API Requests/Day' },
-  { value: '99.99%', label: 'Uptime SLA' },
-  { value: '50ms', label: 'Avg Response' },
-  { value: '5+', label: 'Years Experience' }
-];
-
-const floatingIcons = [
-  { Icon: Cloud, delay: '0s', duration: '6s', pos: { top: '10%', left: '5%' } },
-  { Icon: Terminal, delay: '1s', duration: '8s', pos: { top: '20%', right: '10%' } },
-  { Icon: Database, delay: '2s', duration: '7s', pos: { bottom: '30%', left: '8%' } },
-  { Icon: GitBranch, delay: '0.5s', duration: '9s', pos: { bottom: '20%', right: '5%' } },
-  { Icon: Activity, delay: '1.5s', duration: '6s', pos: { top: '60%', left: '3%' } },
-  { Icon: Cpu, delay: '2.5s', duration: '8s', pos: { top: '40%', right: '8%' } }
-];
-
 export function BackendTechnologies() {
+  const [data, setData] = useState<BackendPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const heroRef = useRef<HTMLDivElement>(null);
   const techRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
+  // Fetch data
   useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const pageData = await getBackendTechnologiesData();
+        if (mounted) {
+          setData(pageData);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || 'Failed to load backend technologies');
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // GSAP animations (only run when data is ready)
+  useEffect(() => {
+    if (loading || !data) return;
+
     const ctx = gsap.context(() => {
-      // Hero animation
       gsap.fromTo(
         '.be-hero-content',
         { y: 60, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
       );
 
-      // Floating icons parallax
       gsap.to('.be-float-icon', {
         y: -30,
         duration: 2,
         ease: 'sine.inOut',
         yoyo: true,
         repeat: -1,
-        stagger: {
-          each: 0.2,
-          from: 'random'
-        }
+        stagger: { each: 0.2, from: 'random' },
       });
 
-      // Mouse glow effect
       const handleMouseMove = (e: MouseEvent) => {
-        if (glowRef.current) {
-          const rect = heroRef.current?.getBoundingClientRect();
-          if (rect) {
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            glowRef.current.style.setProperty('--mouse-x', `${x}px`);
-            glowRef.current.style.setProperty('--mouse-y', `${y}px`);
-          }
+        if (glowRef.current && heroRef.current) {
+          const rect = heroRef.current.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          glowRef.current.style.setProperty('--mouse-x', `${x}px`);
+          glowRef.current.style.setProperty('--mouse-y', `${y}px`);
         }
       };
 
       heroRef.current?.addEventListener('mousemove', handleMouseMove);
 
-      // Stats animation
       gsap.fromTo(
         '.be-stat-item',
         { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: '.be-stats',
-            start: 'top 85%',
-          },
-        }
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, scrollTrigger: { trigger: '.be-stats', start: 'top 85%' } }
       );
 
-      // Tech cards animation with 3D tilt
       gsap.fromTo(
         '.be-tech-card',
         { y: 40, opacity: 0, rotateX: 15 },
-        {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: techRef.current,
-            start: 'top 75%',
-          },
-        }
+        { y: 0, opacity: 1, rotateX: 0, duration: 0.6, stagger: 0.1, scrollTrigger: { trigger: techRef.current, start: 'top 75%' } }
       );
 
-      // Capabilities animation
       gsap.fromTo(
         '.be-capability-card',
         { scale: 0.9, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: '.be-capabilities',
-            start: 'top 80%',
-          },
-        }
+        { scale: 1, opacity: 1, duration: 0.5, stagger: 0.08, scrollTrigger: { trigger: '.be-capabilities', start: 'top 80%' } }
       );
 
-      // Projects animation
       gsap.fromTo(
         '.be-project-card',
         { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: '.be-projects',
-            start: 'top 75%',
-          },
-        }
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, scrollTrigger: { trigger: '.be-projects', start: 'top 75%' } }
       );
 
-      // Architecture section animation
       gsap.fromTo(
         '.be-arch-item',
         { x: -30, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: '.be-architecture',
-            start: 'top 70%',
-          },
-        }
+        { x: 0, opacity: 1, duration: 0.5, stagger: 0.15, scrollTrigger: { trigger: '.be-architecture', start: 'top 70%' } }
       );
 
-      // Architecture diagram animation
       gsap.fromTo(
         '.be-arch-diagram',
         { x: 50, opacity: 0, rotateY: -10 },
-        {
-          x: 0,
-          opacity: 1,
-          rotateY: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: '.be-arch-visual',
-            start: 'top 70%',
-          },
-        }
+        { x: 0, opacity: 1, rotateY: 0, duration: 0.8, scrollTrigger: { trigger: '.be-arch-visual', start: 'top 70%' } }
       );
 
-      // Testimonials animation
       gsap.fromTo(
         '.be-testimonial-card',
         { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: '.be-testimonials',
-            start: 'top 80%',
-          },
-        }
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.15, scrollTrigger: { trigger: '.be-testimonials', start: 'top 80%' } }
       );
 
       return () => {
@@ -330,7 +151,48 @@ export function BackendTechnologies() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [data, loading]);
+
+  // ─── Loading & Error States ────────────────────────────────────────────
+  if (loading) {
+    return <div className="be-page loading">Loading backend technologies...</div>;
+  }
+
+  if (error) {
+    return <div className="be-page error">Error: {error}</div>;
+  }
+
+  if (!data) {
+    return <div className="be-page">No data available</div>;
+  }
+
+  // ─── Safe icon mapping ─────────────────────────────────────────────────
+  const iconMap = {
+    Cloud,
+    Terminal,
+    Database,
+    GitBranch,
+    Activity,
+    Cpu,
+    Server,
+    Lock,
+  } as const;
+
+  const floatingIcons = data.floatingIcons?.map?.((item: FloatingIcon) => ({
+    Icon: iconMap[item.iconName as keyof typeof iconMap] || Cloud, // fallback
+    delay: item.delay,
+    duration: item.duration,
+    pos: item.pos,
+  })) ?? [];
+
+  const capabilityIconMap = {
+    Server,
+    Database,
+    Shield,
+    Zap,
+    Globe,
+    Lock,
+  } as const;
 
   return (
     <div className="be-page">
@@ -343,20 +205,15 @@ export function BackendTechnologies() {
           <div className="be-hero-orb be-orb-2" />
           <div className="be-hero-orb be-orb-3" />
         </div>
-        
+
         <div className="be-container">
           <div className="be-hero-content">
-            {/* Floating Elements */}
             <div className="be-floating-elements">
               {floatingIcons.map(({ Icon, delay, duration, pos }, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="be-float-icon"
-                  style={{ 
-                    ...pos,
-                    animationDelay: delay,
-                    animationDuration: duration
-                  }}
+                  style={{ ...pos, animationDelay: delay, animationDuration: duration }}
                 >
                   <Icon size={24} />
                 </div>
@@ -368,18 +225,18 @@ export function BackendTechnologies() {
               <Sparkles size={14} />
               Backend Development
             </div>
-            
+
             <h1 className="be-hero-title">
               Powering Systems<br />
               <span className="be-gradient-text">That Scale</span>
             </h1>
-            
+
             <p className="be-hero-description">
-              Build powerful, scalable server-side solutions with our expert backend development. 
-              From .NET to Python, we architect systems that handle millions of requests 
+              Build powerful, scalable server-side solutions with our expert backend development.
+              From .NET to Python, we architect systems that handle millions of requests
               with reliability and performance.
             </p>
-            
+
             <div className="be-hero-cta">
               <a href="#contact" className="be-btn be-btn-primary">
                 Discuss Your Architecture
@@ -391,14 +248,13 @@ export function BackendTechnologies() {
               </a>
             </div>
 
-            {/* Stats Bar */}
             <div className="be-stats">
-              {stats.map((stat, idx) => (
+              {data.stats?.map?.((stat, idx) => (
                 <div key={idx} className="be-stat-item">
                   <span className="be-stat-value">{stat.value}</span>
                   <span className="be-stat-label">{stat.label}</span>
                 </div>
-              ))}
+              )) || <div>No stats available</div>}
             </div>
           </div>
         </div>
@@ -416,9 +272,9 @@ export function BackendTechnologies() {
           </div>
 
           <div className="be-tech-grid">
-            {backendTech.map((tech, index) => (
-              <div 
-                key={index} 
+            {data.backendTech?.map?.((tech, index) => (
+              <div
+                key={index}
                 className="be-tech-card"
                 style={{ '--card-index': index } as React.CSSProperties}
               >
@@ -426,7 +282,7 @@ export function BackendTechnologies() {
                   <div className="be-tech-shine" />
                   <div className="be-tech-header">
                     <div className="be-tech-icon-wrapper">
-                      <Server size={32} />
+                      <img src={tech.icon} alt={tech.name} />
                     </div>
                     <div className="be-tech-meta">
                       <span className="be-tech-category">{tech.category}</span>
@@ -435,17 +291,16 @@ export function BackendTechnologies() {
                   </div>
                   <p className="be-tech-description">{tech.description}</p>
                   <div className="be-tech-features">
-                    {tech.features.map((feature, i) => (
+                    {tech.features?.map?.((feature, i) => (
                       <span key={i} className="be-tech-feature">
                         <CheckCircle2 size={14} />
                         {feature}
                       </span>
-                    ))}
+                    )) || <span>No features listed</span>}
                   </div>
-                  
                 </div>
               </div>
-            ))}
+            )) || <div>No technologies available</div>}
           </div>
         </div>
       </section>
@@ -462,21 +317,24 @@ export function BackendTechnologies() {
           </div>
 
           <div className="be-capabilities-grid">
-            {capabilities.map((cap, index) => (
-              <div key={index} className="be-capability-card">
-                <div className="be-capability-icon">
-                  <cap.icon size={28} />
+            {data.capabilities?.map?.((cap, index) => {
+              const CapIcon = capabilityIconMap[cap.icon as keyof typeof capabilityIconMap] || Server;
+              return (
+                <div key={index} className="be-capability-card">
+                  <div className="be-capability-icon">
+                    <CapIcon size={28} />
+                  </div>
+                  <h3 className="be-capability-title">{cap.title}</h3>
+                  <p className="be-capability-description">{cap.description}</p>
+                  <div className="be-capability-line" />
                 </div>
-                <h3 className="be-capability-title">{cap.title}</h3>
-                <p className="be-capability-description">{cap.description}</p>
-                <div className="be-capability-line" />
-              </div>
-            ))}
+              );
+            }) || <div>No capabilities listed</div>}
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects Section – fixed crash here */}
       <section className="be-projects">
         <div className="be-container">
           <div className="be-section-header">
@@ -488,46 +346,50 @@ export function BackendTechnologies() {
           </div>
 
           <div className="be-projects-grid">
-            {projects.map((project, index) => (
+            {data.projects?.map?.((project, index) => (
               <div key={index} className="be-project-card">
                 <div className="be-project-image">
-                  <img src={project.image} alt={project.name} />
+                  <img src={project.image ?? '/images/placeholder.jpg'} alt={project.name ?? 'Project'} />
                   <div className="be-project-overlay" />
-                  <span className="be-project-tech">{project.tech}</span>
+                  <span className="be-project-tech">{project.tech ?? 'N/A'}</span>
                 </div>
                 <div className="be-project-content">
-                  <span className="be-project-client">{project.client}</span>
-                  <h3 className="be-project-name">{project.name}</h3>
-                  <p className="be-project-description">{project.description}</p>
+                  <span className="be-project-client">{project.client ?? 'Unknown Client'}</span>
+                  <h3 className="be-project-name">{project.name ?? 'Unnamed Project'}</h3>
+                  <p className="be-project-description">{project.description ?? 'No description available'}</p>
                   <div className="be-project-results">
-                    {project.results.map((result, i) => (
-                      <span key={i} className="be-project-result">
-                        <Star size={12} />
-                        {result}
-                      </span>
-                    ))}
+                    {Array.isArray(project.results) && project.results.length > 0 ? (
+                      project.results.map((result, i) => (
+                        <span key={i} className="be-project-result">
+                          <Star size={12} />
+                          {result}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="no-results">No key results listed</span>
+                    )}
                   </div>
                 </div>
               </div>
-            ))}
+            )) || <div className="no-projects">No projects available</div>}
           </div>
         </div>
       </section>
 
-      {/* Architecture Section */}
+      {/* Architecture Section – static for now, can be made dynamic later */}
       <section className="be-architecture">
         <div className="be-container">
           <div className="be-arch-grid">
             <div className="be-arch-content">
               <span className="be-section-label">System Design</span>
               <h2 className="be-section-title">Scalable Architecture</h2>
-              
+
               <div className="be-arch-list">
                 {[
                   { num: '01', title: 'Microservices', desc: 'Distributed systems with independent, deployable services and service mesh' },
                   { num: '02', title: 'Event-Driven', desc: 'Async processing with message queues, event sourcing, and CQRS patterns' },
                   { num: '03', title: 'Serverless', desc: 'Cost-effective scaling with FaaS, managed services, and auto-scaling' },
-                  { num: '04', title: 'API Gateway', desc: 'Unified entry point with rate limiting, caching, and request routing' }
+                  { num: '04', title: 'API Gateway', desc: 'Unified entry point with rate limiting, caching, and request routing' },
                 ].map((item, idx) => (
                   <div key={idx} className="be-arch-item">
                     <div className="be-arch-number">{item.num}</div>
@@ -539,9 +401,10 @@ export function BackendTechnologies() {
                 ))}
               </div>
             </div>
-            
+
             <div className="be-arch-visual">
               <div className="be-arch-diagram">
+                {/* Your existing static diagram */}
                 <div className="be-arch-layer be-arch-client">
                   <span>Clients</span>
                   <div className="be-arch-nodes">
@@ -590,9 +453,9 @@ export function BackendTechnologies() {
             <span className="be-section-label">Testimonials</span>
             <h2 className="be-section-title">Client Feedback</h2>
           </div>
-          
+
           <div className="be-testimonials-grid">
-            {testimonials.map((testimonial, index) => (
+            {data.testimonials?.map?.((testimonial, index) => (
               <div key={index} className="be-testimonial-card">
                 <Quote className="be-testimonial-quote" size={32} />
                 <p className="be-testimonial-text">{testimonial.quote}</p>
@@ -604,7 +467,7 @@ export function BackendTechnologies() {
                   </div>
                 </div>
               </div>
-            ))}
+            )) || <div>No testimonials available</div>}
           </div>
         </div>
       </section>
@@ -616,7 +479,7 @@ export function BackendTechnologies() {
             <div className="be-cta-glow" />
             <h2 className="be-cta-title">Ready to Architect Your Backend?</h2>
             <p className="be-cta-description">
-              Let's build a scalable, secure backend that powers your applications 
+              Let's build a scalable, secure backend that powers your applications
               and grows with your business
             </p>
             <div className="be-cta-buttons">

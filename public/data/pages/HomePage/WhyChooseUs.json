@@ -1,0 +1,32 @@
+{
+  "subtitle": "WHY CHOOSE US",
+  "title": "What Makes Us Different",
+  "description": "We combine technical expertise with a customer-first approach to deliver solutions that truly make a difference for your business.",
+  "features": [
+    {
+      "icon": "Users",
+      "title": "Expert Team",
+      "description": "Certified professionals with extensive industry experience."
+    },
+    {
+      "icon": "Clock",
+      "title": "24/7 Support",
+      "description": "Round-the-clock assistance for your business needs."
+    },
+    {
+      "icon": "Trophy",
+      "title": "Proven Results",
+      "description": "Track record of successful implementations."
+    },
+    {
+      "icon": "Check",
+      "title": "Custom Solutions",
+      "description": "Tailored to your specific business requirements."
+    }
+  ],
+  "stats": [
+    { "number": 50, "suffix": "+", "label": "Expert Team Members" },
+    { "number": 10, "suffix": "+", "label": "Industry Awards" },
+    { "number": 24, "suffix": "/7", "label": "Support Available" }
+  ]
+}

@@ -154,10 +154,6 @@ const techStack = [
 //   },
 // ];
 
-const sections = [  
-    { id: 'machine-learning', title: 'Machine Learning' },    
-    { id: 'ai', title: 'Generative AI' },   
-];  
 
 // --- Component ---
 
